@@ -1,6 +1,6 @@
 # Desafios - tareas en clase.
 
-## Introduction
+## Introducción
 En el siguiente documento se detallarán las tareas realizadas en clase.
 
 ## Desafío Nº1 - Datos y variables
