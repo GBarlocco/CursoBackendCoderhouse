@@ -5,11 +5,11 @@ En el siguiente documento se detallarán las tareas realizadas en clase.
 
 ## Desafío Nº1 - Datos y variables
 1) Definir variables variables que almacenen los siguiente datos:
-*Un nombre: “pepe”
-*Una edad: 25
-*Un precio: $99.90
-*Los nombres de mis series favoritas: “Dark”, “Mr Robot”, “Castlevania”
-*Mis películas favoritas, en donde cada película detalla su nombre, el año de estreno, y una lista con los nombres de sus protagonistas.
+Un nombre: “pepe”
+- Una edad: 25
+- Un precio: $99.90
+- Los nombres de mis series favoritas: “Dark”, “Mr Robot”, “Castlevania”
+- Mis películas favoritas, en donde cada película detalla su nombre, el año de estreno, y una lista con los nombres de sus protagonistas.
 
 2) Mostrar todos esos valores por consola.
 
