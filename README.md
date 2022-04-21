@@ -3,7 +3,7 @@
 ## Introducción
 En el siguiente documento se detallarán las tareas realizadas en clase.
 
-## Ejercicio: Datos y variables (C1_E1)
+## Ejercicio: Datos y variables (C1_E1.js)
 1) Definir variables variables que almacenen los siguiente datos:
 Un nombre: “pepe”
 - Una edad: 25
@@ -55,7 +55,7 @@ mySeries.push("nueva serie");
 console.log(mySeries);
 ```
 
-## Ejercicio: Funciones y Closures (C2_E1)
+## Ejercicio: Funciones y Closures (C2_E1.js)
 1)	Definir la función mostrarLista que reciba una lista de datos y muestre su contenido, si no está vacía, o de lo contrario muestre el mensaje: “lista vacía”. Luego, invocarla con datos de prueba para verificar que funciona bien en ambos casos.
 
 2)	Definir una función anónima que haga lo mismo que la del punto 1, e invocarla inmediatamente, pasando una lista con 3 números como argumento.
@@ -81,7 +81,7 @@ console.log(triplicar(3));
 
 ```
 
-## Ejercicio: Clases (C2_E2)
+## Ejercicio: Clases (C2_E2.js)
 En este ejercicio construiremos una herramienta que permita que diferentes personas puedan llevar cuentas individuales sobre algo que deseen contabilizar, al mismo tiempo que nos brinde una contabilidad general del total contado. Para ello:
 
 1) Definir la clase Contador.
@@ -131,7 +131,7 @@ console.log(`Cuenta individual`, contador1.obtenerCuentaIndividual());
 console.log(`Conteo obtenerCuentaGlobal`, contador1.obtenerCuentaGlobal());
 ```
 
-## Desafío Nº1: Clases
+## Desafío Nº1: Clases (Desafio1Clases.js)
 
 1) Declarar una clase Usuario
 
