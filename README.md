@@ -1,4 +1,4 @@
-# Tareas de clase:
+# Tareas de clase & Desafíos
 
 ## Introducción
 En el siguiente documento se detallarán las tareas realizadas en clase.
