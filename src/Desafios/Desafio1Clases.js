@@ -42,9 +42,9 @@ let libros1 = [
     }
 ];
 
-let mascotas1 = [`mascota1`, `mascota2`, `mascota3`];
+const mascotas1 = [`mascota1`, `mascota2`, `mascota3`];
 
-let usuario1 = new Usuario(`Gastón`, `Barlocco`, libros1, mascotas1);
+const usuario1 = new Usuario(`Gastón`, `Barlocco`, libros1, mascotas1);
 
 console.log(usuario1.getFullName());
 
