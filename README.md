@@ -224,6 +224,83 @@ console.log(`libros`, usuario1.getBookNames());
 
 ```
 
+## Repaso funciones JS ES6
+- Funciones en variables:
+
+```
+const mostrarMensaje = function (params){
+    console.log(`mensaje: ${params}`);
+}
+```
+
+- Convirtiendo a funciones flecha...
+
+```
+const mostrarMensaje = (params) =>{
+    console.log(`mensaje: ${params}`);
+}
+```
+
+- Cuando la funcion  flecha posee una sola linea, automáticamente se retorna el valor, tener en cuenta si no se desea realizar un retorno: return implícito
+-  las llaves {} se vuelven opcionales.
+
+```
+const mostrarMensaje = (params) => console.log(`mensaje: ${params}`); 
+```
+
+-  Si la función recibe un único parámetro se pueden quitar los paréntesis ()
+```
+const mostrarMensaje = params => console.log(`mensaje: ${params}`); 
+```
+
+-  Si se desea retornar un objeto, el mismo debe estar entre paréntesis:
+```
+const getPersona = (name, age) => ({nombre: name, edad:age}); 
+```
+
+-  Con return:
+```
+const getPersona = (name, age) => {
+   return {nombre: name, edad:age}
+}
+```
+## Callbacks
+Los callbacks se utilizan para retomar el flujo de ejecución del programa en caso de que se haya perdido.
+
+- El callback siempre es el último parámetro.
+- El callback suele ser una función que recibe dos parámetros.
+- La función llama al callback al terminar de ejecutar todas sus operaciones.
+- Si la operación fue exitosa, la función llamará al callback pasando null como primer parámetro y si generó algun resutlado este se pasará como segundo parámetro.
+- Si la operación resulto en un error, la función llamará al callback pasando el error obtenido como primer parámetro.
+
+Ejemplo: 
+```
+const operacion = (a, b, accion, callback) => {
+    return setTimeout(() => {
+        const resultado = accion(a, b);
+        callback(null, resultado);
+    }, 1000);
+}
+
+const suma = (a, b) => a + b;
+const resta = (a, b) => a - b;
+const multiplicacion = (a, b) => a * b;
+const division = (a, b) => a / b;
+const modulo = (a, b) => a % b;
+
+operacion(2, 4, suma, (err, resultado) => {
+    if (err != null) {
+        console.error(err);
+        return
+    } else {
+        console.log(`resultado`, resultado);
+        console.log(`A partir de aqui retomo el flujo de ejecución de mi programa`)
+    }
+});
+
+console.log(resultado);
+
+```
 
 ## Nomenclatura de ejercicios
 Cx_Ex:
