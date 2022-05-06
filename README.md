@@ -132,7 +132,6 @@ console.log(`Conteo obtenerCuentaGlobal`, contador1.obtenerCuentaGlobal());
 ```
 
 ## Desafío Nº1: Clases (Desafio1Clases.js)
-
 1) Declarar una clase Usuario
 
 2) Hacer que Usuario cuente con los siguientes atributos:
@@ -264,6 +263,7 @@ const getPersona = (name, age) => {
    return {nombre: name, edad:age}
 }
 ```
+
 ## Callbacks
 Los callbacks se utilizan para retomar el flujo de ejecución del programa en caso de que se haya perdido.
 
@@ -303,7 +303,6 @@ console.log(resultado);
 ```
 
 ## Promesas
-
 - Los callbacks fueron una buena práctica adoptada por la comunidad, no era un método de resolución propiamente del lenguaje, actualmente para resolver el problema de los callback of hell surgen las promesas, que si son propios del lenguaje. 
 
 - El estado inicial de una promesa es: pendiente (pending) 
@@ -336,7 +335,6 @@ function dividir (dividendo, divisor){
 ```
 
 Veamos el mismo ejemplo manejando el resultado de la función dividir, agregando .then y .catch con su correspondiente callback: 
-
 
 ```
 const dividir = (dividendo, divisor) => {
@@ -399,7 +397,6 @@ setTimeout(() => {
 
 
 ## Ejercicio: Clases (C3_E2.js)
-
 Realizar un programa que:
 A) Guarde en un archivo llamado fyh.txt la fecha y hora actual.
 B) Lea nuestro propio archivo de programa y lo muestre por consola.
@@ -427,6 +424,7 @@ try {
 }
 
 ```
+
 
 ## Ejecución sincrónica
 - Se ejecutan una por una, desde la primera a la última.
@@ -463,8 +461,12 @@ Se imprime:
 2
 ```
 
-## Comportamiento de una función
+## Ejecución asincrónica
+- Es muy importante entender y aprender a utilizar las funciones no bloqueantes para no generar nuevos problemas.
+- Cuando hablamos de ejecución no bloqueante (asincrónica) solo sabemos en que orden comenzará la ejecución de las intrucciones, pero no sabemos en que momento ni en que orden terminarán de ejecutarse.
 
+
+## Comportamiento de una función
 La misma puede ser bloqueante o no-bloqueante, si alguna de las instrucciones dentro de una función intente acceder a un recurso que se encuentre fuera del programa se observará dicho comportamiento.
 
 ### Bloqueante o no-bloqueante = síncrona o asíncrona.
@@ -501,8 +503,6 @@ Otras tareas …
 ```
 Como se puede ver, es un programa bloqueante
 
-
-
 Recordar que en los métodos asincrónicos (no bloqueante) se pierde el flujo del programa, para recuperar y controlar el mismo se utilizan los callback.
 
 
@@ -523,6 +523,7 @@ Recordar que en los métodos asincrónicos (no bloqueante) se pierde el flujo de
 
 
 ## Desafío Nº2:
+- Agregar!
 
 
 ## Nomenclatura de ejercicios
