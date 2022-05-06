@@ -468,6 +468,7 @@ Como se puede ver, es un programa bloqueante
 
 Recordar que en los métodos asincrónicos (no bloqueante) se pierde el flujo del programa, para recuperar y controlar el mismo se utilizan los callback.
 
+
 ## Manejo de errores:
 ### Funciones síncronas / bloqueantes: 
 - try / catch
