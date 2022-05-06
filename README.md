@@ -3,6 +3,8 @@
 ## Introducción
 En el siguiente documento se detallarán las tareas realizadas en clase, apuntes, etc.
 
+<br>
+
 ## Ejercicio: Datos y variables (C1_E1.js)
 1) Definir variables variables que almacenen los siguiente datos:
 Un nombre: “pepe”
