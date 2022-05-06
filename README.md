@@ -466,12 +466,33 @@ Como se puede ver, es un programa bloqueante
 
 ```
 
+Recordar que en los métodos asincrónicos (no bloqueante) se pierde el flujo del programa, para recuperar y controlar el mismo se utilizan los callback.
+
+## Manejo de errores:
+### Funciones síncronas / bloqueantes: 
+- try / catch
+
+### Funciones asincrónicas / no-bloqueantes:
+-	Callback: callback manejamos el error, entonces no se utiliza try & catch.
+-	Promesas: resolve / reject  then / catch
+-	Async / await : se manejan promesas de forma bloqueantes, para ello se agrega try & catch
+
+
+### Cuando tenemos promesas, podemos manejarlas de dos maneras:
+- Then / catch
+- Async / await
+
+
 ## Nomenclatura de ejercicios
 Cx_Ex:
 - C:clase. 
 - E:ejercicio.
 - x: número.
 
+## git & github - comandos útiles
+- git add .
+- git commit -m "mensaje"
+- git push -u origin master 
 
 ## Academy
 > [CODERHOUSE](https://www.coderhouse.com.uy)
