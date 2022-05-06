@@ -1,7 +1,7 @@
 # Tareas de clase & Desafíos
 
 ## Introducción
-En el siguiente documento se detallarán las tareas realizadas en clase.
+En el siguiente documento se detallarán las tareas realizadas en clase, apuntes, etc.
 
 ## Ejercicio: Datos y variables (C1_E1.js)
 1) Definir variables variables que almacenen los siguiente datos:
@@ -268,7 +268,7 @@ const getPersona = (name, age) => {
 Los callbacks se utilizan para retomar el flujo de ejecución del programa en caso de que se haya perdido.
 
 - El callback siempre es el último parámetro.
-- El callback suele ser una función que recibe dos parámetros.
+- El callback suele ser una función que recibe dos parámetros: error & resultado.
 - La función llama al callback al terminar de ejecutar todas sus operaciones.
 - Si la operación fue exitosa, la función llamará al callback pasando null como primer parámetro y si generó algun resutlado este se pasará como segundo parámetro.
 - Si la operación resulto en un error, la función llamará al callback pasando el error obtenido como primer parámetro.
@@ -299,6 +299,170 @@ operacion(2, 4, suma, (err, resultado) => {
 });
 
 console.log(resultado);
+
+```
+
+## Promesas
+
+- Los callbacks fueron una buena práctica adoptada por la comunidad, no era un método de resolución propiamente del lenguaje, actualmente para resolver el problema de los callback of hell surgen las promesas, que si son propios del lenguaje. 
+
+- El estado inicial de una promesa es: pendiente (pending) 
+
+Una vez que la operación contenida se resuelva, el estado de la promesa pasa a ser: 
+
+- Cumplida (resolve): la operación salió bien, y su resultado será manejado por el callback asignado mediante el metodo .then() 
+
+- Rechazada (rejected): la operación fallo, y su error será manejado por el callback asignado mediante el metodo .catch() 
+
+ 
+Veamos un simple ejemplo: 
+
+```
+function dividir (dividendo, divisor){ 
+
+    return new Promise ((resolve, reject) => { 
+
+        if (divisor == 0){ 
+
+            reject (`No se puede dividir entre cero`); 
+
+        } else { 
+
+            resolve (dividendo / divisor); 
+        } 
+    }) 
+} 
+
+```
+
+Veamos el mismo ejemplo manejando el resultado de la función dividir, agregando .then y .catch con su correspondiente callback: 
+
+
+```
+const dividir = (dividendo, divisor) => {
+    return new Promise((resolve, reject) => {
+        if (divisor == 0) {
+            reject(`No se puede dividir entre cero`);
+        } else {
+            resolve(dividendo / divisor);
+        }
+    })
+}
+
+dividir(10, 2)
+    .then((resultado) => {
+        console.log(`El resultado de la division es: ${resultado}`);
+    })
+    .catch((err) => {
+        console.log(err);
+    }) 
+
+```
+
+
+## Ejercicio: Clases (C3_E1.js)
+Desarrollar una función ‘mostrarLetras’ que reciba un string como parámetro y permita mostrar una vez por segundo cada uno de sus caracteres.  Al finalizar, debe invocar a la siguiente función que se le pasa también  como parámetro: const fin = () => console.log('terminé') Realizar tres llamadas a ‘mostrarLetras’ con el mensaje ‘¡Hola!’ y demoras de 0, 250 y 500 mS verificando que los mensajes de salida se intercalen.
+
+```
+//Asincronismo y callback
+
+const fin = () => console.log (`Termine`);
+
+const mostrarLetra = (palabra ,  callback) =>{
+    let i = 0;
+    const interval = setInterval (() => {
+        const letra = palabra[i];
+        i++;
+        if (letra){
+            console.log(letra)
+        }else{
+            clearInterval(interval);
+            callback();
+        }
+        
+    }, 1000)
+}
+
+setTimeout(() => {
+    mostrarLetra (`primeraPalabra`, fin);
+}, 700);
+
+setTimeout(() => {
+    mostrarLetra (`segundaPalabra`, fin);
+}, 1500); 
+
+setTimeout(() => {
+    mostrarLetra (`terceraPalabra`, fin);
+}, 2000); 
+
+```
+
+
+## Ejercicio: Clases (C3_E2.js)
+
+Realizar un programa que:
+A) Guarde en un archivo llamado fyh.txt la fecha y hora actual.
+B) Lea nuestro propio archivo de programa y lo muestre por consola.
+C) Incluya el manejo de errores con try catch (progresando las excepciones con throw new Error).
+
+Aclaración: utilizar las funciones sincrónicas de lectura y escritura de archivos del módulo fs de node.js
+
+```
+const fs = require(`fs`);
+
+const date = Date().toLocaleString();
+
+try {
+    fs.writeFileSync(`./fyh.txt`, date);
+
+} catch (err) {
+    console.error(err);
+}
+
+try {
+    const date = fs.readFileSync(`./fyh.txt`, `utf-8`);
+    console.log(`La fecha actual es ${date}`);
+} catch (err) {
+    console.error(err);
+}
+
+```
+
+## Comportamiento de una función
+
+La misma puede ser bloqueante o no-bloqueante, si alguna de las instrucciones dentro de una función intente acceder a un recurso que se encuentre fuera del programa se observará dicho comportamiento.
+
+### Bloqueante o no-bloqueante = síncrona o asíncrona.
+Es muy importante saber como va a funcionar el programa, conocer que características tienen las funciones para poder utilizar el mejor mecanismo a la hora de controlar el flujo del programa. Que una función sea bloqueante no es algo negativo, puede ser necesario que el sistema necesite esperar por ello, o no, lo importante es conocer las características y utilizar el mejor mecanismo para controlar el flujo del programa.
+
+Ejemplo: programa bloqueante / síncrono:
+
+```
+const delay = ret => {for(let i=0; i<ret*3e6; i++);}
+function hacerTarea(num) {
+    console.log('haciendo tarea ' + num)
+    delay(100)
+}
+console.log('inicio de tareas');
+hacerTarea(1)
+hacerTarea(2)
+hacerTarea(3)
+hacerTarea(4)
+console.log('fin de tareas')
+console.log('otras tareas ...')
+
+/* 
+Se imprime:
+Inicio de tareas
+Haciendo tarea 1
+Haciendo tarea 2
+Haciendo tarea 3
+Haciendo tarea 4
+Fin de tareas
+Otras tareas …
+
+Como se puede ver, es un programa bloqueante
+*/
 
 ```
 
