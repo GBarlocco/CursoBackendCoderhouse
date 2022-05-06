@@ -1,4 +1,4 @@
-# Tareas de clase & Desafíos
+# Apuntes - Cursos NodeJs : Tareas de clase & Desafíos
 
 ## Introducción
 En el siguiente documento se detallarán las tareas realizadas en clase, apuntes, etc.
@@ -428,6 +428,41 @@ try {
 
 ```
 
+## Ejecución sincrónica
+- Se ejecutan una por una, desde la primera a la última.
+- Se si ejecuta una llamada a otra función, la ejecución se pausa y se procede a ejecutar esa función, al terminar retoma la siguiente instrucción.
+
+Ejemplo:
+
+```
+const funA = () => {
+    console.log(1);
+    funB();
+    console.log(2);
+}
+
+const funB = () => {
+    console.log(3);
+    funC();
+    console.log(4);
+}
+
+const funC = () => {
+    console.log(5);
+}
+
+funA();
+
+```
+Se imprime:
+```
+1
+3
+5
+4
+2
+```
+
 ## Comportamiento de una función
 
 La misma puede ser bloqueante o no-bloqueante, si alguna de las instrucciones dentro de una función intente acceder a un recurso que se encuentre fuera del programa se observará dicho comportamiento.
@@ -451,8 +486,11 @@ hacerTarea(4)
 console.log('fin de tareas')
 console.log('otras tareas ...')
 
-/* 
+```
+
 Se imprime:
+
+```
 Inicio de tareas
 Haciendo tarea 1
 Haciendo tarea 2
@@ -460,28 +498,31 @@ Haciendo tarea 3
 Haciendo tarea 4
 Fin de tareas
 Otras tareas …
-
-Como se puede ver, es un programa bloqueante
-*/
-
 ```
+Como se puede ver, es un programa bloqueante
+
+
 
 Recordar que en los métodos asincrónicos (no bloqueante) se pierde el flujo del programa, para recuperar y controlar el mismo se utilizan los callback.
 
 
 ## Manejo de errores:
+
 ### Funciones síncronas / bloqueantes: 
 - try / catch
 
 ### Funciones asincrónicas / no-bloqueantes:
 -	Callback: callback manejamos el error, entonces no se utiliza try & catch.
--	Promesas: resolve / reject  then / catch
+-	Promesas: resolve / reject -> then / catch
 -	Async / await : se manejan promesas de forma bloqueantes, para ello se agrega try & catch
 
 
 ### Cuando tenemos promesas, podemos manejarlas de dos maneras:
 - Then / catch
 - Async / await
+
+
+## Desafío Nº2:
 
 
 ## Nomenclatura de ejercicios
