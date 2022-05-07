@@ -3,7 +3,6 @@
 ## Introducción
 En el siguiente documento se detallarán las tareas realizadas en clase, apuntes, etc.
 
-<br>
 
 ## Ejercicio: Datos y variables (C1_E1.js)
 1) Definir variables variables que almacenen los siguiente datos:
@@ -517,11 +516,6 @@ Recordar que en los métodos asincrónicos (no bloqueante) se pierde el flujo de
 -	Callback: callback manejamos el error, entonces no se utiliza try & catch.
 -	Promesas: resolve / reject -> then / catch
 -	Async / await : se manejan promesas de forma bloqueantes, para ello se agrega try & catch
-
-
-### Cuando tenemos promesas, podemos manejarlas de dos maneras:
-- Then / catch
-- Async / await
 
 
 ## Desafío Nº2:

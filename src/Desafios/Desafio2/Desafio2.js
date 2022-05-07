@@ -1,112 +1,101 @@
-const fs = require(`fs`);
+const fs = require('fs');
 
 class Contenedor {
     constructor(archivo) {
-        this.archivo = `./${archivo}`;
-        this.allProduct = [];
-    }
-    static id = 0;
-
-    save(product) {
-        this.upId();
-        product.id = Contenedor.id;
-
-        fs.promises.readFile(`${this.archivo}`, `utf-8`)
-            .then(() => {
-                this.allProduct.push(product);
-                return fs.promises.writeFile(`${this.archivo}`, JSON.stringify(this.allProduct));
-            })
-            .catch(err => {
-                console.error(err);
-            })
+        this.archivo = archivo;
     }
 
-    getById(id) {
-        let product = null;
-        fs.promises.readFile(`${this.archivo}`, `utf-8`)
-            .then((products) => {
-                let allProducts = JSON.parse(products);
+    async read() {
+        try {
+            let data = await fs.promises.readFile(`./${this.archivo}`, `utf-8`);
+            return data;
 
-                for (let i = 0; i < allProducts.length; i++) {
-                    if (allProducts[i].id == id) {
-                        product = allProducts[i];
-                    }
-                }
-                console.log("producto seleccionado", product);
-            })
-            .catch(err => {
-                console.error(err);
-            })
+        } catch (err) {
+            throw Error(`Error al leer el archivo ${err}`);
+        }
     }
 
-    getAll() {
-        let allProducts;
-        fs.promises.readFile(`${this.archivo}`, `utf-8`)
-            .then((products) => {
-                allProducts = JSON.parse(products);
-                return allProducts;
-            })
-            .then((products) => {
-                console.table(products);
-            })
-            .catch(err => {
-                console.error(err);
-            })
+    async write(datos, msg) {
+        try {
+            await fs.promises.writeFile(`./${this.archivo}`, JSON.stringify(datos, null, 2));
+            console.log(msg);
+        } catch (err) {
+            throw Error(`Error al escribir en el archivo ${err}`);
+        }
     }
 
-    deleteById(id) {
-        let product = null;
-        fs.promises.readFile(`${this.archivo}`, `utf-8`)
-            .then((products) => {
-                let allProducts = JSON.parse(products);
-                let prodcuts = [];
+    async save(product) {
+        let newId = 1;
+        let newProduct = {};
 
-                for (let i = 0; i < allProducts.length; i++) {
-                    if (allProducts[i].id == id) {
-                        product = allProducts[i];
-                    }else{
-                        prodcuts.push(allProducts[i]);
-                    }
-                }
-                return prodcuts;
-            })
-            .then((products) => {
-                fs.promises.writeFile(`${this.archivo}`, " ");
-                fs.promises.writeFile(`${this.archivo}`, JSON.stringify(products));
-            })
+        let data = await this.read();
+        let datos = JSON.parse(data);
 
-            .catch(err => {
-                console.error(err);
-            })
+        if (!data) {
+            product.id = newId;
+            newProduct = [product];
+        } else {
+            product.id = datos[datos.length - 1].id + 1;
+            newProduct = product;
+        }
+        datos.push(newProduct);
+
+        await this.write(datos, `Agregado!`);
     }
 
-    deleteAll() {
-        fs.promises.readFile(`${this.archivo}`, `utf-8`)
-            .then(() => {
-                return fs.promises.writeFile(`${this.archivo}`, " ");
-            })
-            .catch(err => {
-                console.error(err);
-            })
+    async getById(myId) {
+        let data = await this.read();
+        let datos = JSON.parse(data);
+
+        let result = datos.filter(product => product.id == myId);
+        return result;
     }
 
-    upId() {
-        Contenedor.id++;
-        console.log("id asignado", Contenedor.id);
+    async getAll() {
+        let data = await this.read();
+        let datos = JSON.parse(data);
+
+        return datos;
     }
 
+    async deleteById(myId) {
+        let data = await this.read();
+        let datos = JSON.parse(data);
+
+        let product = datos.find(product => product.id == myId);
+        if (product) {
+            let index = datos.indexOf(product);
+            console.log(index);
+            datos.splice(index, 1);
+            await this.write(datos, `Producto con ID: ${myId} eliminado`);
+        } else {
+            console.log(`Producto con ID: ${myId} no existe`);
+        }
+    }
+
+    async deleteAll() {
+        let data = [];
+        await this.write(data, `Se eliminaron todos los productos`);
+    }
 }
+module.exports = Contenedor;
 
+/*
+let contenedor = new Contenedor(`/productos.txt`);
 
-const cont = new Contenedor("productos.txt");
+async function test() {
+    const newProduct = {
+        title: `Producto`,
+        price: 11111,
+        thumbnail: `link`
+    };
+    await contenedor.save(newProduct);
 
-cont.save({ title: "aaa", precio: 111, thumbnail: "prueba1" });
-cont.save({ title: "bbb", precio: 222, thumbnail: "prueba2" });
-cont.save({ title: "ccc", precio: 333, thumbnail: "prueba3" });
-cont.save({ title: "ddd", precio: 444, thumbnail: "prueba4" });
-//cont.getById(1);
-//cont.getById(2);
-//cont.getAll();
-//cont.deleteAll();
-//cont.deleteById(1);
-//cont.deleteById(2);
+    console.table(await contenedor.getById(2));
+
+    console.table(await contenedor.getAll());
+
+    await contenedor.deleteById(7);
+}
+test();
+*/

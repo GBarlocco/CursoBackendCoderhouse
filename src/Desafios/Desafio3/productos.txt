@@ -1,0 +1,20 @@
+[
+  {
+    "title": "producto0",
+    "price": 0,
+    "thumbnail": "link0",
+    "id": 0
+  },
+  {
+    "title": "producto1",
+    "price": 1,
+    "thumbnail": "link1",
+    "id": 1
+  },
+  {
+    "title": "producto2",
+    "price": 2,
+    "thumbnail": "link2",
+    "id": 2
+  }
+]

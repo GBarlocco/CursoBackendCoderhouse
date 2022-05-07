@@ -1,1 +1,74 @@
-[{"title":"aaa","precio":111,"thumbnail":"prueba1","id":1},{"title":"bbb","precio":222,"thumbnail":"prueba2","id":2}]
+[
+  {
+    "title": "producto0",
+    "price": 0,
+    "thumbnail": "link0",
+    "id": 0
+  },
+  {
+    "title": "producto1",
+    "price": 1,
+    "thumbnail": "link1",
+    "id": 1
+  },
+  {
+    "title": "producto2",
+    "price": 2,
+    "thumbnail": "link2",
+    "id": 2
+  },
+  {
+    "title": "producto3",
+    "price": 3,
+    "thumbnail": "link3",
+    "id": 3
+  },
+  {
+    "title": "Producto",
+    "price": 11111,
+    "thumbnail": "link",
+    "id": 4
+  },
+  {
+    "title": "Producto",
+    "price": 11111,
+    "thumbnail": "link",
+    "id": 5
+  },
+  {
+    "title": "Producto",
+    "price": 11111,
+    "thumbnail": "link",
+    "id": 6
+  },
+  {
+    "title": "Producto",
+    "price": 11111,
+    "thumbnail": "link",
+    "id": 7
+  },
+  {
+    "title": "Producto",
+    "price": 11111,
+    "thumbnail": "link",
+    "id": 8
+  },
+  {
+    "title": "Producto",
+    "price": 11111,
+    "thumbnail": "link",
+    "id": 9
+  },
+  {
+    "title": "Producto",
+    "price": 11111,
+    "thumbnail": "link",
+    "id": 10
+  },
+  {
+    "title": "Producto",
+    "price": 11111,
+    "thumbnail": "link",
+    "id": 11
+  }
+]
