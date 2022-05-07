@@ -528,7 +528,8 @@ Cx_Ex:
 - E:ejercicio.
 - x: número.
 
-## git & github - comandos útiles
+## Comandos útiles
+- nodemon nombreArchivo.js
 - git add .
 - git commit -m "mensaje"
 - git push -u origin master 
