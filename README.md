@@ -627,10 +627,36 @@ test();
 ## Servidores Web
 
 ### Protocolo HTTP
-- Protocolo utilizado en internet para tranferrir datos
+- Protocolo utilizado en internet para tranferrir datos.
+- HTTP = Hypertext Transfer Protocol.
+- Protocolo de estructura cliente-servidor: Cliente realiza una petición, el servidor responde.
+- En Node.js existe un módulo nativo.
 
+### Ejercicio : creación de un servidor web con módulo nativo: C6_E1.js
+Desarrollar un servidor en node.js que escuche peticiones en el puerto 8080 y responda un mensaje de acuerdo a la hora actual: 
+- Si la hora actual se encuentra entre las 6 y las 12 hs será 'Buenos días!'.
+- Entre las 13 y las 19 hs será 'Buenas tardes!'. 
+- De 20 a 5 hs será 'Buenas noches!'.
+Se mostrará por consola cuando el servidor esté listo para operar y en qué puerto lo está haciendo.
 
+```
+const http = require (`http`);
 
+const server = http.createServer((req, res) =>{
+    const  date = (new Date()).getHours();
+    
+    date >= 6 && date <12 ? res.end(`Buenos días!`) : null;
+    
+    date >= 12 && date <19 ? res.end(`Buenos tardes!`) : null;
+    
+    date >= 20 ? res.end(`Buenos noches!`) : null;
+    
+})
+
+const connectedServer = server.listen(8080, () =>{
+    console.log(`Servidor HTTP escuchando en el puerto ${connectedServer.address().port}`);
+})
+```
 
 ## Comandos útiles
 
