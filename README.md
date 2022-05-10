@@ -132,97 +132,6 @@ console.log(`Cuenta individual`, contador1.obtenerCuentaIndividual());
 console.log(`Conteo obtenerCuentaGlobal`, contador1.obtenerCuentaGlobal());
 ```
 
-## Desafío Nº1: Clases (Desafio1Clases.js)
-1) Declarar una clase Usuario
-
-2) Hacer que Usuario cuente con los siguientes atributos:
-- nombre: String
-- apellido: String
-- libros: Object[]
-- mascotas: String[]
-
-Los valores de los atributos se deberán cargar a través del constructor, al momento de crear las instancias.
-
-3) Hacer que Usuario cuente con los siguientes métodos:
-- getFullName(): String. Retorna el completo del usuario. Utilizar template strings.
-- addMascota(String): void. Recibe un nombre de mascota y lo agrega al array de mascotas.
-- countMascotas(): Number. Retorna la cantidad de mascotas que tiene el usuario.
-- addBook(String, String): void. Recibe un string 'nombre' y un string 'autor' y debe agregar un objeto: { nombre: String, autor: String } al array de libros.
-- getBookNames(): String[]. Retorna un array con sólo los nombres del array de libros del usuario.
-4) Crear un objeto llamado usuario con valores arbitrarios e invocar todos sus métodos.
-
-5) Ejemplos:
-
-- countMascotas: Suponiendo que el usuario tiene estas mascotas: ['perro', 'gato'] usuario.countMascotas() debería devolver 2.
-- getBooks: Suponiendo que el usuario tiene estos libros: [{nombre: 'El señor de las moscas',autor: 'William Golding'}, {nombre: 'Fundacion', autor: 'Isaac Asimov'}] usuario
-- getBooks() debería devolver ['El señor de las moscas', 'Fundacion'].
-- getFullName: Suponiendo que el usuario tiene: nombre: 'Elon' y apellido: 'Musk' usuario.getFullName() deberia devolver 'Elon Musk'
-
-Solución:
-```
-class Usuario {
-    constructor(nombre, apellido, libros, mascotas) {
-        this.nombre = nombre;
-        this.apellido = apellido;
-        this.libros = libros;
-        this.mascotas = mascotas;
-    }
-
-    getFullName() {
-        return `Nombre: ${this.nombre} Apellido: ${this.apellido}`;
-    }
-
-    addMascota(newMascota) {
-        this.mascotas.push(newMascota);
-    }
-
-    countMascotas() {
-        return this.mascotas.length;
-    }
-
-    addBook(nameBook, nameAuth) {
-        this.libros.push({ nombre: nameBook, autor: nameAuth });
-    }
-
-    getBookNames() {
-        let bookName = this.libros.map((book) => {
-            return book.nombre;
-        })
-
-        return bookName;
-    }
-}
-
-let libros1 = [
-    {
-        nombre: "Nombre Libro 1",
-        autor: "autor1"
-    },
-    {
-        nombre: "Nombre Libro 2",
-        autor: "autor2"
-    }
-];
-
-const mascotas1 = [`mascota1`, `mascota2`, `mascota3`];
-
-const usuario1 = new Usuario(`Gastón`, `Barlocco`, libros1, mascotas1);
-
-console.log(usuario1.getFullName());
-
-console.log(`Total de mascotas`, usuario1.countMascotas());
-
-usuario1.addMascota(`mascota4`);
-
-console.log(`Total de mascotas`, usuario1.countMascotas());
-
-console.log(`libros`, usuario1.getBookNames());
-
-usuario1.addBook(`Nombre Libro nuevo`, `autor nuevo`);
-
-console.log(`libros`, usuario1.getBookNames());
-
-```
 
 ## Repaso funciones JS ES6
 - Funciones en variables:
@@ -518,7 +427,167 @@ Recordar que en los métodos asincrónicos (no bloqueante) se pierde el flujo de
 -	Async / await : se manejan promesas de forma bloqueantes, para ello se agrega try & catch
 
 
-## Desafío Nº2:
+## Servidores Web
+
+### Protocolo HTTP
+- Protocolo utilizado en internet para tranferrir datos.
+- HTTP = Hypertext Transfer Protocol.
+- Protocolo de estructura cliente-servidor: Cliente realiza una petición, el servidor responde.
+- HTTP establece varios tipos de peticiones, siendo las principales: POST, GET, PUT, DELETE.
+- En Node.js existe un módulo nativo.
+
+#### HTTP: códigos de estado
+Cada mensaje de respuesta HTTP tiene un código de estado numérico de tres cifras que indica el resutlado de la petición:
+- 1xx(informativo): la petición fue recibida, y continúa su procesamiento.
+- 2xx (Éxito): la petición fue recibida con éxito, comprendida y procesada.
+
+### Ejercicio : creación de un servidor web con módulo nativo: C6_E1.js
+Desarrollar un servidor en node.js que escuche peticiones en el puerto 8080 y responda un mensaje de acuerdo a la hora actual: 
+- Si la hora actual se encuentra entre las 6 y las 12 hs será 'Buenos días!'.
+- Entre las 13 y las 19 hs será 'Buenas tardes!'. 
+- De 20 a 5 hs será 'Buenas noches!'.
+Se mostrará por consola cuando el servidor esté listo para operar y en qué puerto lo está haciendo.
+
+```
+const http = require (`http`);
+
+const server = http.createServer((req, res) =>{
+    const  date = (new Date()).getHours();
+    
+    date >= 6 && date <12 ? res.end(`Buenos días!`) : null;
+    
+    date >= 12 && date <19 ? res.end(`Buenos tardes!`) : null;
+    
+    date >= 20 ? res.end(`Buenos noches!`) : null;
+    
+})
+
+const connectedServer = server.listen(8080, () =>{
+    console.log(`Servidor HTTP escuchando en el puerto ${connectedServer.address().port}`);
+})
+```
+
+### Servidor HTTP en Express
+NodeJS cuenta con módulos nativos para manejar el envío y recepción de peticiones de tipo http/s, sin embargo, usaremos para nuestra aplicación un módulo externo llamado express
+Características:
+- Muy utilizado por la comunidad, facil de utilizar.
+- Facilita la tarea de crear los distintos puntos de entrada de nuestro servidor.
+- Permite personalizar la manera en que se maneja cada petición en forma más simple y rápida.
+- Express nos permite definir, para cada tipo de petición HTTP que llegue a una determinada URL, qué acciones debe tomar, mediante la definición de un callback para cada caso que consideremos necesario incluir en nuestra API.
+
+
+Instalación:
+```
+npm install express
+
+```
+
+### Despliegue en la nube
+[EN CONTRUCCIÓN]
+
+### API
+Las API son conjuntos de definiciones y protocolos que se utilizan para diseñar e integrar el software de las aplicaciones.Suele considerarse como el contrato entre el proveedor de información y el usuario, donde se establece el contenido que se necesita por parte del consumidor (la llamada) y el que requiere el productor (la respuesta).Por ejemplo, el diseño de una API de servicio meteorológico podría requerir que el usuario escribiera un código postal y que el productor diera una respuesta en dos partes: la primera sería la temperatura máxima y la segunda, la mínima.
+
+### REST
+
+### RESTFul
+Cuando hablamos de aplicaciones RESTFul, nos referimos a aplicaicones que operan en forma de servicios web, respondiendo consultas a otros sistemas a través de internet. Dichas aplicaciones lo hacen respetando algunas reglas y convenciones.
+
+## Desafíos:
+
+### Desafío Nº1: Clases (Desafio1Clases.js)
+1) Declarar una clase Usuario
+
+2) Hacer que Usuario cuente con los siguientes atributos:
+- nombre: String
+- apellido: String
+- libros: Object[]
+- mascotas: String[]
+
+Los valores de los atributos se deberán cargar a través del constructor, al momento de crear las instancias.
+
+3) Hacer que Usuario cuente con los siguientes métodos:
+- getFullName(): String. Retorna el completo del usuario. Utilizar template strings.
+- addMascota(String): void. Recibe un nombre de mascota y lo agrega al array de mascotas.
+- countMascotas(): Number. Retorna la cantidad de mascotas que tiene el usuario.
+- addBook(String, String): void. Recibe un string 'nombre' y un string 'autor' y debe agregar un objeto: { nombre: String, autor: String } al array de libros.
+- getBookNames(): String[]. Retorna un array con sólo los nombres del array de libros del usuario.
+4) Crear un objeto llamado usuario con valores arbitrarios e invocar todos sus métodos.
+
+5) Ejemplos:
+
+- countMascotas: Suponiendo que el usuario tiene estas mascotas: ['perro', 'gato'] usuario.countMascotas() debería devolver 2.
+- getBooks: Suponiendo que el usuario tiene estos libros: [{nombre: 'El señor de las moscas',autor: 'William Golding'}, {nombre: 'Fundacion', autor: 'Isaac Asimov'}] usuario
+- getBooks() debería devolver ['El señor de las moscas', 'Fundacion'].
+- getFullName: Suponiendo que el usuario tiene: nombre: 'Elon' y apellido: 'Musk' usuario.getFullName() deberia devolver 'Elon Musk'
+
+Solución:
+```
+class Usuario {
+    constructor(nombre, apellido, libros, mascotas) {
+        this.nombre = nombre;
+        this.apellido = apellido;
+        this.libros = libros;
+        this.mascotas = mascotas;
+    }
+
+    getFullName() {
+        return `Nombre: ${this.nombre} Apellido: ${this.apellido}`;
+    }
+
+    addMascota(newMascota) {
+        this.mascotas.push(newMascota);
+    }
+
+    countMascotas() {
+        return this.mascotas.length;
+    }
+
+    addBook(nameBook, nameAuth) {
+        this.libros.push({ nombre: nameBook, autor: nameAuth });
+    }
+
+    getBookNames() {
+        let bookName = this.libros.map((book) => {
+            return book.nombre;
+        })
+
+        return bookName;
+    }
+}
+
+let libros1 = [
+    {
+        nombre: "Nombre Libro 1",
+        autor: "autor1"
+    },
+    {
+        nombre: "Nombre Libro 2",
+        autor: "autor2"
+    }
+];
+
+const mascotas1 = [`mascota1`, `mascota2`, `mascota3`];
+
+const usuario1 = new Usuario(`Gastón`, `Barlocco`, libros1, mascotas1);
+
+console.log(usuario1.getFullName());
+
+console.log(`Total de mascotas`, usuario1.countMascotas());
+
+usuario1.addMascota(`mascota4`);
+
+console.log(`Total de mascotas`, usuario1.countMascotas());
+
+console.log(`libros`, usuario1.getBookNames());
+
+usuario1.addBook(`Nombre Libro nuevo`, `autor nuevo`);
+
+console.log(`libros`, usuario1.getBookNames());
+
+```
+
+### Desafío Nº2:
 
 ```
 const fs = require('fs');
@@ -624,38 +693,53 @@ test();
 */
 ```
 
-## Servidores Web
 
-### Protocolo HTTP
-- Protocolo utilizado en internet para tranferrir datos.
-- HTTP = Hypertext Transfer Protocol.
-- Protocolo de estructura cliente-servidor: Cliente realiza una petición, el servidor responde.
-- En Node.js existe un módulo nativo.
-
-### Ejercicio : creación de un servidor web con módulo nativo: C6_E1.js
-Desarrollar un servidor en node.js que escuche peticiones en el puerto 8080 y responda un mensaje de acuerdo a la hora actual: 
-- Si la hora actual se encuentra entre las 6 y las 12 hs será 'Buenos días!'.
-- Entre las 13 y las 19 hs será 'Buenas tardes!'. 
-- De 20 a 5 hs será 'Buenas noches!'.
-Se mostrará por consola cuando el servidor esté listo para operar y en qué puerto lo está haciendo.
+### Desafío Nº3:
 
 ```
-const http = require (`http`);
+const express = require(`express`);
 
-const server = http.createServer((req, res) =>{
-    const  date = (new Date()).getHours();
-    
-    date >= 6 && date <12 ? res.end(`Buenos días!`) : null;
-    
-    date >= 12 && date <19 ? res.end(`Buenos tardes!`) : null;
-    
-    date >= 20 ? res.end(`Buenos noches!`) : null;
-    
-})
+const Contenedor = require(`../Desafio2/Desafio2.js`);
 
-const connectedServer = server.listen(8080, () =>{
-    console.log(`Servidor HTTP escuchando en el puerto ${connectedServer.address().port}`);
-})
+const app = express();
+
+const PORT = 8080;
+
+let myContenedor = new Contenedor(`productos.txt`);
+
+app.get(`/`, (req, res) => {
+    res.send(`<h3> Desafío Nº3 - Servidores Web </h3>`);
+});
+
+app.get(`/productos`, (req, res) => {
+    ; (async () => {
+        try {
+            let data = await myContenedor.getAll();
+            res.send(data);
+        } catch (err) {
+            console.error(err);
+        }
+    })();
+});
+
+app.get(`/productoRandom`, (req, res) => {
+    ; (async () => {
+        try {
+            let allData = await myContenedor.getAll();
+            let random = Math.trunc(Math.random() * ((allData.length) - 0) + 0);
+            let dataRandom = await myContenedor.getById(random);
+            res.send(dataRandom);
+        } catch (err) {
+            console.error(err);
+        }
+    })();
+});
+
+const server = app.listen(PORT, () => {
+    console.log(`Servidor corriendo en el puerto ${PORT}`);
+});
+
+server.on(`Error`, (error) => console.log(`Error en servidor: ${error}`));
 ```
 
 ## Comandos útiles
@@ -671,7 +755,7 @@ git push -u origin master
 Para generar la dependencia package.json:
 
 ```
-- npm init -y
+npm init -y
 ```
 
 ### Nodemon:

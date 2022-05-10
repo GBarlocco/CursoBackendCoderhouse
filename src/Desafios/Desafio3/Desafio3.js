@@ -8,7 +8,6 @@ const PORT = 8080;
 
 let myContenedor = new Contenedor(`productos.txt`);
 
-
 app.get(`/`, (req, res) => {
     res.send(`<h3> Desafío Nº3 - Servidores Web </h3>`);
 });
