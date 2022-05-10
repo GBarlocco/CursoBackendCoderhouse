@@ -517,7 +517,10 @@ Para que una API se considere REST debe cumplir con las siguientes característi
 
 A continuación, explicaremos lo anteriormente nombrado.
 
-#### Arquitectura cliente - servidor sin estado.
+#### Arquitectura cliente - servidor sin estado:
+- Cada mensaje HTTP contiene toda la información necesaria para comprender la petición.
+- Ni el cliente ni el servidor necesitan recordar ningún estado de las comunicaciones entre mensajes.
+- El cliente y el servidor se encuentran débilmente acoplados ya que el cliente no necesita conocer los detalles de implementaciñon del servidor y el servidor se "despreocupa" de cómo son usados los datos que envía al cliente.
 
 
 ## Desafíos:
