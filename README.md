@@ -3,6 +3,8 @@
 ## Introducción
 En el siguiente documento se detallarán las tareas realizadas en clase, apuntes, etc.
 
+## Índice:
+[EN CONTRUCCIÓN]
 
 ## Ejercicio: Datos y variables (C1_E1.js)
 1) Definir variables variables que almacenen los siguiente datos:
@@ -440,6 +442,9 @@ Recordar que en los métodos asincrónicos (no bloqueante) se pierde el flujo de
 Cada mensaje de respuesta HTTP tiene un código de estado numérico de tres cifras que indica el resutlado de la petición:
 - 1xx(informativo): la petición fue recibida, y continúa su procesamiento.
 - 2xx (Éxito): la petición fue recibida con éxito, comprendida y procesada.
+- 3xx (Redirección): más acciones con requeridas para completar la petición. Utiliza la información que tenía previamente.
+- 4xx (Erro del cliente): la petición tiene algún error, y no puede ser procesada.
+- 5xx (Error del servidor): el servidor falló al intentar procesar una petición aparentemenete válida.
 
 ### Ejercicio : creación de un servidor web con módulo nativo: C6_E1.js
 Desarrollar un servidor en node.js que escuche peticiones en el puerto 8080 y responda un mensaje de acuerdo a la hora actual: 
@@ -488,10 +493,32 @@ npm install express
 ### API
 Las API son conjuntos de definiciones y protocolos que se utilizan para diseñar e integrar el software de las aplicaciones.Suele considerarse como el contrato entre el proveedor de información y el usuario, donde se establece el contenido que se necesita por parte del consumidor (la llamada) y el que requiere el productor (la respuesta).Por ejemplo, el diseño de una API de servicio meteorológico podría requerir que el usuario escribiera un código postal y que el productor diera una respuesta en dos partes: la primera sería la temperatura máxima y la segunda, la mínima.
 
+En resumen: funcionalidad de un sistema que esta expuesta para ser consumida por otro componente.
+
 ### REST
+- REpresentational State Transer = Transferencia de Estado Representacional.
+- Representación -> nos referimos a un modelo o estructura con la que representamos algo.
+- Estado -> nos referimos a los datos que contiene ese modelo estructura.
+- Transferir un Estado de Representación implica el envío de datos (con una determinada estructura) entre dos partes.
+- Los dos formatos más utilizados: XML y JSON.
 
 ### RESTFul
 Cuando hablamos de aplicaciones RESTFul, nos referimos a aplicaicones que operan en forma de servicios web, respondiendo consultas a otros sistemas a través de internet. Dichas aplicaciones lo hacen respetando algunas reglas y convenciones.
+
+### API REST
+- Tipo de API que no dispone de interfaz gráfica.
+- Se utiliza exclusivamente para comunicación entre sistemas, mediante el protocolo HTTP.
+Para que una API se considere REST debe cumplir con las siguientes características:
+- Arquitectura cliente - servidor sin estado.
+- Cacheable.
+- Operaciones comunes.
+- Interfaz uniforme.
+- Utilización de hipermedios.
+
+A continuación, explicaremos lo anteriormente nombrado.
+
+#### Arquitectura cliente - servidor sin estado.
+
 
 ## Desafíos:
 
