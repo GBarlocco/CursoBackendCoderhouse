@@ -624,11 +624,45 @@ test();
 */
 ```
 
+## Servidores Web
+
+### Protocolo HTTP
+- Protocolo utilizado en internet para tranferrir datos
+
+
+
+
 ## Comandos útiles
-- nodemon nombreArchivo.js
-- git add .
-- git commit -m "mensaje"
-- git push -u origin master 
+
+### Git & GitHub:
+[EN CONTRUCCIÒN]
+```
+git add .
+git commit -m "mensaje"
+git push -u origin master 
+```
+###  package.json
+Para generar la dependencia package.json:
+
+```
+- npm init -y
+```
+
+### Nodemon:
+Relanzado de la ejecución de Node.js cuando algún archivo cambia en el proyecto.
+
+Instalación:
+```
+npm i -g nodemon
+```
+
+Ejecutar proyecto de interés:
+```
+nodemon nombreArchivo.js
+```
+
+
+
 
 ## Academy
 > [CODERHOUSE](https://www.coderhouse.com.uy)
