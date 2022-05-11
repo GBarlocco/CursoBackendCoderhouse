@@ -2,29 +2,54 @@ const express = require(`express`);
 
 const app = express();
 
-const PORT = 8080;
+const messages = [
+    {
+        id: 1,
+        title: `OK`,
+        message: ``
+    },
+    {
+        id: 2,
+        title: `NOK`,
+        message: ``
+    },
+];
 
-const messages =
-    [
-        {
-            id: 1,
-            title: `ok`,
-            message: ``,
-        },
-        {
-            id: 2,
-            title: `nok`,
-            message: ``,
-        },
-    ]
+app.get(`/api/mensajes/`, (req, res) => {
+    console.log(`Request recibido`);
 
-app.get(`api/mensajes`, (req, res) => {
+    if (!req.query.title) {
+        return res.json(messages);
+    }
 
-})
+    const messageFilttered = messages.filter(message => message.title === req.query.title);
+    return res.json(messageFilttered);
 
-
-const server = app.listen(PORT, () => {
-    console.log(`servidor HTTP escuchando puerto ${PORT}`);
 });
 
-server.on(`error`, error => console.log(` Error en servidor : ${error}`));
+app.get(`/api/mensajes/:id`, (req, res) => {
+    console.log(`Request recibido /api/mensajes/:id`);
+
+    const id = Number(req.params.id);
+    console.log(`id: ${id}`);
+
+    const messageFilttered = messages.find(message => message.id === id);
+
+    if (!messageFilttered) {
+        return res.status(404).json({
+            error: `mensaje no encontrado`
+        });
+    };
+
+    return res.json(messageFilttered);
+});
+
+const PORT = 8080;
+
+const server = app.listen(PORT, () => {
+    console.log(`Servidor HTTP escuchando puerto ${PORT}`);
+});
+
+server.on(`error`, err => {
+    console.log(`error en el servidor: ${err}`)
+})

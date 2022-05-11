@@ -487,13 +487,41 @@ npm install express
 
 ```
 
+
+#### Servidor con express:
+1) Requerimos la librería express:
+
+```
+const express = require(`express`);
+const app = express();
+```
+
+2) configuramos el servidor, para que escuche un puerto:
+
+```
+const PORT = 8080;
+
+const server = app.listen(PORT, () => {
+    console.log(`Servidor HTTP escuchando puerto ${PORT}`);
+});
+
+```
+
+3) configuramos el error:
+```
+server.on(`error`, err => {
+    console.log(`error en el servidor: ${err}`)
+})
+
+```
+
 ### Despliegue en la nube
 [EN CONTRUCCIÓN]
 
 ### API
 Las API son conjuntos de definiciones y protocolos que se utilizan para diseñar e integrar el software de las aplicaciones.Suele considerarse como el contrato entre el proveedor de información y el usuario, donde se establece el contenido que se necesita por parte del consumidor (la llamada) y el que requiere el productor (la respuesta).Por ejemplo, el diseño de una API de servicio meteorológico podría requerir que el usuario escribiera un código postal y que el productor diera una respuesta en dos partes: la primera sería la temperatura máxima y la segunda, la mínima.
 
-En resumen: funcionalidad de un sistema que esta expuesta para ser consumida por otro componente.
+- En resumen: funcionalidad de un sistema que esta expuesta para ser consumida por otro componente.
 
 ### REST
 - REpresentational State Transer = Transferencia de Estado Representacional.
@@ -504,6 +532,7 @@ En resumen: funcionalidad de un sistema que esta expuesta para ser consumida por
 
 ### RESTFul
 Cuando hablamos de aplicaciones RESTFul, nos referimos a aplicaicones que operan en forma de servicios web, respondiendo consultas a otros sistemas a través de internet. Dichas aplicaciones lo hacen respetando algunas reglas y convenciones.
+
 
 ### API REST
 - Tipo de API que no dispone de interfaz gráfica.
@@ -521,6 +550,113 @@ A continuación, explicaremos lo anteriormente nombrado.
 - Cada mensaje HTTP contiene toda la información necesaria para comprender la petición.
 - Ni el cliente ni el servidor necesitan recordar ningún estado de las comunicaciones entre mensajes.
 - El cliente y el servidor se encuentran débilmente acoplados ya que el cliente no necesita conocer los detalles de implementaciñon del servidor y el servidor se "despreocupa" de cómo son usados los datos que envía al cliente.
+
+#### Cacheable:
+- Debe admitir un sistema de almacenamiento en caché.
+- Dicho almacenamiento evita repetir varias conexiones entre el servidor y el cliente en caso de que la peticiones idénticas fueran a generar la msima respuesta. Lo informa mediante HTTP status, código: 304.
+ 
+#### Operaciones comunes:
+- Todos los recursos detrás de una API seben poder ser consumidos mediante peticiones HTTP, las principales: POST, GET, PUT y DELETE.
+- Operaciones CRUD: Create, Read, Update, Delete.
+- Se devolverá el código de estado para informar el resultado de la operación.
+
+#### Interfaz uniforme:
+- Cada acción debe contar con una URI: identificador único.
+- URI nos facilitará el acceso a la información para consultar, modificar, eliminar.
+- ejemplo de URI: http://servicio/api/usuario/1
+
+#### Utilización de hipermedios:
+- Cada vez que se hace una petición al servidor y este devuelve una respuesta, parte de la información devuelta pueden ser hipervínculos de navegación a otro recurso del cliente.
+- Se puede navegar de un recurso REST a muchos otros.
+
+
+### Express: atención de peticiones:
+- Peticiones: get(), post(), felete() y put().
+- Todos reciben como primer argumento la ruta (URI), y el segundo parámetro un callback con el que maneja la petición. La petición posee dos parámetros: primero la petición (request) y el segundo la respuesta (response).
+
+#### Ejemplo get():
+
+- URI: /api/mensajes/
+- Método: get.
+
+```
+app.get(`/api/mensajes/`, (req, res) => {
+
+});
+```
+
+#### Ejemplo de petición con parámetros de búsqueda:
+
+```
+const express = require(`express`);
+
+const app = express();
+
+const messages = [
+    {
+        id: 1,
+        title: `OK`,
+        message: ``
+    },
+    {
+        id: 2,
+        title: `NOK`,
+        message: ``
+    },
+];
+
+app.get(`/api/mensajes/`, (req, res) => {
+    console.log(`Request recibido`);
+
+    if (!req.query.title) {
+        return res.json(messages);
+    }
+
+    const messageFilttered = messages.filter(message => message.title === req.query.title);
+    return res.json(messageFilttered);
+
+});
+
+
+
+const PORT = 8080;
+
+const server = app.listen(PORT, () => {
+    console.log(`Servidor HTTP escuchando puerto ${PORT}`);
+});
+
+server.on(`error`, err => {
+    console.log(`error en el servidor: ${err}`)
+})
+```
+
+#### Ejemplo de petición GET con identificador
+En caso de que se quiera acceder a un recurso en particular ya conocido, es necesario enviar un identificador unívoco en la URL:
+
+- Agregamos en el código anterior: 
+
+```
+app.get(`/api/mensajes/:id`, (req, res) => {
+    console.log(`Request recibido /api/mensajes/:id`);
+
+    const id = Number(req.params.id);
+    console.log(`id: ${id}`);
+
+    const messageFilttered = messages.find(message => message.id === id);
+
+    if (!messageFilttered) {
+        return res.status(404).json({
+            error: `mensaje no encontrado`
+        });
+    };
+
+    return res.json(messageFilttered);
+});
+```
+
+
+
+
 
 
 ## Desafíos:
