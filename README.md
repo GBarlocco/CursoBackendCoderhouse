@@ -488,7 +488,7 @@ npm install express
 ```
 
 
-#### Servidor con express:
+#### Iniciar servidor con express:
 1) Requerimos la librería express:
 
 ```
