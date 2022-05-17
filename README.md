@@ -654,6 +654,253 @@ app.get(`/api/mensajes/:id`, (req, res) => {
 });
 ```
 
+#### Ejercicio - Get endpoints - APIRest (E1_C7.js)
+Dada la siguiente constante: const frase = 'Hola mundo cómo están'
+Realizar un servidor con API Rest usando node.js y express que contenga los siguientes endpoints get:
+
+1) '/api/frase' -> devuelve la frase en forma completa en un campo ‘frase’.
+2) '/api/letras/:num  -> devuelve por número de orden la letra dentro de esa frase (num 1 refiere a la primera letra), en un campo ‘letra’.
+3) '/api/palabras/:num  -> devuelve por número de orden la palabra dentro de esa frase (num 1 refiere a la primera palabra), en un campo ‘palabra’.
+
+```
+// EJERCICIO APIRest
+
+const express = require(`express`);
+
+const app = express();
+
+const frase = `Hola como estas`;
+
+const PORT = 8080;
+
+const server = app.listen(PORT, () => {
+    console.log(`Servidor escuchando puerto: ${PORT}`);
+});
+
+//1)
+app.get(`/api/frase`, (req, res) => {
+    return res.json(frase);
+});
+
+//2)
+app.get(`/api/letras/:num`, (req, res) => {
+    if (req.params.num > frase.length - 1) {
+        return res.status(404).json({
+            error: `letra no encontrada`
+        });
+    }
+
+    if (isNaN (req.params.num)) {
+        return res.status(404).json({
+            error: `El parámetro ingresado debe ser un número`
+        });
+    }
+
+    const letra = frase.charAt(req.params.num);
+    console.log(letra);
+    return res.json(letra);
+})
+
+//3
+app.get(`/api/palabras/:num`, (req, res)=>{
+    const num = req.params.num;
+    const palabrasArray = frase.split(` `);
+
+    if (req.params.num > palabrasArray.length - 1) {
+        return res.status(404).json({
+            error: `Palabra no encontrada, excede la cantidad máxima`
+        });
+    }
+
+    if (isNaN (req.params.num)) {
+        return res.status(404).json({
+            error: `El parámetro ingresado debe ser un número`
+        });
+    }
+
+    return res.json(`la palabra seleccionada es: ${palabrasArray[num]}`);
+
+});
+
+```
+
+
+#### Recibir mensajes en formato JSON
+Para que nuestro servidor pueda interpretar mensajes JSON se debe indicar de forma explícita, para ello agregamos las siguientes lineas de código:
+
+```
+app.use(express.json());   -> req.body contendra el contenido.
+app.use(express.urlencoded({ extended: true }));
+```
+
+#### Postman
+Se utiliza para realizar todo tipo de peticiones HTTP a una API, desde el navedador solo podremos arealizar (de forma simple) peticiones get.
+
+
+#### meotodo POST (enviar)
+Sumemos el siguiente código al ejemplo de clase:
+
+```
+app.post(`/api/mensajes`, (req, res) => {
+    console.log(`POST request recibido`);
+    console.log({ body: req.body })
+
+    const newMessage = req.body;
+    newMessage.id = messages.length + 1;
+
+    messages.push(newMessage);
+
+    return res.status(201).json(newMessage);
+
+});
+```
+
+#### meotodo PUT (actualizar)
+```
+app.put(`/api/mensajes/:id`, (req, res) => {
+    console.log(`PUT request recibido`);
+
+    const id= Number(req.params.id);
+    const messageIndex = messages.findIndex(message => message.id === id);
+
+    if (messageIndex < 0){
+        return res.status(401).json({
+            error: "mensaje no encontrado"
+        });
+    }
+
+    const body = req.body;
+
+    messages[messageIndex].title = body.title;
+    messages[messageIndex].message = body.message;
+
+    return res.json(messages[messageIndex]);
+
+});
+```
+
+#### meotodo DELETE (borrar):
+En este caso filtraremos el array, dejando afuera el elemento a borrar y retornaremos status 204 (sin contenido).
+```
+app.delete(`/api/mensajes/:id`, (req, res) => {
+    console.log(`DELETE request recibido`);
+
+    const id= Number(req.params.id);
+    const messageIndex = messages.findIndex(message => message.id === id);
+
+    if (messageIndex < 0){
+        return res.status(401).json({
+            error: "mensaje no encontrado"
+        });
+    }
+
+    messages = messages.filter(message => message.id != id);
+
+    return res.status(204).json({});
+});
+```
+
+
+
+
+
+
+
+
+
+
+## Clase Nº8 - Router & Multer:
+Resumen de puntos dictados:
+- Ruteo en Express: nos sirve para asociar un ruteo a entidades que poseen el mismo nombre.
+- Ruteo: contenido estático(imagenes, txt, videos, documentos, JavaScript, etc) y dinámico.
+- Ruta relativa & ruta absoluta: __dirname.
+- Middleware: un middleware es un bloque de código que se ejecuta entre la petición que hace el usuario (request) hasta que la petición llega al servidor. Es inevitable utilizar middlewares en una aplicación en Node. Se puede relacionar con .then de la promesas, el then equivale al next, permitiendo pasar al siguiente middleware. Existen muchos tipos de middleware: a nivel de aplicación, router, manejod de errores, incorporado, de terceros. En resumen: se utilizan para dirigir el flujo del programa.
+- Multer: middleware de express, nos permite subir archivos a un servidor.
+
+
+
+### Ejercicios
+- Ejercicio 1 (E1_C8.js): implementación de Router con express.
+
+#### Ejercicio 1 (E1_C8.js):
+Crear un servidor que permita manejar una lista de mascotas y personas. Debe poseer dos rutas principales: '/mascotas' y '/personas', las cuales deben incluir métodos para listar y para agregar recursos:
+- GET: devolverá la lista requerida en formato objeto.
+- POST: permitirá guardar una persona ó mascota en arrays propios en memoria, con el siguiente formato: 
+Persona -> { "nombre": ..., "apellido": ..., "edad":... }
+Mascota -> { "nombre":..., "raza":..., "edad":... }
+
+```
+const express = require(`express`);
+const { Router } = express; // const Router = express.Router
+
+const app = express();
+
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+
+const PORT = 8080;
+
+const server = app.listen(PORT, () => {
+    console.log(`Servidor HHTP escuchando puerto ${PORT}`);
+});
+
+server.on(`error`, err => {
+    console.log(`error en el servidor ${err}`);
+});
+
+const personas = [];
+const mascotas = [];
+
+const personasRouter = Router();
+const mascotasRouter = Router();
+
+app.use(`/api/personas`, personasRouter);
+app.use(`/api/mascotas`, mascotasRouter);
+
+personasRouter.get(``, (req, res) => {
+    return res.json(personas);
+})
+
+personasRouter.post(`/:nombre/:apellido/:edad`, (req, res) => {
+
+    const newPersona = {
+        Nombre: req.params.nombre,
+        Apellido: req.params.apellido,
+        Edad: Number(req.params.edad)
+    };
+
+    personas.push(newPersona);
+
+    return res.json(`Persona agregada`);
+});
+
+mascotasRouter.get(``, (req, res) => {
+    return res.json(mascotas);
+})
+
+mascotasRouter.post(`/:nombre/:raza/:edad`, (req, res) => {
+
+    const newMascota = {
+        Nombre: req.params.nombre,
+        Raza: req.params.raza,
+        Edad: Number(req.params.edad)
+    };
+
+    mascotas.push(newMascota);
+
+    return res.json(`Mascota agregada`);
+});
+
+```
+
+
+
+
+
+
+
+
+
 
 
 
