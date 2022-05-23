@@ -1,0 +1,40 @@
+doctype html
+html(lang="en")
+    head
+        include partials/head.pug
+        block content
+    body
+        .container
+            header
+                include partials/header.pug
+                block content
+            main
+                .jumbotron
+                    h2 productos disponilbes: 
+                        span=allProducts.length 
+
+                if allProducts.length <= 0
+                    | No hay productos disponibles.
+                else 
+                    table.table
+                        thead
+                            tr
+                                th(scope='col') ID
+                                th(scope='col') Name
+                                th(scope='col') Price
+                                th(scope='col') Photo
+                        tbody
+                            each i in allProducts
+                                tr
+                                    th(scope='row')
+                                        span= i.id
+                                    td
+                                        span= i.title 
+                                    td
+                                        span= i.price 
+                                    td
+                                        img(src=i.thumbnail width='60' height='60')
+            include partials/footer.pug
+            block content
+
+

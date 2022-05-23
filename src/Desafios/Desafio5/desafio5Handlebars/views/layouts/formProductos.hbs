@@ -1,0 +1,30 @@
+{{> head}}
+
+<div class="container">
+    {{> header}}
+    <main>
+        <div class="jumbotron">
+            <h2>Ingresa tus datos:</h2>
+            <form method="POST" action="/productos">
+
+                <div class="form-group">
+                    <label for="title">Name</label>
+                    <input type="text" name="title" id="title" class="form-control">
+                </div>
+
+                <div class="form-group">
+                    <label for="price">Price</label>
+                    <input type="number" name="price" id="price" class="form-control">
+                </div>
+
+                <div class="form-group">
+                    <label for="thumbnail">Img</label>
+                    <input type="text" name="thumbnail" id="thumbnail" class="form-control">
+                </div>
+
+                <button type="submit" class="btn btn-primary">Enviar</button>
+            </form>
+        </div>
+    </main>
+    {{> footer}}
+</div>

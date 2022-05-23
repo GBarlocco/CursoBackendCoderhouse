@@ -1,0 +1,21 @@
+
+doctype html
+html(lang="en")
+    head
+        include partials/head.pug
+        block content
+    body
+        .container
+            header
+                include partials/header.pug
+                block content
+            main 
+                .jumbotron 
+                    h1 Curso de programación NodeJs
+                    h2=title 
+                div 
+                    h4 Curso de programación NodeJs
+                    p=content
+            include partials/footer.pug
+            block content
+

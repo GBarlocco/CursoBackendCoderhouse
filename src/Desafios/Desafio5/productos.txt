@@ -1,0 +1,62 @@
+[
+  {
+    "title": "Cactus 1",
+    "price": 123,
+    "thumbnail": "https://cdn3.iconfinder.com/data/icons/cactus-18/64/Cactus_31-128.png",
+    "id": 1
+  },
+  {
+    "title": "Cactus 2",
+    "price": 555,
+    "thumbnail": "https://cdn2.iconfinder.com/data/icons/fruit-and-vegetable-64/340/cactus_plant_green_nature_cacti-256.png",
+    "id": 2
+  },
+  {
+    "title": "Cactus 3",
+    "price": 500,
+    "thumbnail": "https://cdn3.iconfinder.com/data/icons/travel-35/64/_Cactus-256.png",
+    "id": 3
+  },
+  {
+    "title": "Cactus 4",
+    "price": 140,
+    "thumbnail": "https://cdn3.iconfinder.com/data/icons/spring-222/512/Cactus-256.png",
+    "id": 4
+  },
+  {
+    "title": "Cactus 5",
+    "price": 500,
+    "thumbnail": "https://cdn0.iconfinder.com/data/icons/cactus-tree-flat/64/Artboard_10-256.png",
+    "id": 5
+  },
+  {
+    "title": "Cactus 6",
+    "price": 700,
+    "thumbnail": "https://cdn0.iconfinder.com/data/icons/cactus-tree-flat/64/Artboard_13-256.png",
+    "id": 6
+  },
+  {
+    "title": "Cactus 7",
+    "price": 180,
+    "thumbnail": "https://cdn0.iconfinder.com/data/icons/cactus-tree-flat/64/Artboard_8-256.png",
+    "id": 7
+  },
+  {
+    "title": "Cactus 8",
+    "price": 990,
+    "thumbnail": "https://cdn4.iconfinder.com/data/icons/avatars-xmas-giveaway/128/cactus_cacti_avatar_pirate-256.png",
+    "id": 8
+  },
+  {
+    "title": "Cactus 9",
+    "price": 750,
+    "thumbnail": "https://cdn4.iconfinder.com/data/icons/dia-de-muerdos/512/dia_de_muertos-32-256.png",
+    "id": 9
+  },
+  {
+    "title": "Cactus 10",
+    "price": 1100,
+    "thumbnail": "https://cdn0.iconfinder.com/data/icons/cactus-32/512/Moon_Cactus-256.png",
+    "id": 10
+  }
+]

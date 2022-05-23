@@ -1,0 +1,25 @@
+doctype html
+html(lang="en")
+    head
+        include partials/head.pug
+    body
+        .container
+            header
+                include partials/header.pug
+                block content
+            main
+                .jumbotron
+                    h2 Ingresa tus datos:
+                    form(method='POST' action='/productos')
+                        .form-group
+                            label(for='title') Name
+                            input.form-control(type='text' name='title')
+                        .form-group
+                            label(for='price') Price
+                            input.form-control(type='number' name='price')
+                        .form-group
+                            label(for='thumbnail') Img
+                            input.form-control(type='text' name='thumbnail')
+                        button.btn.btn-primary(type='submit') Enviar
+            include partials/footer.pug
+            block content
