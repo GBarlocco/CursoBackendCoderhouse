@@ -809,6 +809,28 @@ app.delete(`/api/mensajes/:id`, (req, res) => {
 
 
 
+
+
+
+
+
+## FALTA PUNTEO DE TEMAS CLASE 1 - 7
+Conceptos para ordenar dentro de las clases anteriores:
+
+
+¿Qué es ruta absoluta y relativa?
+Ruta absoluta: se indica toda la ruta del archivo incluyendo el directorio raíz. 
+Por ejemplo, C:\carpeta1\carpeta2\archivo1. doc. Ruta relativa: se indica la ruta a partir de donde este en ese momento situado.
+
+middleware
+Un Un middleware es un bloque de código que se ejecuta entre la petición que hace el usuario (request) hasta que la petición llega al servidor. Es inevitable utilizar middlewares en una aplicación en Node. es un bloque de código que se ejecuta entre la petición que hace el usuario (request) hasta que la petición llega al servidor. 
+Es inevitable utilizar middlewares en una aplicación en Node.
+
+APIRest
+Sistema para proporcionar informaciòn mediante endpoints, devolvemos json
+
+
+
 ## Clase Nº8 - Router & Multer:
 Resumen de puntos dictados:
 - Ruteo en Express: nos sirve para asociar un ruteo a entidades que poseen el mismo nombre.
@@ -816,7 +838,6 @@ Resumen de puntos dictados:
 - Ruta relativa & ruta absoluta: __dirname.
 - Middleware: un middleware es un bloque de código que se ejecuta entre la petición que hace el usuario (request) hasta que la petición llega al servidor. Es inevitable utilizar middlewares en una aplicación en Node. Se puede relacionar con .then de la promesas, el then equivale al next, permitiendo pasar al siguiente middleware. Existen muchos tipos de middleware: a nivel de aplicación, router, manejod de errores, incorporado, de terceros. En resumen: se utilizan para dirigir el flujo del programa.
 - Multer: middleware de express, nos permite subir archivos a un servidor.
-
 
 
 ### Ejercicios
@@ -895,14 +916,92 @@ mascotasRouter.post(`/:nombre/:raza/:edad`, (req, res) => {
 
 
 
+## Clase Nº9 - Motores de plantillas
+- Motor de plantilla: herramienta que nos permite transformar pseudo codigo HTML en HTML-
+- MVC: modelo vista controlador, se trata de separar los datos de su presentación. Separar el front del back. Las plantillas (templates) son una aproximación más para resolver este problema.
+- MVC es una forma de separar nuestro codigo en capas, haciendo que cada capa se ocupe de una sola cosa, para que este mas organizado y sea mas legible.
+- MVC vs API: un cliente HTTP puede consumir la API, MVC posee vista la API no.
+- Los motores de plantillas hoy en dia no se utilizan tanto.
+- Template + input data = templating Engine, templating Engine entrega el Output
+- Ventajas y desventajas de utilizar motores de plantillas.
+- Instalar npm i -g http-server para correr servidor. Para correr desde nodeJs: http-server .    .=propia carpeta del proyecto.
+- Creación de motor de plantilla custom para express.
+- Handlebars: lenguaje de plantillas simples, tienen aspecto de texto normal con expresiones de Handlebars se componen de {{ + algunos contenidos +}}. Se puede utilizar del lado del servidor y del cliente.
+- Para utilizar handlebars --> npm install express-handlebars
+
+### Ejercicios
+#### Ejercicio x
+
+## Clase Nº10 - Pug & Ejs
+- Pug es un motor de plantillas
+- Para instalar pug: npm install pug
+- Pug se basa en la tabulación para interpretar etiquetas.
+- EJs es un motor de plantilla, es el más utilizado. Se puede utilizar en el servidor o en el cliente. Instalar npm install ejs. 
+- Se deben utilizar sintáxis básicas propias de Ejs.
+- Para instalar EJs: npm install ejs
+- Sintaxis básica de Ejs: <%= incrusta en la plantilla el valor tal cual está, <%- incrusta en la plantilla el valor renderizado como HTML, <% Scriptlet admite instrucciones en JS para declaración de variables y control de flujo.
+- El modelo MVC es muy utilizado para realizar el front desde el back.
 
 
+### Ejercicios
+- Ejercicio 1 (E1_C10.js): Pug
 
+#### Ejercicio 1 (E1_C8.js):
+1) Realizar un servidor que reciba por query params (mediante la ruta get '/datos') el valor que debe representar una barra de medición (usando el tag de html meter). 
 
+2) Asimismo recibirá además los valores mínimos y máximos permitidos y el título que se pondrá por arriba de la barra, en un elemento h1 en color azul (debe permitir formato HTML).
 
+- Ejemplo de petición: http://localhost:8080/datos?min=10&nivel=15&max=20&titulo=<i>Medidor</i>
 
+3) Como respuesta a este request, el servidor devolverá al frontend una plantilla armada con los datos recibidos.
 
+4) Utilizar pug integrado a express, manejando una plantilla común y una particular con la representación requerida.
 
+```
+const express = require(`express`);
+const app = express();
+
+app.set(`views`, `./views`);
+app.set(`view engine`, `pug`);
+
+app.get(``,(req,res) => res.json({status: `ok`}));
+
+//http://localhost:8080/datos?title=%3Ci%3EMedidor%3C/i%3E&nivel=10&min=5&max=60
+app.get(`/datos`, (req, res) => {
+    const min = req.query.min;
+    const nivel = req.query.nivel;
+    const max = req.query.max;
+    const tilte = req.query.title;
+
+    const data = {
+        min:min,
+        nivel:nivel,
+        max:max,
+        title:tilte
+    }
+    return res.render(`meter`, data);
+});
+
+const PORT = 8080;
+
+const server = app.listen(PORT, () => {
+    console.log(`servidor HTTP corriendo en puerto ${PORT}`);
+});
+
+server.on(`error`, error => console.log(`error en el servidor ${error}`));
+```
+
+```
+html
+    head 
+        title="Datos"
+    body
+        h1!=title 
+        div 
+            p=min 
+            progress(value=nivel, min=min, max=max)
+            p=max
+```
 
 
 
@@ -1155,6 +1254,127 @@ const server = app.listen(PORT, () => {
 server.on(`Error`, (error) => console.log(`Error en servidor: ${error}`));
 ```
 
+
+### Desafío Nº4:
+```
+
+const express = require(`express`);
+const { Router } = express;
+
+const Contenedor = require(`../Desafio4/contenedor.js`);
+
+const app = express();
+
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+
+app.use(express.static(`public`));
+
+const productosRouter = Router();
+app.use(`/api/productos`, productosRouter);
+
+app.use(express.static(`public`));
+
+let myContenedor = new Contenedor(`productos.txt`);
+
+productosRouter.get(``, (req, res) => {
+    ; (async () => {
+        try {
+            let allProducts = await myContenedor.getAll();
+            return res.json(allProducts);
+        } catch (err) {
+            return res.status(404).json({
+                error: `Error ${err}`
+            });
+        }
+    })();
+});
+
+productosRouter.get(`/:id`, (req, res) => {
+    ; (async () => {
+        try {
+            let productbyId = await myContenedor.getById(req.params.id);
+            if (productbyId.length == 0) {
+                return res.status(404).json({
+                    error: `Error producto no encontrado`
+                });
+            } else {
+                return res.json(productbyId);
+            }
+        } catch (err) {
+            return res.status(404).json({
+                error: `Error ${err}`
+            });
+        }
+    })();
+});
+
+productosRouter.post(``, (req, res) => {
+    ; (async () => {
+        const name = req.body.nombre;
+        const price = Number(req.body.precio);
+        const url = req.body.url;
+
+        const newProducto = {
+            title: `${name}`,
+            price: price,
+            thumbnail: `${url}`
+        };
+        const id = await myContenedor.save(newProducto);
+
+        return res.json(`El id asignado es ${id}`);
+    })();
+});
+
+productosRouter.put(`/:id`, (req, res) => {
+    ; (async () => {
+        const id = Number(req.params.id);
+        let allProducts = await myContenedor.getAll();
+        const productIndex = allProducts.findIndex(product => product.id === id);
+
+        if (productIndex < 0) {
+            return res.status(401).json({
+                error: "producto no encontrado"
+            });
+        }
+
+        allProducts[productIndex].title = req.body.title;
+        allProducts[productIndex].price = req.body.price;
+        allProducts[productIndex].thumbnail = req.body.thumbnail;
+
+        await myContenedor.write(allProducts, `Mensaje modificado`);
+        return res.json(`Se actualizó el id ${id}`);
+    })();
+});
+
+
+productosRouter.delete(`/:id`, (req, res) => {
+    ; (async () => {
+        try {
+            const id = Number(req.params.id);
+            await myContenedor.deleteById(id);
+
+            return res.json(`Se eliminó de forma correcta el ID:${id}`);
+        } catch (err) {
+            return res.status(404).json({
+                error: `Se detecto un error --> ${err}`
+            });
+        }
+    })();
+});
+
+const PORT = 8080;
+
+const server = app.listen(PORT, () => {
+    console.log(`Servidor HHTP escuchando puerto ${PORT}`);
+});
+
+server.on(`error`, err => {
+    console.log(`error en el servidor ${err}`);
+});
+
+```
+
 ## Comandos útiles
 
 ### Git & GitHub:
@@ -1183,8 +1403,6 @@ Ejecutar proyecto de interés:
 ```
 nodemon nombreArchivo.js
 ```
-
-
 
 
 ## Academy

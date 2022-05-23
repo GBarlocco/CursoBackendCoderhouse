@@ -17,6 +17,7 @@ app.use(express.static(`public`));
 
 let myContenedor = new Contenedor(`productos.txt`);
 
+// get productos
 productosRouter.get(``, (req, res) => {
     ; (async () => {
         try {
@@ -30,6 +31,7 @@ productosRouter.get(``, (req, res) => {
     })();
 });
 
+// get productos byId
 productosRouter.get(`/:id`, (req, res) => {
     ; (async () => {
         try {
@@ -49,6 +51,7 @@ productosRouter.get(`/:id`, (req, res) => {
     })();
 });
 
+// add product
 productosRouter.post(``, (req, res) => {
     ; (async () => {
         const name = req.body.nombre;
@@ -66,6 +69,7 @@ productosRouter.post(``, (req, res) => {
     })();
 });
 
+// modificar producto byId
 productosRouter.put(`/:id`, (req, res) => {
     ; (async () => {
         const id = Number(req.params.id);
@@ -87,7 +91,7 @@ productosRouter.put(`/:id`, (req, res) => {
     })();
 });
 
-
+// delete product byId
 productosRouter.delete(`/:id`, (req, res) => {
     ; (async () => {
         try {

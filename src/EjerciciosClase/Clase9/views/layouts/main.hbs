@@ -1,0 +1,13 @@
+{{> header}}
+<h3> Alumnos de la comisión {{comision}}</h3>
+
+<ul>
+    {{#each alumnos}}
+    <li>
+        {{this.nombre}}
+        {{this.apellido}}
+    </li>
+    {{/each }}
+</ul>
+
+{{> footer}}

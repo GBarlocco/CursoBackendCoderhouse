@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <%- include(`./partials/head`) %>
+</head>
+
+<body>
+    <div class="container">
+        <header>
+            <%- include('./partials/header', {current: `alumnos`}) %>
+        </header>
+        <main>
+            <div class="jumbotron">
+                <h3> Alumnos Comisión <%= comision %>
+                </h3>
+                <ul> 
+                    <% alumnos.forEach(alumno=> { %>
+                        <li> <%= `${alumno.nombre} ${alumno.apellido}` %> </li>
+                    <% }) %>
+                </ul>
+            </div>
+        </main>
+        <footer>
+            <%- include('./partials/footer') %>
+        </footer>
+    </div>
+</body>
+
+</html>
