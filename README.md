@@ -943,6 +943,20 @@ mascotasRouter.post(`/:nombre/:raza/:edad`, (req, res) => {
 - El modelo MVC es muy utilizado para realizar el front desde el back.
 
 
+## Clase Nº11 -  Websockets
+- Comunicaciòn entre el back y el front: API --> el cliente se encarga 100% en mostrar los datos que enviamos por Json, MVC--> se encuentra todo integrado en el mismo sistema.
+- Websockets: protocolo para intercambiar información mediante TCP, en HTPP contabamos con arquitectura cliente servidor, aqui tendremos tambien arquitectura cliente servidor pero en forma de red, red de clientes conectados a un servidor de websockets. La comunicación entre servidor y cliente es bidireccional, a diferencia de HTTP.
+- Con Websocket se obtienen los datos de una forma mas rápida, comunicación directa y en tiempo real. Se genera una única comunicación, una vez que se realizó la primer conexión el cliente y el servidor quedan enlazados, no deben inicializar nuevamente.
+- Las notificaciones push --> se recomienda utilizar websockets, por ejemplo chat, información en tiempo real.
+- Recordar: HTTP esta limitado a la petición del cliente, con websocket tenemos mayor flexibilidad para determinadas aplicaciones. 
+- microservicio: BE pequeño que se encarga de una tarea. Los microservicios estan separados, comparten información entre ellos.
+- Librería para trabajar con websocket: socket.io
+
+
+
+
+
+
 ### Ejercicios
 - Ejercicio 1 (E1_C10.js): Pug
 
