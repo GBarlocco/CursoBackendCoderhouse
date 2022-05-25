@@ -16,10 +16,21 @@ httpServer.listen(PORT, () => {
     console.log(`Servidor corriendo en el puerto ${PORT}`)
 })
 
+const mensajes = [];
+
 io.on('connection', (socket) => {
     console.log(`¡Nuevo cliente conectado!`)
+    socket.emit(`allMensajes`, mensajes);
 
     socket.on(`mensajeCliente`, data => {
-        io.sockets.emit(`mensajeServidor`, data);
-    })
+
+        const mensaje = {
+            socketId: socket.id,
+            mensaje: data
+        };
+
+        mensajes.push(mensaje);
+
+        io.sockets.emit(`mensajeServidor`, mensaje);
+    });
 });
