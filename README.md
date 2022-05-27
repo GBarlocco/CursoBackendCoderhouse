@@ -841,6 +841,7 @@ Resumen de puntos dictados:
 
 
 ## Clase Nº9 - Motores de plantillas
+Resumen de puntos dictados:
 - Motor de plantilla: herramienta que nos permite transformar pseudo codigo HTML en HTML-
 - MVC: modelo vista controlador, se trata de separar los datos de su presentación. Separar el front del back. Las plantillas (templates) son una aproximación más para resolver este problema.
 - MVC es una forma de separar nuestro codigo en capas, haciendo que cada capa se ocupe de una sola cosa, para que este mas organizado y sea mas legible.
@@ -853,10 +854,9 @@ Resumen de puntos dictados:
 - Handlebars: lenguaje de plantillas simples, tienen aspecto de texto normal con expresiones de Handlebars se componen de {{ + algunos contenidos +}}. Se puede utilizar del lado del servidor y del cliente.
 - Para utilizar handlebars --> npm install express-handlebars
 
-### Ejercicios
-#### Ejercicio x
 
 ## Clase Nº10 - Pug & Ejs
+Resumen de puntos dictados:
 - Pug es un motor de plantillas
 - Para instalar pug: npm install pug
 - Pug se basa en la tabulación para interpretar etiquetas.
@@ -868,16 +868,23 @@ Resumen de puntos dictados:
 
 
 ## Clase Nº11 -  Websockets
+Resumen de puntos dictados:
 - Comunicaciòn entre el back y el front: API --> el cliente se encarga 100% en mostrar los datos que enviamos por Json, MVC--> se encuentra todo integrado en el mismo sistema.
 - Websockets: protocolo para intercambiar información mediante TCP, en HTPP contabamos con arquitectura cliente servidor, aqui tendremos tambien arquitectura cliente servidor pero en forma de red, red de clientes conectados a un servidor de websockets. La comunicación entre servidor y cliente es bidireccional, a diferencia de HTTP.
 - Con Websocket se obtienen los datos de una forma mas rápida, comunicación directa y en tiempo real. Se genera una única comunicación, una vez que se realizó la primer conexión el cliente y el servidor quedan enlazados, no deben inicializar nuevamente.
 - Las notificaciones push --> se recomienda utilizar websockets, por ejemplo chat, información en tiempo real.
 - Recordar: HTTP esta limitado a la petición del cliente, con websocket tenemos mayor flexibilidad para determinadas aplicaciones. 
-- microservicio: BE pequeño que se encarga de una tarea. Los microservicios estan separados, comparten información entre ellos.
+- microservicio: Backend pequeño que se encarga de una tarea. Los microservicios estan separados, comparten información entre ellos.
 - Librería para trabajar con websocket: socket.io
 
 
 ## Clase Nº12 -  Aplicación chat con Websocket
+Resumen de puntos dictados:
+- Un websocket es solo una conexión TCP que permite la comunicación full-duplex, lo que significa que cualquier lado de la conexión puede enviar datos al otro, incluso al mismo tiempo.
+- Envio de mensaje: socket.emit
+- Envio de mensaje a todos los clientes conectados: io.sockets.emit
+- Envio de mensaje a todos los clientes a excepción de quien envió el mensaje original: socket.broadcast.emit
+
 
 
 
