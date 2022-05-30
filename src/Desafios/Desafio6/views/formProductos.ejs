@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <%- include(`./partials/head`) %>
+</head>
+
+<body>
+    <div class="container">
+        <header>
+            <%- include('./partials/header', {current: `formProductos`}) %>
+        </header>
+        <main>
+            <div class="jumbotron">
+                <h2>Ingresa tus datos:</h2>
+
+                <div class="form-group">
+                    <label for="title">Name</label>
+                    <input type="text" name="title" class="form-control" id="nameForm">
+                </div>
+
+                <div class="form-group">
+                    <label for="price">Price</label>
+                    <input type="number" name="price" class="form-control" id="priceForm">
+                </div>
+
+                <div class="form-group">
+                    <label for="thumbnail">Img</label>
+                    <input type="text" name="thumbnail" class="form-control" id="imgForm">
+                </div>
+
+                <button id="sendMessage" class="btn btn-primary">Enviar</button>
+
+            </div>
+
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">ID</th>
+                        <th scope="col">Name</th>
+                        <th scope="col">Price</th>
+                        <th scope="col">Photo</th>
+                    </tr>
+                </thead>
+                <tbody id="tbodyProducts">
+
+                </tbody>
+            </table>
+
+        </main>
+
+        <footer>
+            <%- include('./partials/footer') %>
+        </footer>
+
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qs/6.10.3/qs.min.js"></script>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="./formProductos.js"></script>
+</body>
+
+</html>

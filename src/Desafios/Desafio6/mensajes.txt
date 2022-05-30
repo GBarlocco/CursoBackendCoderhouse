@@ -1,0 +1,20 @@
+[
+  {
+    "text": "Hola!",
+    "time": "18:5",
+    "user": {
+      "id": "MkeU-KPTikAdsbshAAAJ",
+      "userName": "barlocco@hotmail.es",
+      "avatar": "https://cdn-icons-png.flaticon.com/512/456/456141.png"
+    }
+  },
+  {
+    "text": "Todo bien?",
+    "time": "18:6",
+    "user": {
+      "id": "ZETPB4dN6eY0dzd4AAAN",
+      "userName": "pepe@pepe.com",
+      "avatar": "https://cdn-icons-png.flaticon.com/512/456/456141.png"
+    }
+  }
+]

@@ -1,0 +1,20 @@
+[
+  {
+    "title": "Cactus 1",
+    "price": 123,
+    "thumbnail": "https://cdn3.iconfinder.com/data/icons/cactus-18/64/Cactus_31-128.png",
+    "id": 1
+  },
+  {
+    "title": "Cactus 2",
+    "price": 555,
+    "thumbnail": "https://cdn2.iconfinder.com/data/icons/fruit-and-vegetable-64/340/cactus_plant_green_nature_cacti-256.png",
+    "id": 2
+  },
+  {
+    "title": "Cactus 3",
+    "price": 300,
+    "thumbnail": "https://cdn0.iconfinder.com/data/icons/cactus-tree-flat/64/Artboard_2-256.png",
+    "id": 3
+  }
+]
