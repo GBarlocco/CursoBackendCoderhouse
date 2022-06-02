@@ -886,6 +886,12 @@ Resumen de puntos dictados:
 - Envio de mensaje a todos los clientes a excepción de quien envió el mensaje original: socket.broadcast.emit
 
 
+## Clase Nº13 - Node.js como herramienta de desarrollo
+- typeScript
+
+
+## Clase Nº14 - Webpack: Module Bundler
+- Webpack es un empaquetador, nos reduce al minimo el código fuente que vamos a colocar en producción.
 
 
 

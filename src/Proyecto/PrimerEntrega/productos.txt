@@ -1,0 +1,26 @@
+[
+  {
+    "id": 2,
+    "title": "Producto update",
+    "price": 123,
+    "thumbnail": "url update "
+  },
+  {
+    "title": "Producto update",
+    "price": 123,
+    "thumbnail": "url update ",
+    "id": 3
+  },
+  {
+    "title": "nuevo producto",
+    "price": 123,
+    "thumbnail": "url",
+    "id": 4
+  },
+  {
+    "title": "nuevo producto",
+    "price": 123,
+    "thumbnail": "url",
+    "id": 5
+  }
+]
