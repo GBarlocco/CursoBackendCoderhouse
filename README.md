@@ -974,6 +974,15 @@ ADD COLUMN categoria_id INT NULL,
 ADD FOREIGN KEY (categoria_id) REFERENCES categorias(id);
 ```
 
+- Actualizar productos
+```
+UPDATE Productos SET categoria_id = 1 WHERE id= 2;
+```
+
+- Borrar
+```
+DELETE FROM Productos WHERE id = 2;
+```
 
 ## Comandos útiles
 
