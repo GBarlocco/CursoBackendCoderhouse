@@ -893,6 +893,66 @@ Resumen de puntos dictados:
 ## Clase Nº14 - Webpack: Module Bundler
 - Webpack es un empaquetador, nos reduce al minimo el código fuente que vamos a colocar en producción.
 
+## Clase Nº15 - SQL
+- La DB es un repositorio persistente que nos permite almacenar gran numero de información de forma organizada.
+- Tipo de clientes de base de datos: CLI, GUI, cliente web y cliente de aplicación.
+    - CLI: command Line interface - es un cliente que interactua con la base de datos mediante el uso de una consola.
+    - GUI: graphical user interface, es un cliente que interactua con la base de datos mediante el uso de una aplicación gráfica.
+    - Cliente web: accedemos a ellos mediante una URL.
+    - Cliente de aplicación: es un cliente que está implementado dentro de nuestra aplicacon backend y sire para que nuestro programa se conecte e interactue con la DB.
+- En el perfil desarrollador backend se utiliza mucho "cliente de aplicación", ya que realizaremos CRUD desde nuestra aplicación.
+- CRUD: crear, leer, actualizar, borrar, son las tareas que se realizan con una DB.
+- SQL: lenguaje de consulta estructurado, structured query language. Es un tipo de lenguaje vinculado con la gestion de DB. SQL es una DB RELACIONAL.
+- MySQL & MariaDB: sistemas de gestion de DB relacionales.
+- Instalación: MySQL Workbench (Cliente), XAMPP
+- MySQL cheatsheet: https://devhints.io/mysql
+- Para acceder al CLI de MySQL: C:\xampp\mysql\bin : abrir la terminal desde XAMPP, luego escribir "mysql -u root"
+
+### Ejemplos SQL:
+- Listar DB
+SHOW DATABASES;
+
+- Crear DB
+CREATE DATABASE ecommerce;
+
+- Usar DB
+USE ecommerce;
+
+- Listar tablas
+SHOW TABLES;
+
+- Crear tabla
+CREATE TABLE Productos (
+    id INT NOT NULL auto_increment,
+    name VARCHAR(30),
+    price FLOAT,
+    description VARCHAR(255),
+    stock INT,
+    PRIMARY KEY (id)
+);
+
+CREATE TABLE Categorias(
+    id INT NOT NULL auto_increment,
+    name VARCHAR(30),
+    PRIMARY KEY (id)
+);
+
+- Detalle de una tabla
+DESCRIBE productos;
+
+- Insertar información en una tabla
+INSERT INTO Productos(name, price, description, stock) VALUES ("Producto1", 20, "Producto numero 1", 100);
+
+- Visualizar todos los datos de una tabla:
+SELECT * FROM Productos;
+
+- Visualizar determinados datos:
+SELECT name,stock FROM Productos;
+
+- Insertar columna en tabla existente y agregar la llave foranea
+ALTER TABLE Productos
+ADD COLUMN categoria_id INT NULL,
+ADD FOREIGN KEY (categoria_id) REFERENCES categorias(id);
 
 
 ## Comandos útiles
