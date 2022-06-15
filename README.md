@@ -984,6 +984,19 @@ UPDATE Productos SET categoria_id = 1 WHERE id= 2;
 DELETE FROM Productos WHERE id = 2;
 ```
 
+## Clase Nº16 - SQL & Nodejs
+- Utilización de node como cliente de MySQL mediante la libreria knex.js
+- knex es un generador de consultas SQL.
+- Cuenta con una interfaz basada en callbacks y en promesas.
+- Instalar knex: npm install knex.
+- Instalar mysql: npm install mysql.
+- IMPORTANTE: con knex no podremos crear una DB, lo utilizaremos para CRUD.
+- El objetivo de esta clase es realizar lo mismo que la anterior pero con knex desde el ciente de aplicación.
+- DEBUG=knex:query node createTable.js --> aqui podremos ejecutar y saber las query que se ejecutan
+
+
+
+
 ## Comandos útiles
 
 ### Git & GitHub:
