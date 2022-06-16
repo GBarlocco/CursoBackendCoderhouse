@@ -993,7 +993,9 @@ DELETE FROM Productos WHERE id = 2;
 - IMPORTANTE: con knex no podremos crear una DB, lo utilizaremos para CRUD.
 - El objetivo de esta clase es realizar lo mismo que la anterior pero con knex desde el ciente de aplicación.
 - DEBUG=knex:query node createTable.js --> aqui podremos ejecutar y saber las query que se ejecutan
-
+- ¿Qué es SQLite3? es una biblioteca en lenguaje C que implementa un motor de base de datos SQL pequeña, rapida, autónoma.
+- Knex & SQLite3 : se debe instalar la dependencia de SQL, npm install sqlite3 
+- Pare realizar la conexión no es necesario un usuario & pass, ya que utiliza un archivo, ese archivo contendra toda la DB.
 
 
 

@@ -6,11 +6,11 @@ const knex = require(`knex`)(options);
 
 ; (async () => {
     try {
-        const allProducts = await knex
+        const products = await knex
             .from(`products`)
-            .select(`*`);
-
-        console.table(allProducts);
+            .select(`products.*`, `categories.name as category_Name`)
+            .join('categories', { 'products.category_id': 'categories.id' });
+        console.table(products);
     } catch (err) {
         console.log(`Error ${err}`);
     } finally {
