@@ -13,20 +13,43 @@ Desarrollar también un script que utilizando knex cree las tablas necesarias pa
 ## Nota:
 Definir una carpeta DB para almacenar la base datos SQLite3 llamada ecommerce
 
-## Estructura del proyecto:
-
-|Desafio7
-        |controller
-        |db
-
-## Test API - Postman
-
-
 ## Scripts
 
 #### Backend: `nodemon main.js`
 Run the application locally
 [http://localhost:8080/](http://localhost:8080/)
+
+## Installers
+
+express:
+``` 
+npm i express
+```
+
+socket.io:
+``` 
+npm i socket.io 
+```
+
+knex:
+``` 
+npm i knex
+```
+
+mysql:
+``` 
+npm i mysql
+```
+
+sqlite3:
+``` 
+npm i sqlite3
+```
+
+ejs:
+``` 
+npm i ejs
+```
 
 
 ## Academy
