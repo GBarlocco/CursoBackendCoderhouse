@@ -7,10 +7,7 @@ selectAllMessage = async () => {
             .select(`*`)
             .from(`messages`);
 
-        console.table(allMessages);
-
         return allMessages;
-
     } catch (err) {
         console.log(`Error ${err}`);
     }

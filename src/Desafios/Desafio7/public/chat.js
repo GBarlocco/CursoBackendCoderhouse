@@ -68,7 +68,7 @@ socket.on(`message`, data => {
     const message = `
         <li class="clearfix">
         <div class="message-data text-right">
-                <span class="message-data-time"> ${data.time}, ${data.user.userName}:</span>
+                <span class="message-data-time"> ${data.time}, ${data.email}:</span>
             </div>
             <div class="message other-message float-right"> ${data.text} </div>
         </li>

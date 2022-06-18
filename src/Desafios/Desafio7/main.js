@@ -17,7 +17,6 @@ const PORT = 8081;
 
 httpServer.listen(PORT, () => console.log(`Servidor escuchando el puerto ${PORT}`));
 
-
 let users = [];
 
 //CRUD db
@@ -26,7 +25,6 @@ const { insertProduct } = require(`./db/insertProduct`);
 
 const { selectAllMessage } = require(`./db/selectAllMessage`);
 const { insertMessage } = require(`./db/insertMessage`);
-
 
 //Routers import
 const homeRouter = require(`./routers/homeRouter`);
@@ -74,7 +72,6 @@ io.on(`connection`, socket => {
     });
 });
 
-
 //socket chat
 io.on(`connection`, socket => {
     //Cliente --> Servidor: joinChat event
@@ -90,8 +87,6 @@ io.on(`connection`, socket => {
 
         try {
             const allMessageFromDB = await selectAllMessage();
-            console.table(allMessageFromDB);
-
 
             //Servidor --> Cliente : Se envian todos los mensajes al usuario que se conectó.
             socket.emit(`allMenssage`, allMessageFromDB);
@@ -113,23 +108,18 @@ io.on(`connection`, socket => {
 
         const now = new Date();
         const user = users.find(user => user.id === socket.id);
-        const message = {
-            text: data,
-            time: `${now.getHours()}:${now.getMinutes()}`,
-            user
-        };
-
-        //Servidor --> Cliente: envio mensaje
-        socket.emit(`message`, message);
-
-        socket.broadcast.emit(`message`, message);
 
         const messageDB = {
             text: data,
             time: `${now.getHours()}:${now.getMinutes()}`,
             email: user.userName
         };
-        console.log(messageDB);
+
+        //Servidor --> Cliente: envio mensaje
+        socket.emit(`message`, messageDB);
+
+        socket.broadcast.emit(`message`, messageDB);
+
         await insertMessage(messageDB);
     });
 

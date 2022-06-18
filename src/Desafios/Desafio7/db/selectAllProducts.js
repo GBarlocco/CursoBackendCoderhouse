@@ -8,7 +8,6 @@ selectAllProducts = async () => {
             .from(`products`);
 
         return allProducts;
-
     } catch (err) {
         console.log(`Error ${err}`);
     }
