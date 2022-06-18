@@ -51,6 +51,10 @@ ejs:
 npm i ejs
 ```
 
+## Softwares utilizados:
+- VSC
+- SQLiteStudio
+- MySQL Workbench 8.0 CE
 
 ## Academy
 > [CODERHOUSE](https://www.coderhouse.com.uy)
