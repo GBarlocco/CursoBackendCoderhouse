@@ -14,7 +14,6 @@ app.set(`views`, `./views`);
 app.set(`view engine`, `ejs`);
 
 const PORT = 8081;
-
 httpServer.listen(PORT, () => console.log(`Servidor escuchando el puerto ${PORT}`));
 
 let users = [];
@@ -22,7 +21,6 @@ let users = [];
 //CRUD db
 const { selectAllProducts } = require(`./db/selectAllProducts`);
 const { insertProduct } = require(`./db/insertProduct`);
-
 const { selectAllMessage } = require(`./db/selectAllMessage`);
 const { insertMessage } = require(`./db/insertMessage`);
 
