@@ -55,6 +55,7 @@ npm i ejs
 - VSC
 - SQLiteStudio
 - MySQL Workbench 8.0 CE
+- XAMPP
 
 ## Academy
 > [CODERHOUSE](https://www.coderhouse.com.uy)
