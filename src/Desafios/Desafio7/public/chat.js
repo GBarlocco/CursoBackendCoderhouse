@@ -26,7 +26,7 @@ socket.on(`allMenssage`, data => {
         message = `
             <li class="clearfix">
             <div class="message-data text-right">
-                    <span class="message-data-time"> ${message.time}, ${message.user.userName}:</span>
+                    <span class="message-data-time"> ${message.time}, ${message.email}:</span>
                 </div>
                 <div class="message other-message float-right"> ${message.text} </div>
             </li>

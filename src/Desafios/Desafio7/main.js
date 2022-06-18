@@ -17,16 +17,16 @@ const PORT = 8081;
 
 httpServer.listen(PORT, () => console.log(`Servidor escuchando el puerto ${PORT}`));
 
-const ContenedorC = require(`./contenedorChat.js`);
-
-let contenedorChat = new ContenedorC(`./mensajes.txt`);
 
 let users = [];
 
 //CRUD db
 const { selectAllProducts } = require(`./db/selectAllProducts`);
 const { insertProduct } = require(`./db/insertProduct`);
+
 const { selectAllMessage } = require(`./db/selectAllMessage`);
+const { insertMessage } = require(`./db/insertMessage`);
+
 
 //Routers import
 const homeRouter = require(`./routers/homeRouter`);
@@ -74,6 +74,7 @@ io.on(`connection`, socket => {
     });
 });
 
+
 //socket chat
 io.on(`connection`, socket => {
     //Cliente --> Servidor: joinChat event
@@ -88,14 +89,12 @@ io.on(`connection`, socket => {
         socket.emit(`notification`, `Bienvenido ${userName}`);
 
         try {
-            const allMessage = await contenedorChat.getAll();
-
             const allMessageFromDB = await selectAllMessage();
             console.table(allMessageFromDB);
 
 
             //Servidor --> Cliente : Se envian todos los mensajes al usuario que se conectó.
-            socket.emit(`allMenssage`, allMessage);
+            socket.emit(`allMenssage`, allMessageFromDB);
         } catch (err) {
             return res.status(404).json({
                 error: `Error ${err}`
@@ -125,7 +124,13 @@ io.on(`connection`, socket => {
 
         socket.broadcast.emit(`message`, message);
 
-        await contenedorChat.save(message);
+        const messageDB = {
+            text: data,
+            time: `${now.getHours()}:${now.getMinutes()}`,
+            email: user.userName
+        };
+        console.log(messageDB);
+        await insertMessage(messageDB);
     });
 
     // Cliente --> Servidor: un cliente se desconecta.

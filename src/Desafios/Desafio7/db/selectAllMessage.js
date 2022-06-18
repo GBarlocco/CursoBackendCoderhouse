@@ -5,7 +5,7 @@ selectAllMessage = async () => {
         // SELECT * FROM messages
         let allMessages = await SQLite3Contenedor.getKnex()
             .select(`*`)
-            .from(`users`);
+            .from(`messages`);
 
         console.table(allMessages);
 
