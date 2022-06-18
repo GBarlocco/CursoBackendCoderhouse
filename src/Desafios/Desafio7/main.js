@@ -23,7 +23,7 @@ let contenedorChat = new ContenedorC(`./mensajes.txt`);
 
 let users = [];
 
-// CRUD db
+//CRUD db
 const { selectAllProducts } = require(`./db/selectAllProducts`);
 const { insertProduct } = require(`./db/insertProduct`);
 const { selectAllMessage } = require(`./db/selectAllMessage`);
