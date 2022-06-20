@@ -60,18 +60,19 @@ class Contenedor {
         return datos;
     }
 
-    async deleteById(myId) {
+    async deleteById(idProduct) {
         let data = await this.read();
         let datos = JSON.parse(data);
 
-        let product = datos.find(product => product.id == myId);
+        let product = datos.find(product => product.id == idProduct);
+        console.log(product);
         if (product) {
             let index = datos.indexOf(product);
             console.log(index);
             datos.splice(index, 1);
-            await this.write(datos, `Producto con ID: ${myId} eliminado`)
+            await this.write(datos, `Producto con ID: ${idProduct} eliminado`)
         } else {
-            console.log(`Producto con ID: ${myId} no existe`);
+            throw Error(`Producto con ID: ${idProduct} no existe`);
         }
     }
 

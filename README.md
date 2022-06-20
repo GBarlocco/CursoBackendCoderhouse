@@ -998,6 +998,16 @@ DELETE FROM Productos WHERE id = 2;
 - Pare realizar la conexión no es necesario un usuario & pass, ya que utiliza un archivo, ese archivo contendra toda la DB.
 
 
+## Clase Nº17 - MongoDB
+- MongoDB es una base de datos No relacional, NoSQL, orientada a documentos que ofrece una gran escalabilidad y flexibilidad, y un modelo de consulta e indexacion avanzado.
+- Tabla SQL = colección NoSQL.
+- 
+
+
+
+
+
+
 
 ## Comandos útiles
 
