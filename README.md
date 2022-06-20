@@ -1006,6 +1006,69 @@ DELETE FROM Productos WHERE id = 2;
 
 - En mongoDB se almacena en colecciones, similar a JSON.
 - Se puede utilizar de forma loca o remota (MongoDB Atlas)
+- Ejemplo DB:
+
+```
+[
+    {
+        "id": 1,
+        "nombre": "Coca cola",
+        "precio": 10,
+        "descripcion": "refresco de cola",
+        "stock": 100,
+        "categoria_id": 1
+    },
+    {
+        "id": 2,
+        "nombre": "Agua",
+        "precio": 10,
+        "descripcion": "Botella de 1L",
+        "stock": 100,
+        "categoria_id": 1
+    },
+    {
+        "id": 3,
+        "nombre": "Galletas",
+        "precio": 10,
+        "descripcion": "Paquete de 20",
+        "stock": 100,
+        "categoria_id": 1
+    }
+]
+```
+
+```
+[
+    {
+        "name": "Alvaro"
+    },
+    {
+        "name": "Martha",
+        "estudios": "Ingeniero",
+        "ingles": "alto",
+        "address": {
+            "calle": "xxxx",
+            "numero": 44,
+            "ciudad": "Montevideo",
+            "pais": "uy"
+        },
+        "cursos": [
+            {
+                "name": "Desarrollo Web",
+                "asistencia": 80
+            },
+            {
+                "name": "React js",
+                "asistencia": 90
+            },
+            {
+                "name": "Programación Backend",
+                "asistencia": 100
+            }
+        ]
+    }
+]
+```
 
 
 
