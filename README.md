@@ -1069,11 +1069,28 @@ DELETE FROM Productos WHERE id = 2;
     }
 ]
 ```
+- Instalación de MongoDB --> https://www.mongodb.com/try/download/community
+- Video ayuda --> https://www.youtube.com/watch?v=kPKwJWr_9TM
+
+- Comandos:
+
+```
+mongosh;
+
+show databases;
+
+show collections;
+
+use nombreDB;
+
+nombreDB> db.users.find()
+
+nombreDB> db.users.insertOne({"name": "Gastón"})
 
 
+```
 
-
-
+## Clase Nº18 - CRUD en MongoDB
 
 
 ## Comandos útiles
