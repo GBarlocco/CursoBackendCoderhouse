@@ -1000,8 +1000,12 @@ DELETE FROM Productos WHERE id = 2;
 
 ## Clase Nº17 - MongoDB
 - MongoDB es una base de datos No relacional, NoSQL, orientada a documentos que ofrece una gran escalabilidad y flexibilidad, y un modelo de consulta e indexacion avanzado.
-- Tabla SQL = colección NoSQL.
-- 
+-  MongoDB es una DB orientada a documentos. No se basa en el concepto de tabla, fila y registro, sino que se apoya en el concepto de colección, docuemnto y propiedad.
+
+[![mongodb.png](https://i.postimg.cc/T1Q9Q6St/mongodb.png)](https://postimg.cc/5QYLNZfz)
+
+- En mongoDB se almacena en colecciones, similar a JSON.
+- Se puede utilizar de forma loca o remota (MongoDB Atlas)
 
 
 
