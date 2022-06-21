@@ -1077,8 +1077,6 @@ DELETE FROM Productos WHERE id = 2;
 ```
 mongosh;
 
-show databases;
-
 show collections;
 
 use nombreDB;
@@ -1087,10 +1085,65 @@ nombreDB> db.users.find()
 
 nombreDB> db.users.insertOne({"name": "Gastón"})
 
+nombreDB> db.dropDatabase();
+
+nombreDB> db.users.drop();
+
+nombreDB> db.nombreDB.estimatedDocumentCount()
+
+nombreDB> db.nombreDB.estimatedDocumentCount({precio:10})
 
 ```
 
 ## Clase Nº18 - CRUD en MongoDB
+- CRUD: create, read, update y delete.
+- Campo _id: ObjectId --> identificador único en la colección
+- Desafio:
+
+```
+db.clientes.insertOne({ name: 'Jaime', edad: 34 })
+
+const clientes = [
+    { name: 'Adrian', edad: 23 },
+    { name: 'Javier', edad: 40 },
+    { name: 'Carlos', edad: 34 }
+]
+
+db.clientes.insertMany(clientes)
+
+const articulos = [
+    {
+        name: 'Coca Cola',
+        precio: 12.21,
+        stock: 100
+    },
+    {
+        name: 'Fanta',
+        precio: 14.24,
+        stock: 80
+    },
+    {
+        name: 'Sprinte',
+        precio: 11.21,
+        stock: 200
+    },
+    {
+        name: 'Agua natural',
+        precio: 9.21,
+        stock: 100
+    }
+]
+
+db.articulos.insertMany(articulos)
+
+db.articulos.countDocuments()
+```
+
+- Filtros de búsqueda: nombreDB> db.nombreCollecion.find($and: [{name:"jaime}, {edad:40}])
+- Operadores para los filtros de búsqueda: $and, $or, $it, $gt, $gte, $ne, $eq.
+
+
+
 
 
 ## Comandos útiles
