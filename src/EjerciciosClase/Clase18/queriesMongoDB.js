@@ -70,5 +70,11 @@ const newClients = [
 
 db.clientes.find({ cursos: { $size: 3 } });
 
-db.clientes.find({ cursos: { $all: ['Desarrollo Web', 'React JS', 'Programaciòn Backend'] } })
+db.clientes.find({ cursos: { $all: ['Desarrollo Web', 'React JS', 'Programaciòn Backend'] } });
+
+db.clientes.distinct('edad'); // Nos devuelve un array con el valor de las edades
+
+db.clientes.distinct('name'); // Nos devuelve un array con el valor de los nombres
+
+db.clientes.find({ name: /^J/ }) //  Nos los clientes que su nombre comience con la letra A
 
