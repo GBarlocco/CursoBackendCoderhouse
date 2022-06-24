@@ -1141,9 +1141,18 @@ db.articulos.countDocuments()
 
 - Filtros de búsqueda: nombreDB> db.nombreCollecion.find($and: [{name:"jaime}, {edad:40}])
 - Operadores para los filtros de búsqueda: $and, $or, $it, $gt, $gte, $ne, $eq.
+- Ejemplo de filtros con operadores:
 
+```
+db.clientes.find({ edad: 28 }) // obtengo todos los clientes (colección) con edad = 28
 
+db.clientes.find({ $and: [{ name: 'Jaime' }, { edad: 40 }] }); // obtengo los clientes que posean el nombre = jaime y edad = 40
 
+db.clientes.find({ name: 'jaime' }, { edad: 40 }); // and implícito, es el único operador que podremos utilizar de forma implícito 
+
+db.clientes.find({ $or: [{ name: 'Pepe' }, { edad: 28 }] });
+
+```
 
 
 ## Comandos útiles
