@@ -1250,10 +1250,25 @@ db.clientes.updateMany({ cursos: { $elemMatch: { $eq: 'Desarrollo Web' } } }, { 
 //delete
 db.clientes.deleteOne({ name: /^J/ });
 b.clientes.deleteMany({ name: /^J/ });
-
-
-
 ```
+
+## Clase Nº19 - Mongoose
+- Mongoose es una librería que nos permitirá conectarnos a MongoDB mediante Node. Como vimos en las clases anteriores, existen distintos tipos de clientes para acceder a la DB, en este caso veremos la libreria que nos permite acceder mediante una aplicación.
+- La aplicación Backend se convierte en el cliente y la DB en el servidor:
+[![1.png](https://i.postimg.cc/9f3d0nzJ/1.png)](https://postimg.cc/MnDMrt7Q)
+
+- MERN Stack: cuatro tecnologías muy utilizadas en conjunto, M=MongoDB, E=Express, R=React Js, N=Node Js
+[![2.png](https://i.postimg.cc/rspW76YF/2.png)](https://postimg.cc/62DyGPXD)
+
+- Mongoose es una dependencia JS que realiza la conexión a la instancia de MongoDB. Crea una capa que nos permite interactuar con la DB en forma de esquema.
+- Integración de Mongoose con proyecto de Node: 
+1- Creamos un proyecto Node.js con npm init -y
+2- Instalamos la dependencia mongoose con npm i mongoose
+3- Describimos nuestro modelo de datos ( Schema + Model ) con las validaciones necesarias.
+4- Levantamos el motor de base de datos MongoDB.
+5- Creamos la función de conexión mediante mongoose, con las opciones configuradas.
+6- Con mongoose realizamos las operaciones CRUD hacia MongoDB: Read, Create, Update y Delete.
+7- Mostramos consultas con distintos filtros de Query y con el uso de projection, funciones sort, limit y skip
 
 
 ## Comandos útiles
