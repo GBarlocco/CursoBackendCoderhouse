@@ -1262,19 +1262,19 @@ b.clientes.deleteMany({ name: /^J/ });
 
 - Mongoose es una dependencia JS que realiza la conexión a la instancia de MongoDB. Crea una capa que nos permite interactuar con la DB en forma de esquema.
 - Integración de Mongoose con proyecto de Node: 
-1- Creamos un proyecto Node.js con npm init -y
-2- Instalamos la dependencia mongoose con npm i mongoose
-3- Describimos nuestro modelo de datos ( Schema + Model ) con las validaciones necesarias.
-4- Levantamos el motor de base de datos MongoDB.
-5- Creamos la función de conexión mediante mongoose, con las opciones configuradas.
-6- Con mongoose realizamos las operaciones CRUD hacia MongoDB: Read, Create, Update y Delete.
-7- Mostramos consultas con distintos filtros de Query y con el uso de projection, funciones sort, limit y skip
+1. Creamos un proyecto Node.js con npm init -y
+2. Instalamos la dependencia mongoose con npm i mongoose
+3. Describimos nuestro modelo de datos ( Schema + Model ) con las validaciones necesarias.
+4. Levantamos el motor de base de datos MongoDB.
+5. Creamos la función de conexión mediante mongoose, con las opciones configuradas.
+6. Con mongoose realizamos las operaciones CRUD hacia MongoDB: Read, Create, Update y Delete.
+7. Mostramos consultas con distintos filtros de Query y con el uso de projection, funciones sort, limit y skip
 
 
 ## Comandos útiles
 
 ### Git & GitHub:
-[EN CONTRUCCIÒN]
+[EN CONTRUCCIÓN]
 ```
 git add .
 git commit -m "mensaje"
