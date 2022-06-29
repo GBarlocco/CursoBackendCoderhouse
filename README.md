@@ -1270,6 +1270,12 @@ b.clientes.deleteMany({ name: /^J/ });
 6. Con mongoose realizamos las operaciones CRUD hacia MongoDB: Read, Create, Update y Delete.
 7. Mostramos consultas con distintos filtros de Query y con el uso de projection, funciones sort, limit y skip
 
+## Clase Nº20 - Dbass & Firebase
+- DBaaS: plataforma que nos permite tener una DB en la nube. DBaaS = DB as a Service.
+- Podemos definir dos modalidades de servicio: modelo clásico y ajomaniento gestionado. Clasico hace referencia al uso de la infraestructura fisica del proveedor para alojar sus DB. Con alojamiento gestionado hace referencia a que el cliente se desentiende de cualquier tarea de mantenimiento y gestión avanzada de la DB, esto lo asume el proveedor.
+- MongoDB Atlas: es un servicio cloud de mongoDB. Se desarrollo con el objetivo de aliviar el trabajo de los desarrolladores, al quitar la necesidad de instalar, adminitrar etc la DB.
+- https://www.mongodb.com/atlas/database
+
 
 ## Comandos útiles
 
