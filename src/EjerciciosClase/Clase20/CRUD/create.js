@@ -3,7 +3,7 @@ const userModel = require(`../models/user`);
 
 //data que recibimos desde el endpoint, desde la API
 const data = {
-    name: `Juan`,
+    name: `pepe!`,
     lastname: `Perez`,
     email: `juanperez@mail.com`,
     username: `juanperez`,
@@ -15,7 +15,7 @@ const user = new userModel(data);
 
 db
     .then(_ => user.save())
-    .then(document => console.log(`Usuario guardado`, document))
+    .then(document => console.log(`User saved`, document))
     .catch(err => console.log(`Error: ${err.message}`))
     .finally(() => process.exit());
 

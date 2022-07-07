@@ -1277,8 +1277,34 @@ b.clientes.deleteMany({ name: /^J/ });
 - https://www.mongodb.com/atlas/database
 
 
-## Comandos útiles
 
+## Clase Nº21 - Trabajo con datos: diseño de mocks
+- TDD: PRUEBAS UNITARIAS : desarrollo dirigido por test, desarrollo orientado a pruebas, es una práctica de programación que consiste en escribir primero las pruebas, despues el código fuente que pase la prueba satifactoriamente, y por último, refactorizar el código escrito.
+-  El mocking es una técnica utilizada para simular objetos en memoria con la finalidad de poder ejecutar pruebas unitarias.
+- Mocking & mock: mocking es la técnica para simular objetos en memoria.
+- De esta manera generamos un sistema en donde no falle la DB ( creamos una DB fake) y nos olvidamos de posibles problemas con la misma, entonces, de esta manera podemos garantizar el funcionamiebto de la app --> mock & mocking.
+- Mocks en TDD: trabajando con TDD y mocks podremos probar nuestro códio y garantizar el correcto funcionamiento al entregar un proyecto. 
+
+¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡ FALTA REALIZAR EJERCICIOS !!!!!!!!!!!!!!!!!!!!!
+
+## Clase Nº22 - Trabajo con datos: Normalización
+¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡ FALTA!!!!!!!!!!!!!!!!!!!!!
+
+
+## Clase Nº23 - Cookies, Sesiones, Storages - Parte 1
+- Información que el BE envia al cliente y se guarda en el cliente.
+- Las cookies pueden tener un tiempo de vida, una vez finalizada la misma se elimina del navegador.
+- El espacio es limitado, y se debe tener cuidado con datos sensibles. La información existente en las cookies es pública.
+- Para integrarlo desde BE, y desde express --> npm i cookie-parser 
+- LAs cookies se pueden proteger, consiste en encriptar el contenido.
+- Session: permite que una variable sea accesible desde cualquier lugar del sitio. Se almacena del lado del servidor, del lado del cliente se crea un identificador único para acceder a esa informaciòn desde el navegador.
+- Session --> npm i express-session 
+
+
+
+
+## Comandos útiles
+..
 ### Git & GitHub:
 [EN CONTRUCCIÓN]
 ```
