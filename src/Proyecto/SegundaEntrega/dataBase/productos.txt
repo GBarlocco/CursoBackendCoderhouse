@@ -1,0 +1,102 @@
+[
+  {
+    "timestamp": "Sat Jun 04 2022",
+    "nombre": "Producto1",
+    "descripcion": "descripcion1",
+    "codigo": 1,
+    "thumbnail": "url1",
+    "precio": 1,
+    "stock": 11,
+    "id": 1
+  },
+  {
+    "timestamp": "Mon Jun 06 2022",
+    "nombre": "Producto update",
+    "descripcion": "descripcion2",
+    "codigo": 2,
+    "thumbnail": "url2",
+    "precio": 2,
+    "stock": 22,
+    "id": 2
+  },
+  {
+    "timestamp": "Sat Jun 04 2022",
+    "nombre": "Producto3",
+    "descripcion": "descripcion3",
+    "codigo": 3,
+    "thumbnail": "url3",
+    "precio": 3,
+    "stock": 33,
+    "id": 3
+  },
+  {
+    "timestamp": "Sat Jun 04 2022",
+    "nombre": "Producto4",
+    "descripcion": "descripcion4",
+    "codigo": 4,
+    "thumbnail": "url4",
+    "precio": 4,
+    "stock": 4,
+    "id": 4
+  },
+  {
+    "timestamp": "Sat Jun 04 2022",
+    "nombre": "Producto5",
+    "descripcion": "descripcion5",
+    "codigo": 5,
+    "thumbnail": "url5",
+    "precio": 5,
+    "stock": 5,
+    "id": 5
+  },
+  {
+    "timestamp": "Sat Jun 04 2022",
+    "nombre": "Producto6",
+    "descripcion": "descripcion6",
+    "codigo": 6,
+    "thumbnail": "url6",
+    "precio": 6,
+    "stock": 6,
+    "id": 6
+  },
+  {
+    "timestamp": "Sat Jun 04 2022",
+    "nombre": "Producto7",
+    "descripcion": "descripcion7",
+    "codigo": 7,
+    "thumbnail": "url7",
+    "precio": 7,
+    "stock": 7,
+    "id": 7
+  },
+  {
+    "timestamp": "Sat Jun 04 2022",
+    "nombre": "Producto8",
+    "descripcion": "descripcion8",
+    "codigo": 8,
+    "thumbnail": "url8",
+    "precio": 8,
+    "stock": 8,
+    "id": 8
+  },
+  {
+    "timestamp": "Sun Jun 05 2022",
+    "nombre": "Producto9",
+    "descripcion": "descripcion9",
+    "codigo": 9,
+    "thumbnail": "url9",
+    "precio": 9,
+    "stock": 9,
+    "id": 9
+  },
+  {
+    "timestamp": "Sun Jul 03 2022",
+    "nombre": "Producto9",
+    "descripcion": "descripcion9",
+    "codigo": 9,
+    "thumbnail": "url9",
+    "precio": 9,
+    "stock": 9,
+    "id": 10
+  }
+]

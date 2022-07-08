@@ -1,6 +1,6 @@
 import suma from './suma.js';
 
-console.log(' === Flujo báasico correcto ===');
+console.log(' === Flujo básico correcto ===');
 
 const expected1 = 8;
 
