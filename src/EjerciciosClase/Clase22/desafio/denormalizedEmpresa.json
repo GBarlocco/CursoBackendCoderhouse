@@ -1,0 +1,78 @@
+{
+  "id": 1,
+  "nombre": 30975,
+  "empleados": [
+    {
+      "id": 1,
+      "nombre": "Adrian",
+      "puesto": {
+        "id": 1,
+        "nombre": "Gerente"
+      },
+      "area": {
+        "id": 1,
+        "nombre": "direccion"
+      }
+    },
+    {
+      "id": 2,
+      "nombre": "Juan",
+      "puesto": {
+        "id": 2,
+        "nombre": "Encargado"
+      },
+      "area": {
+        "id": 3,
+        "nombre": "operacion"
+      }
+    },
+    {
+      "id": 2,
+      "nombre": "Juan",
+      "puesto": {
+        "id": 2,
+        "nombre": "Encargado"
+      },
+      "area": {
+        "id": 3,
+        "nombre": "operacion"
+      }
+    },
+    {
+      "id": 3,
+      "nombre": "Jaime",
+      "puesto": {
+        "id": 3,
+        "nombre": "Empleado"
+      },
+      "area": {
+        "id": 2,
+        "nombre": "logistica"
+      }
+    },
+    {
+      "id": 4,
+      "nombre": "Jorge",
+      "puesto": {
+        "id": 3,
+        "nombre": "Empleado"
+      },
+      "area": {
+        "id": 2,
+        "nombre": "logistica"
+      }
+    },
+    {
+      "id": 5,
+      "nombre": "Pablo",
+      "puesto": {
+        "id": 3,
+        "nombre": "Empleado"
+      },
+      "area": {
+        "id": 3,
+        "nombre": "operacion"
+      }
+    }
+  ]
+}

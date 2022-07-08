@@ -1300,10 +1300,12 @@ b.clientes.deleteMany({ name: /^J/ });
 - Los datos son persistentes en memoria.
 
 
-
-
 ## Clase Nº22 - Trabajo con datos: Normalización
-¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡ FALTA!!!!!!!!!!!!!!!!!!!!!
+- Es un proceso de estandarización y validación de datos que consiste en eliminar las redundacias o inconsistencias, completando datos mediante una serie de reglas que actualizan la información.
+- La normalización de datos es útil cuando un repositorio de datos es demasiado grande, contiene redundancia, tiene información profundamente anidada y/o es difícil de usar.
+- Al normalizar los datos, debemos seguir algunas reglas: la lectura de datos debe ser plana, cada entidad debe almacenarse como propiedad de objeto diferente, las relaciones con otras entidades deben crearse basadas en identificadores: "id".
+- Para poder realizar la normalización podremos utilizar la libreria Normalizr.
+- Conclusión: al normalizar datos se obtiene un paquete menor en peso, de esta manera se puede enviar ocupando menos capacidad, desde front se puede recibir y nuevamente denormalizar para trabajar con la información original.
 
 
 ## Clase Nº23 - Cookies, Sesiones, Storages - Parte 1
@@ -1314,7 +1316,6 @@ b.clientes.deleteMany({ name: /^J/ });
 - LAs cookies se pueden proteger, consiste en encriptar el contenido.
 - Session: permite que una variable sea accesible desde cualquier lugar del sitio. Se almacena del lado del servidor, del lado del cliente se crea un identificador único para acceder a esa informaciòn desde el navegador.
 - Session --> npm i express-session 
-
 
 
 

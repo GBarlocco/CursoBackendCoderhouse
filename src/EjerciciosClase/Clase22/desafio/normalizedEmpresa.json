@@ -1,0 +1,79 @@
+{
+  "entities": {
+    "area": {
+      "1": {
+        "id": 1,
+        "nombre": "direccion"
+      },
+      "2": {
+        "id": 2,
+        "nombre": "logistica"
+      },
+      "3": {
+        "id": 3,
+        "nombre": "operacion"
+      }
+    },
+    "puesto": {
+      "1": {
+        "id": 1,
+        "nombre": "Gerente"
+      },
+      "2": {
+        "id": 2,
+        "nombre": "Encargado"
+      },
+      "3": {
+        "id": 3,
+        "nombre": "Empleado"
+      }
+    },
+    "empleados": {
+      "1": {
+        "id": 1,
+        "nombre": "Adrian",
+        "puesto": 1,
+        "area": 1
+      },
+      "2": {
+        "id": 2,
+        "nombre": "Juan",
+        "puesto": 2,
+        "area": 3
+      },
+      "3": {
+        "id": 3,
+        "nombre": "Jaime",
+        "puesto": 3,
+        "area": 2
+      },
+      "4": {
+        "id": 4,
+        "nombre": "Jorge",
+        "puesto": 3,
+        "area": 2
+      },
+      "5": {
+        "id": 5,
+        "nombre": "Pablo",
+        "puesto": 3,
+        "area": 3
+      }
+    },
+    "empresa": {
+      "1": {
+        "id": 1,
+        "nombre": 30975,
+        "empleados": [
+          1,
+          2,
+          2,
+          3,
+          4,
+          5
+        ]
+      }
+    }
+  },
+  "result": 1
+}
