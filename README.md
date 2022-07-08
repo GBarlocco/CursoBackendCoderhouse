@@ -1284,8 +1284,23 @@ b.clientes.deleteMany({ name: /^J/ });
 - Mocking & mock: mocking es la técnica para simular objetos en memoria.
 - De esta manera generamos un sistema en donde no falle la DB ( creamos una DB fake) y nos olvidamos de posibles problemas con la misma, entonces, de esta manera podemos garantizar el funcionamiebto de la app --> mock & mocking.
 - Mocks en TDD: trabajando con TDD y mocks podremos probar nuestro códio y garantizar el correcto funcionamiento al entregar un proyecto. 
+- Faker.js: nos da la opción de generar valores random de muchos datos. Actualmente se encuentra en desuso. Este tipo de librerías es muy utilizada cuando queremos mostrar un proyecto y simular valores, etc.
 
-¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡ FALTA REALIZAR EJERCICIOS !!!!!!!!!!!!!!!!!!!!!
+### Mocks y API: proyecto de ejemplo - CRUD con endpoint
+
+- El proyecto tiene cinco rutas:
+1. POST /api/users/popular?cant=n : si no específico cant me genera 50 objetos mock
+2. GET /api/users/:id? : con id me trae un mock; sin id devuelve todos los mocks
+3. POST /api/users : incorpora un nuevo mock
+4. PUT /api/users/:id : actualiza un mock total o parcialmente por campo
+5. DELETE /api/users/:id : borra un mock específico
+
+- Los usuarios tienen: nombre, email, website, e imagen.
+- Cada una puede generar, listar, incorporar, actualizar y borrar mocks.
+- Los datos son persistentes en memoria.
+
+
+
 
 ## Clase Nº22 - Trabajo con datos: Normalización
 ¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡ FALTA!!!!!!!!!!!!!!!!!!!!!
@@ -1313,7 +1328,7 @@ git commit -m "mensaje"
 git push -u origin master 
 ```
 ###  package.json
-Para generar la dependencia package.json:
+Para generar la dependencia package.json, iniciaizar el proyecto: node_modules:
 
 ```
 npm init -y
