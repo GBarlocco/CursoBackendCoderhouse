@@ -98,7 +98,104 @@ io.on(`connection`, socket => {
             const allMessageFromDB = await storageMessages.getAll();
 
 
-            normalizar(allMessageFromDB);
+            const dataJson = {
+                "id": 1,
+                "mensajes": [
+                    {
+                        "id": "barlocco@hotmail.es",
+                        "author": {
+                            "id": "barlocco@hotmail.es",
+                            "nombre": "Nombre del usuario",
+                            "apellido": "apellido del usuario",
+                            "alias": "alias del usuario",
+                            "edad": 12,
+                            "avatar": "avatar del usuario"
+                        },
+                        "text": {
+                            "id": "a",
+                            "mensaje": "mensaje 1"
+                        }
+                    },
+                    {
+                        "id": "asd@hotmail.es",
+                        "author": {
+                            "id": "asd@hotmail.es",
+                            "nombre": "Nombre del usuario",
+                            "apellido": "apellido del usuario",
+                            "alias": "alias del usuario",
+                            "edad": 12,
+                            "avatar": "avatar del usuario"
+                        },
+                        "text": {
+                            "id": "b",
+                            "mensaje": "mensaje 2"
+                        }
+                    },
+                    {
+                        "id": "barlocco@hotmail.es",
+                        "author": {
+                            "id": "barlocco@hotmail.es",
+                            "nombre": "Nombre del usuario",
+                            "apellido": "apellido del usuario",
+                            "alias": "alias del usuario",
+                            "edad": 12,
+                            "avatar": "avatar del usuario"
+                        },
+                        "text": {
+                            "id": "c",
+                            "mensaje": "mensaje 3"
+                        }
+                    },
+                    {
+                        "id": "asd@hotmail.es",
+                        "author": {
+                            "id": "asd@hotmail.es",
+                            "nombre": "Nombre del usuario",
+                            "apellido": "apellido del usuario",
+                            "alias": "alias del usuario",
+                            "edad": 12,
+                            "avatar": "avatar del usuario"
+                        },
+                        "text": {
+                            "id": "d",
+                            "mensaje": "mensaje 4"
+                        }
+                    },
+                    {
+                        "id": "asd@hotmail.es",
+                        "author": {
+                            "id": "asd@hotmail.es",
+                            "nombre": "Nombre del usuario",
+                            "apellido": "apellido del usuario",
+                            "alias": "alias del usuario",
+                            "edad": 12,
+                            "avatar": "avatar del usuario"
+                        },
+                        "text": {
+                            "id": "e",
+                            "mensaje": "mensaje 5"
+                        }
+                    },
+                    {
+                        "id": "pepe@hotmail.es",
+                        "author": {
+                            "id": "pepe@hotmail.es",
+                            "nombre": "Nombre del usuario",
+                            "apellido": "apellido del usuario",
+                            "alias": "alias del usuario",
+                            "edad": 12,
+                            "avatar": "avatar del usuario"
+                        },
+                        "text": {
+                            "id": "f",
+                            "mensaje": "mensaje 6"
+                        }
+                    }
+                ]
+            };
+
+            // Se tendrìa que leer de la DB y enviar a la funcionar normalizar dicha información.
+            normalizar(dataJson);
 
             //Servidor --> Cliente : Se envian todos los mensajes al usuario que se conectó.
             socket.emit(`allMenssage`, allMessageFromDB);
@@ -117,36 +214,7 @@ io.on(`connection`, socket => {
 
     //Cliente --> Servidor: messageInput event
     socket.on(`messageInput`, async data => {
-
-        const now = new Date();
         const user = users.find(user => user.id === socket.id);
-
-        /*
-        const messageDB = {
-            text: data,
-            time: `${now.getHours()}:${now.getMinutes()}`,
-            email: user.userName
-        };
-        */
-
-        /*
-        const newMessage = {
-            author: {
-                id: user.userName,
-                nombre: `Hard-code: Nombre del usuario`,
-                apellido: `Hard-code: Apellido del usuario`,
-                edad: `Hard-code: Edad`,
-                alias: `Hard-code: alias del usuario`,
-                avatar: `Hard-code: url avatar`
-            },
-            //text: data,
-            text: {
-                data: data,
-                id: user.userName
-            },
-            time: `${now.getHours()}:${now.getMinutes()}`,
-        };
-        */
 
         const newMessage = {
             id: user.userName,
@@ -158,7 +226,6 @@ io.on(`connection`, socket => {
                 alias: `Hard-code: alias del usuario`,
                 avatar: `Hard-code: url avatar`
             },
-            //text: data,
             text: {
                 id: mongoose.Types.ObjectId().toString(),
                 mensaje: data,
@@ -194,126 +261,6 @@ const print = (objeto) => {
 
 const normalizar = (inMessage) => {
 
-    console.log('Estoy en normalizar');
-    /*
-        Estructura:
-            |entidad principal mensajes:
-                                    |dentro del mensaje existe  autor.
-                                    |dentro el mensaje existe el texto.
-
-        commenter = author => user
-    */
-
-
-    const finalMessage = {
-        id: 1,
-        mensajes: inMessage
-    };
-
-    const dataJson = {
-        "id": 1,
-        "mensajes": [
-            {
-                "id": "barlocco@hotmail.es",
-                "author": {
-                    "id": "barlocco@hotmail.es",
-                    "nombre": "Nombre del usuario",
-                    "apellido": "apellido del usuario",
-                    "alias": "alias del usuario",
-                    "edad": 12,
-                    "avatar": "avatar del usuario"
-                },
-                "text": {
-                    "id": "a",
-                    "mensaje": "mensaje"
-                }
-            },
-            {
-                "id": "asd@hotmail.es",
-                "author": {
-                    "id": "asd@hotmail.es",
-                    "nombre": "Nombre del usuario",
-                    "apellido": "apellido del usuario",
-                    "alias": "alias del usuario",
-                    "edad": 12,
-                    "avatar": "avatar del usuario"
-                },
-                "text": {
-                    "id": "b",
-                    "mensaje": "mensaje"
-                }
-            },
-            {
-                "id": "barlocco@hotmail.es",
-                "author": {
-                    "id": "barlocco@hotmail.es",
-                    "nombre": "Nombre del usuario",
-                    "apellido": "apellido del usuario",
-                    "alias": "alias del usuario",
-                    "edad": 12,
-                    "avatar": "avatar del usuario"
-                },
-                "text": {
-                    "id": "c",
-                    "mensaje": "mensaje"
-                }
-            },
-            {
-                "id": "asd@hotmail.es",
-                "author": {
-                    "id": "asd@hotmail.es",
-                    "nombre": "Nombre del usuario",
-                    "apellido": "apellido del usuario",
-                    "alias": "alias del usuario",
-                    "edad": 12,
-                    "avatar": "avatar del usuario"
-                },
-                "text": {
-                    "id": "d",
-                    "mensaje": "mensaje"
-                }
-            },
-            {
-                "id": "asd@hotmail.es",
-                "author": {
-                    "id": "asd@hotmail.es",
-                    "nombre": "Nombre del usuario",
-                    "apellido": "apellido del usuario",
-                    "alias": "alias del usuario",
-                    "edad": 12,
-                    "avatar": "avatar del usuario"
-                },
-                "text": {
-                    "id": "e",
-                    "mensaje": "mensaje"
-                }
-            },
-            {
-                "id": "pepe@hotmail.es",
-                "author": {
-                    "id": "pepe@hotmail.es",
-                    "nombre": "Nombre del usuario",
-                    "apellido": "apellido del usuario",
-                    "alias": "alias del usuario",
-                    "edad": 12,
-                    "avatar": "avatar del usuario"
-                },
-                "text": {
-                    "id": "f",
-                    "mensaje": "mensaje"
-                }
-            }
-        ]
-    };
-
-    /*
-        console.log('finalMessage');
-        print(finalMessage);
-        console.log('dataJson');
-        print(dataJson);
-    */
-
-    //NORMALIZR
     const authorSchema = new normalizr.schema.Entity('author');
 
     const textSchema = new normalizr.schema.Entity('text');
@@ -327,12 +274,12 @@ const normalizar = (inMessage) => {
         mensajes: [mensajeSchema]
     });
 
-    const normalizedChat = normalizr.normalize(finalMessage, constchatSchema);
+    const normalizedChat = normalizr.normalize(inMessage, constchatSchema);
     const denormalizedChat = normalizr.denormalize(normalizedChat.result, constchatSchema, normalizedChat.entities);
 
     console.log(`==== OBJETO ORIGINAL ====`);
-    console.log(`Tamaño [bytes]: ${JSON.stringify(finalMessage).length}`);
-    print(finalMessage);
+    console.log(`Tamaño [bytes]: ${JSON.stringify(inMessage).length}`);
+    print(inMessage);
 
     console.log(`==== OBJETO NORMALIZADO ====`);
     console.log(`Tamaño [bytes]: ${JSON.stringify(normalizedChat).length}`);
