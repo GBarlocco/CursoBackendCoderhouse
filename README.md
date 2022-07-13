@@ -1249,7 +1249,7 @@ db.clientes.updateMany({ cursos: { $elemMatch: { $eq: 'Desarrollo Web' } } }, { 
 
 //delete
 db.clientes.deleteOne({ name: /^J/ });
-b.clientes.deleteMany({ name: /^J/ });
+b.clientes.deleteMany({ name: /^J/ }) ;
 ```
 
 ## Clase Nº19 - Mongoose
@@ -1312,11 +1312,12 @@ b.clientes.deleteMany({ name: /^J/ });
 - Información que el BE envia al cliente y se guarda en el cliente.
 - Las cookies pueden tener un tiempo de vida, una vez finalizada la misma se elimina del navegador.
 - El espacio es limitado, y se debe tener cuidado con datos sensibles. La información existente en las cookies es pública.
-- Para integrarlo desde BE, y desde express --> npm i cookie-parser 
-- LAs cookies se pueden proteger, consiste en encriptar el contenido.
+- Para integrarlo desde BE, y desde express --> npm i cookie-parser, es un middleware que se requiere a nivel de aplicación.
+- Las cookies se pueden proteger, consiste en encriptar el contenido.
+- Existen dos tipos de proeyctos: modelo vista controlador (MVC) y API Rest (sistemas que intercambian información en formato Json), la principal diferencia entre estos sistemas es que las API Rest no manejan vistas, las resuelve otro sistemas, mientras que el MVC posee las vistas incorporadas en el mismo sistema que el back. Las cookie storage se suelen utilizar para las MVC ya que las API Rest no poseen estados, cada endpint se debe comportar de forma independiente a otro.
+- Proteger cookies: se puede encriptar el contenido de la cookie, esto se realiza mediante la palabra clave "secreto" definida del lado del servidor y desconocida por los cloentes. El seridor es capaz de verificar si la cookie que se recibe desde el cliente ha sido adulterada o no, chqueando contra la versión enciptada.
 - Session: permite que una variable sea accesible desde cualquier lugar del sitio. Se almacena del lado del servidor, del lado del cliente se crea un identificador único para acceder a esa informaciòn desde el navegador.
 - Session --> npm i express-session 
-
 
 
 ## Comandos útiles
