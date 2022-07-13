@@ -1316,7 +1316,7 @@ b.clientes.deleteMany({ name: /^J/ }) ;
 - Las cookies se pueden proteger, consiste en encriptar el contenido.
 - Existen dos tipos de proeyctos: modelo vista controlador (MVC) y API Rest (sistemas que intercambian información en formato Json), la principal diferencia entre estos sistemas es que las API Rest no manejan vistas, las resuelve otro sistemas, mientras que el MVC posee las vistas incorporadas en el mismo sistema que el back. Las cookie storage se suelen utilizar para las MVC ya que las API Rest no poseen estados, cada endpint se debe comportar de forma independiente a otro.
 - Proteger cookies: se puede encriptar el contenido de la cookie, esto se realiza mediante la palabra clave "secreto" definida del lado del servidor y desconocida por los cloentes. El seridor es capaz de verificar si la cookie que se recibe desde el cliente ha sido adulterada o no, chqueando contra la versión enciptada.
-- Session: permite que una variable sea accesible desde cualquier lugar del sitio. Se almacena del lado del servidor, del lado del cliente se crea un identificador único para acceder a esa informaciòn desde el navegador.
+- Session: permite que una variable sea accesible desde cualquier lugar del sitio. Se almacena del lado del servidor, del lado del cliente se crea un identificador único para acceder a esa informaciòn desde el navegador. Los datos almacenados en session se borran al cerrar la ventana del navegador.
 - Session --> npm i express-session 
 
 

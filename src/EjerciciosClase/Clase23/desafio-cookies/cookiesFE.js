@@ -87,7 +87,7 @@ const PORT = 8080;
 app.listen(PORT, () => console.log(`Servidor escuchando en el puerto ${PORT}`));
 
 
-/*
+/* 
 POSTAN - POST: http://localhost:8080/cookies
 {
     "nombre": "nombre2",
