@@ -1320,6 +1320,13 @@ b.clientes.deleteMany({ name: /^J/ }) ;
 - Session --> npm i express-session 
 
 
+## Clase Nº24 - Cookies, Sesiones, Storages - Parte 2.
+
+
+## Clase Nº25 - Autorización y autenticación.
+
+
+
 ## Comandos útiles
 ..
 ### Git & GitHub:

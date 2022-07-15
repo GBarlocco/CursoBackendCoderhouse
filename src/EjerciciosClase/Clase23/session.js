@@ -14,6 +14,24 @@ const users = [
     }
 ];
 
+const authValidator = (req, res, next) => {
+    if (req.session.user) {
+        return next();
+    }
+    return res.status(401).json({
+        error: `Necesitas iniciar session`
+    });
+}
+
+const adminValidator = (req, res, next) => {
+    if (req.session.admin) {
+        return next();
+    }
+    return res.status(401).json({
+        error: 'Necesitas ser usuario administrador'
+    });
+};
+
 const app = express();
 
 app.use(express.json());
@@ -64,9 +82,37 @@ app.post(`/login`, (req, res) => {
 
 });
 
-app.get(`/profile`, (req, res) => {
+app.get(`/profile`, authValidator, (req, res) => {
     return res.json(req.session);
+})
+
+app.get(`/admin`, adminValidator, authValidator, (req, res) => {
+    return res.json({
+        message: 'usuario log: Admin, puede acceder a esta sección'
+    })
 })
 
 const PORT = 8080;
 app.listen(PORT, () => console.log(`Servidor escuchando en el puerto ${PORT}`));
+
+
+/*
+GET: http://localhost:8080/logout
+
+GET: http://localhost:8080/profile
+
+POST: http://localhost:8080/login
+body:
+{
+    "username": "gaston",
+    "password": "pass"
+}
+
+body:
+{
+    "username": "adrian",
+    "password": "pass1"
+}
+
+GET: http://localhost:8080/admin
+*/

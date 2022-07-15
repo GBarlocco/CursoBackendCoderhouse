@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+    
+<head>
+    <%- include(`./partials/head`) %>
+</head>
+
+<body>
+    <div class ="container">
+        <header>
+            <%- include('./partials/header', {current: `home`}) %> 
+        </header>
+        <main>
+
+            <div class="jumbotron">
+                <h1> Curso de programación NodeJs</h1>
+                <h2><%= title %> </h2>
+            </div>
+
+            <div >
+                <h4> Curso de programación NodeJs</h4>
+                <p><%= content %> </p>
+            </div>
+
+        </main>
+        
+        <footer> <%- include('./partials/footer') %>  </footer>
+    </div>
+</body>
+
+</html>
