@@ -5,9 +5,17 @@ const { Server: IOServer } = require(`socket.io`);
 const MessageDAOMongoDB = require(`./daos/MessageDAOMongoDB`);
 const mongoose = require('mongoose');
 
+const faker = require(`faker`);
+
 const normalizr = require(`normalizr`);
 const { normalize, denormalize, schema } = require(`normalizr`);
 const util = require(`util`);
+
+const MongoStore = require(`connect-mongo`);
+
+const session = require(`express-session`);
+
+const { Router } = require("express");
 
 const app = express();
 const httpServer = new HttpServer(app);
@@ -31,22 +39,88 @@ const { insertProduct } = require(`./db/insertProduct`);
 
 //Routers import
 const homeRouter = require(`./routers/homeRouter`);
-const formRouter = require(`./routers/formRouter`);
-const loginRouterGet = require(`./routers/loginRouterGet`);
-const loginRouterPost = require(`./routers/loginRouterPost`);
-const chatRouter = require(`./routers/chatRouter`);
-const fakerRouter = require(`./routers/fakerRouter`);
 
 //Routers
 app.use(`/`, homeRouter);
-app.use(`/form`, formRouter);
-app.use(`/login`, loginRouterGet);
-app.use(`/login`, loginRouterPost);
-app.use(`/chat`, chatRouter);
-app.use(`/api/productos-test`, fakerRouter);
+
 
 //Instancia contenedores:
 const storageMessages = new MessageDAOMongoDB();
+
+// *********************************************************** Desafio 12 ***********************************************************
+const router = Router();
+
+optionsMongo = { useNewUrlParser: true, useUnifiedTopology: true };
+
+app.use(session({
+    store: MongoStore.create({
+        mongoUrl: "mongodb+srv://gaston:plcJVQX38JLWkNty@cluster0.opdu9wz.mongodb.net/desafio12?retryWrites=true&w=majority",
+        mongoOptions: optionsMongo,
+        ttl: 10
+    }),
+    secret: '123456',
+    resave: true,
+    saveUninitialized: true
+}));
+
+app.use('/', router);
+
+router.get(`/loginSession`, (req, res) => {
+    res.render("loginSession");
+    req.session.destroy(err => {
+        if (!err) {
+            console.log(`ok`)
+        } else {
+            console.log(`error`)
+        }
+    });
+});
+
+router.get(`/api/productos-test`, (req, res) => {
+    const user = req.query.nameLogin;
+
+    req.session.usuario = user;
+
+    const dataRandom = [];
+    const data = {
+        dataRandom: dataRandom,
+        nameLogin: req.session.usuario
+    };
+
+    for (let i = 0; i < 5; i++) {
+        dataRandom.push({
+            nombre: faker.commerce.productName(),
+            precio: faker.commerce.price(),
+            foto: faker.image.image()
+        });
+    }
+    res.render('faker', data);
+});
+
+router.get(`/logout`, (req, res) => {
+    userLogout = req.session.usuario;
+    res.render("logout", { userLogout });
+    req.session.destroy(err => {
+        if (!err) {
+            console.log(`ok`)
+        } else {
+            console.log(`error`)
+        }
+    });
+
+});
+
+
+/*
+    app.use(session({
+        secret: `pass`,
+        resave: true,
+        saveUninitialized: true
+    }));
+*/
+// *********************************************************** Desafio 12 ***********************************************************
+
+
 
 //socket Products
 io.on(`connection`, socket => {
