@@ -1324,6 +1324,21 @@ b.clientes.deleteMany({ name: /^J/ }) ;
 
 
 ## Clase Nº25 - Autorización y autenticación.
+- Autenticación: proceso de identificaión de usuario para asegurarse su identidad.
+- Autorización: define la información, los servicios y recursos del sistema a los que podrá acceder el usuarioautenticado. Usuario común / administrador. Existen distintos métodos para autorizar usuarios: se suele utiliuzar middleware.
+- Méotodos de autenticación: usuario y contraseña, sin contraseña, por redes sociales, datos biométricos, JWT (JSON Web Token), OAuth 2.0.
+- Passport - Strategies: es un middleware de autenticación de NodeJS. Cumple únicamente la función de autenticar solicitudes, por lo que delega todas las demás funciones a la aplicación ( esto mantiene el código limpio).
+- Passport-local: ingreso mediante usuario y contraseña, passport-openid: autenticación mediante OpenId, passport-oauth: autenticar mediante API de otros proveedores como de redes sociales (facebook, instagram, etc.).
+- npm install passport
+- npm install passport-local
+- npm install bcrypt
+- npm install connect-flash
+
+## Clase Nº26 - Estrategias de autenticación con redes sociales.
+- Para realizar el login desde facebook, debemos registrarnos como developers dentro de facebook: https://developers.facebook.com/
+- Twitter: npm install passport-twitter, realizar también el registro como developers.
+- JWT: JSON web token. Muy utilizado en las API Rest, para solucionar la falta de cookies. Es un método de autenticación.
+ -npm install jsonwebtoken
 
 
 
