@@ -1321,6 +1321,8 @@ b.clientes.deleteMany({ name: /^J/ }) ;
 
 
 ## Clase Nº24 - Cookies, Sesiones, Storages - Parte 2.
+- Persistencia de sessiones en file-store, mongo.
+- Session con redis, redislab
 
 
 ## Clase Nº25 - Autorización y autenticación.

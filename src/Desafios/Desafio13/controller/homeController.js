@@ -1,8 +1,8 @@
 
 const getDataHome = (req, res) => {
     const data = {
-        title: "Desafio Nº12 - Login por formulario",
-        content: "Login mediante formulario, MongoAtlas "
+        title: "Desafio Nº13",
+        content: "En la web se podrán ingresar productos, chatear en tiempo real"
     }
     return res.render(`index`, data);
 }

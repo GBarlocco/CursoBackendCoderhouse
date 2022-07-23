@@ -8,6 +8,7 @@ const passport = require('passport');
 const LocalStrategy = require('passport-local').Strategy;
 
 const mongoose = require('mongoose');
+const MongoStore = require(`connect-mongo`);
 const UserModel = require('./models/user');
 
 mongoose.connect('mongodb://localhost:27017/clase25');
@@ -17,11 +18,24 @@ const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
+optionsMongo = { useNewUrlParser: true, useUnifiedTopology: true };
+app.use(session({
+    store: MongoStore.create({
+        mongoUrl: "mongodb://localhost:27017/clase25",
+        mongoOptions: optionsMongo,
+        ttl: 10
+    }),
+    secret: '123456',
+    resave: true,
+    saveUninitialized: true
+}));
+
+/*
 app.use(session({
     secret: '1234',
     resave: true,
     saveUninitialized: true
-}));
+}));*/
 
 app.use(flash());
 app.set('view engine', 'ejs');
@@ -102,7 +116,7 @@ app.get('/login', (req, res) => {
 
 app.post('/login', passport.authenticate('login', { //indicamos el controlador de passport, llega desde el formulario de login.
     successRedirect: '/', //redirect es con método get, vamos a home.
-    failureRedirect: '/login', // redirect es con método get, vamos a /login de get.
+    failureRedirect: '/loginerror', // redirect es con método get, vamos a /login de get.
     failureFlash: true  // nos permite enviar mensajes.
 }));
 
@@ -112,16 +126,16 @@ app.get('/signup', (req, res) => {
 
 app.post('/signup', passport.authenticate('signup', {//indicamos el controlador de passport, llega desde el formulario de signup.
     successRedirect: '/', // redirect es con método get, vamos a home.
-    failureRedirect: '/signup', // redirect es con método get, vamos a /signup de signup.
+    failureRedirect: '/signuperror', // redirect es con método get, vamos a /signup de signup.
     failureFlash: true // nos permite enviar mensajes.
 }));
+
 
 app.get('/', (req, res, next) => {
     if (req.isAuthenticated()) {
         return next();
     }
     return res.redirect('/login');
-
 }, (req, res) => {
     return res.json(req.user);
 })

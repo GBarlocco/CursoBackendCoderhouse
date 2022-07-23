@@ -6,13 +6,13 @@ const sendMessage = document.getElementById(`sendMessage`);
 const messageInput = document.getElementById(`messageInput`);
 const messagesContainer = document.getElementById('messagesContainer');
 
-// Obtenemos el nombre de usario de los query params: ?userName=nombreIngresado
-const { userName } = Qs.parse(window.location.search, {
+// Obtenemos el nombre de usario de los query params: ?aliasName=nombreIngresado
+const { aliasName } = Qs.parse(window.location.search, {
     ignoreQueryPrefix: true
 });
 
 //Cliente --> Servidor: el cliente le envía al servidor el nombre del usuario.
-socket.emit(`joinChat`, { userName });
+socket.emit(`joinChat`, { aliasName });
 
 //Servidor --> Cliente: El servidor envía notificación.
 socket.on(`notification`, data => {
@@ -31,7 +31,7 @@ socket.on(`allMenssage`, data => {
             <div class="message-data text-right">
                     <span class="message-data-time">${message.author.id}:</span>
                 </div>
-                <div class="message other-message float-right"> ${message.text} </div>
+                <div class="message other-message float-right"> ${message.text.mensaje} </div>
             </li>
         `;
         messagesContainer.innerHTML += message;
@@ -47,7 +47,7 @@ socket.on(`users`, data => {
                 <li class="clearfix">
                     <img src=${user.avatar} alt="avatar">
                     <div class="about">
-                        <div class="name"> ${user.userName}</div>
+                        <div class="name"> ${user.aliasName}</div>
                         <div class="status"> <i class="fa fa-circle online"></i> Online </div>
                     </div>
                 </li>
@@ -73,7 +73,7 @@ socket.on(`message`, data => {
         <div class="message-data text-right">
                 <span class="message-data-time">${data.author.id}:</span>
             </div>
-            <div class="message other-message float-right"> ${data.text} </div>
+            <div class="message other-message float-right"> ${data.text.mensaje} </div>
         </li>
     `
     messagesContainer.innerHTML += message;

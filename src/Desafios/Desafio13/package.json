@@ -11,14 +11,19 @@
   "license": "ISC",
   "dependencies": {
     "connect-mongo": "^4.6.0",
+    "cookie-parser": "^1.4.6",
     "ejs": "^3.1.8",
     "express": "^4.18.1",
     "express-session": "^1.17.3",
     "faker": "^5.5.3",
-    "knex": "^2.1.0",
+    "flash": "^1.1.0",
+    "knex": "^2.2.0",
+    "mongoose": "^6.4.6",
     "mysql": "^2.18.1",
     "normalizr": "^3.6.2",
+    "passport": "^0.6.0",
+    "passport-local": "^1.0.0",
     "socket.io": "^4.5.1",
-    "sqlite3": "^5.0.8"
+    "sqlite3": "^5.0.10"
   }
 }

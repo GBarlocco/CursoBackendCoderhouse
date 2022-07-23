@@ -1,7 +1,7 @@
 const userLogin = (req, res) => {
-    const { userName } = req.body;
+    const { aliasName } = req.body;
 
-    return res.redirect(`/chat?userName=${userName}`);
+    return res.redirect(`/chat?aliasName=${aliasName}`);
 };
 
 module.exports = {
