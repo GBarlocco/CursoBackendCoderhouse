@@ -1356,7 +1356,8 @@ b.clientes.deleteMany({ name: /^J/ }) ;
 - 
 
 
-## Clase Nº28 - Global & Child process.
+## Clase Nº28 - Global & Child process. 
+-asd
 
 
 ## Clase Nº29 - Clusters & Escalabilidad.
