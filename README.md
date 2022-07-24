@@ -1333,11 +1333,13 @@ b.clientes.deleteMany({ name: /^J/ }) ;
 - Passport-local: ingreso mediante usuario y contraseña, passport-openid: autenticación mediante OpenId, passport-oauth: autenticar mediante API de otros proveedores como de redes sociales (facebook, instagram, etc.).
 - npm install passport
 - npm install passport-local
-- npm install bcrypt
+- npm install bcrypt 
 - npm install connect-flash
 
 ## Clase Nº26 - Estrategias de autenticación con redes sociales.
+- Passport es la librería que nos permitirá realizar autenticación desde el back: local, facebook, twitter.
 - Para realizar el login desde facebook, debemos registrarnos como developers dentro de facebook: https://developers.facebook.com/
+- passport-facebook
 - Twitter: npm install passport-twitter, realizar también el registro como developers.
 - JWT: JSON web token. Muy utilizado en las API Rest, para solucionar la falta de cookies. Es un método de autenticación.
  -npm install jsonwebtoken
