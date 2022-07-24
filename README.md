@@ -1341,9 +1341,25 @@ b.clientes.deleteMany({ name: /^J/ }) ;
 - Para realizar el login desde facebook, debemos registrarnos como developers dentro de facebook: https://developers.facebook.com/
 - passport-facebook
 - Twitter: npm install passport-twitter, realizar también el registro como developers.
-- JWT: JSON web token. Muy utilizado en las API Rest, para solucionar la falta de cookies. Es un método de autenticación.
- -npm install jsonwebtoken
+- JWT: JSON web token. Muy utilizado en las API Rest, para solucionar la falta de cookies. Son cadenas de datos que se pueden utilizar oara autenticar e intercambiar información entre un servidor y un cliente.
+- https://jwt.io/
+- npm install jsonwebtoken
+ - Flujo de funcionamiento del JWT:
+ [![imagen-2022-07-24-144827124.png](https://i.postimg.cc/gjCsvJf8/imagen-2022-07-24-144827124.png)](https://postimg.cc/bSR1PzYw)
+ 
+ ### comandos redis:
+ - iniciar redis: redis-cli
+ - mostrar todas las key: KEYS *
+ - obtener info de la key: GET ..... --> ejemplo: GET user:10229798612374820
 
+## Clase Nº27 - Proceso principal del servidor.
+- 
+
+
+## Clase Nº28 - Global & Child process.
+
+
+## Clase Nº29 - Clusters & Escalabilidad.
 
 
 ## Comandos útiles

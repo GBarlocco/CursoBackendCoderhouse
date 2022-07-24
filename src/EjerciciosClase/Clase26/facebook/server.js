@@ -43,13 +43,9 @@ passport.deserializeUser((id, done) => {
 });
 
 const facebookCallback = (token, tokenSecret, profile, done) => {
-    console.log(`ESTOY EN FACEBOOKCALLBACK`);
     console.log({ token, tokenSecret, profile });
 
-    return done(null, {
-        id: 123,
-        user: `Gastón`
-    });
+    return done(null, profile._json);
 };
 
 const facebookStrategy = new FacebookStrategy({
@@ -62,8 +58,21 @@ passport.use(facebookStrategy);
 
 app.get(`/auth/facebook`, passport.authenticate(`facebook`));
 
-app.get(`/auth/facebook/callback`, (req, res) => {
-    return res.send(`Estoy en callback facebook`);
+app.get(`/auth/facebook/callback`, passport.authenticate(`facebook`, {
+    successRedirect: '/profile',
+    failureRedirect: `/login`
+}));
+
+app.get(`/profile`, (req, res, next) => {
+    if (req.isAuthenticated()) {
+        return next();
+    }
+    return res.status(401).json({ error: `Necesitas iniciar sesión` });
+}, (req, res) => {
+    return res.json({
+        user: req.user,
+        session: req.session
+    }); //con passport obtenemos directamente el usuario con req.user
 });
 
 app.get(`/test`, (req, res) => {
