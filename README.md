@@ -1353,11 +1353,27 @@ b.clientes.deleteMany({ name: /^J/ }) ;
  - obtener info de la key: GET ..... --> ejemplo: GET user:10229798612374820
 
 ## Clase Nº27 - Proceso principal del servidor.
-- 
+- Los argumentos de la línea de comandos son cadena de texto que se utilizan para pasar información adicional a un programa, cuando se ejecuta una aplicación a través del interfaz de linea de comandos (CLI) de un sistema operativo. 
+- Variables de entorno: son variables externas a nuestra aplicación que residen en el sistema operativo o en el contenedor de la aplicación que se está ejecutando. Una variable de entorno es simplemente un nombre asignado a un valor.
+- El acceso a las variables de entonro en Node es compatible desde que inicia nuestra aplicación.
+- Cuando el proceso Node se inicia, proporciona automáticamente el acceso a todas las variables de entorno existentes mediante el objeto process.env. En el archivo config.js.
+- ¿Cómo setear variables de entorno?  --> set variable1=valor1 && variable2=valor2 && nodemon server --> set PORT=3001 && nodemon server
+- .env --> es un módulo de node que carga variables de entorno desde un archivo .env a process.env al momento de levantar la aplicación
+- npm install dotenv
 
 
 ## Clase Nº28 - Global & Child process. 
--asd
+- Objeto process: es una variable global disponible en Node. Cotiene diversos métodos, eventos y propiedades que nos sirve paa obtener datos.
+- Variables de argumento vs variables de proceso: las variables de argumento se setean al correr el programa, por ejemplo: //nodemon repaso 1 2 abc -name gaston, las variables de proceso estan en el sistema.
+- La mayor funcionalidad de process está contenida en la función ".on". Dicha función esta escuchando durante todo el proceso que se ejecuta, es por eso que solo se puede actuar sobre su callback.
+- Dentro de la funcion ".on" nos encontramos con diferentes eventos: "beforeExit", "exit", "uncaughtException".
+- Child process: Cuando ponemos en marcha un programa escrito en nodejs se dispone de un único hilo de ejecución. Child process es un nódulo de node que nos permite ejecutar procesos en segundo plano, de esta manera podremos tratar los sistemas bloqueantes.
+- Podemos crear procesos hijo de 4 formas diferentes: exec(), spawn(), execFile(), fork().
+- Proceso secundario con exe(): primer argumento se coloca el argumento que queremos ejecutar, segundo
+- Proceso secundario execFile(): la diferencia principal entre las funciones execFile() y exec() es que el primer argumento de execFile() es ahora una ruta a un archivo ejecutable en vez de un comando.
+- Proceso secundario spawn(): los datos se procesan y transfieren en pequeños trozos. Entonces, puede procesar una gran cantidad de datos sin usar demasiada memoria en un momento dado.
+- Proceso secundario fork(): nos permite ejecutar otro script de node evitando el bloqueo.
+
 
 
 ## Clase Nº29 - Clusters & Escalabilidad.
