@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <%- include(`./partials/head`) %>
+</head>
+
+<body>
+    <div class="container">
+
+        <header>
+            <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+                    <ul class="navbar-nav mr-auto">
+
+                        <li class="nav-item  %> ">
+                            <a class="nav-link" href="/login2">Login</a>
+                        </li>
+
+                    </ul>
+
+                </div>
+            </nav>
+
+        </header>
+
+        <main>
+
+            <div class="jumbotron">
+                <h1> Curso de programación NodeJs</h1>
+                <h2>
+                    <%= title %>
+                </h2>
+            </div>
+
+            <div>
+                <h4> Curso de programación NodeJs</h4>
+                <p>
+                    <%= content %>
+                </p>
+            </div>
+
+        </main>
+
+        <footer>
+            <%- include('./partials/footer') %>
+        </footer>
+    </div>
+</body>
+
+</html>

@@ -1360,6 +1360,7 @@ b.clientes.deleteMany({ name: /^J/ }) ;
 - ¿Cómo setear variables de entorno?  --> set variable1=valor1 && variable2=valor2 && nodemon server --> set PORT=3001 && nodemon server
 - .env --> es un módulo de node que carga variables de entorno desde un archivo .env a process.env al momento de levantar la aplicación
 - npm install dotenv
+- minimist
 
 
 ## Clase Nº28 - Global & Child process. 
@@ -1375,8 +1376,9 @@ b.clientes.deleteMany({ name: /^J/ }) ;
 - Proceso secundario fork(): nos permite ejecutar otro script de node evitando el bloqueo.
 
 
-
 ## Clase Nº29 - Clusters & Escalabilidad.
+- Cluster: Nos referimos al uso de subprocesos que permite aprovechar la capacidad del procesador del servidor donde se ejecuta la aplicación.
+- npm install cluster
 
 
 ## Comandos útiles
