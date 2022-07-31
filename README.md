@@ -1386,7 +1386,21 @@ b.clientes.deleteMany({ name: /^J/ }) ;
 - Nodemon nos reinicia el servidor cuando realizamos cambios, pero no sirve para producción, esta es la ventaja de Forever.
 - Forever no es un código invasivo, no necesitamos incorporar en el código.
 - npm install forever.
+- forever start serverForever.js  --> correr servidor
+- forever start serverForever.js 8081 --> correr servidor
+- forever stopall --> detener todos.
 - PM2: es un gestor de procesos, es decir, un programa que controla la ejecución de otro proceso. Permite chequear si el proceso se está ejecutando, reiniciar el servidor si este se detiene por alguna razón, gestionar los logs, etc. PM2 simplifica las aplicaciones de Node para ejecutar como cluster, pero de forma no invasiva ya que se encarga el mismo módulo de PM2 de resolver.
+- npm isntall -g pm2npm ins
+- pm2 start nombreDelServer.js
+- pm2 start nombreDelServer.js --watch    --> idem nodemon
+- pm2 delete all --> bajar todos los servidores activos.
+- pm2 logs --> observamos los logs que esten corriendo.
+- pm2 list --> tabla que ofrece que proceso de pm2 estan corriendo.
+- pm2 start nombreDelServer.js -i max --> levante el maximo de procesos posible asociado a nuestro nucleo. en mi caso levanta 8 procesos del (0-7) correspondiente a los nucleos del PC, levanta los server en modo cluster
+- pm2 stop numeroDelProceso --> ejemplo: pm2 stop 0
+- pm2 restart numeroDelProceso --> levanta nuevamente el proceso. --> ejemplo: pm2 restart 0
+- pm2 describe numeroDelProceso --> describe el proceso --> ejemplo: pm2 describe 0
+- pm2 monit --> nos da una ventana en tiempo real para monitorizar los procesos.
 
 
 ## Comandos útiles
