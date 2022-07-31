@@ -24,6 +24,12 @@ El dato devuelto al frontend será un objeto que contendrá como claves los núm
 
 Observación: utilizar routers y apis separadas para esta funcionalidad.
 
+## Software utilizados:
+- VSC
+- MongoDBCompass
+- XAMPP
+- MySQL Workbench
+
 ## Scripts
 
 #### Backend: `nodemon server.js`

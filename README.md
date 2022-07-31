@@ -1378,7 +1378,15 @@ b.clientes.deleteMany({ name: /^J/ }) ;
 
 ## Clase Nº29 - Clusters & Escalabilidad.
 - Cluster: Nos referimos al uso de subprocesos que permite aprovechar la capacidad del procesador del servidor donde se ejecuta la aplicación.
+- Node se ejecuta en un solo proceso (single thread), y entonces no aprovechamos la máxima capacidad que nos puede brindar un proocesador multicore (múltiple núcleos).
+- Al usar cluster, lo que hacemos es, en el caso de estar ejecutando sobre un servidor multicore, hacer uso de todos los núcleos del mismo, aprovechando al máximo su capacidad.
+- Node nos provee un módulo llamado cluster para hacer uso de esto. Permite crear facilmente procesos hijo. Lo que hace es clonar el worker maestro y delegarle la carga de trabajo a cada uno de ellos, de esa manera se evita la sobrecarga a un solo núcleo del procesador. Un mñetodo similar al que vimos con Fork, se crea una copia del proceso actual. Etnonces, el primer proceso se convierte en maestro y la copia en un trabajador o worker.
 - npm install cluster
+- Módulo forever: Cuando ejecutamos un proyecto de Node en un servidor en el que lo tengamos desplegadom dejamos la consola "ocupada" con esa aplicación. Si queremos seguir haciendo cosas o arrancar otro proyecto no podemos, ya que tendríamos que detener la aplicación pulsando Ctrl+C quedando la consola libre nuevamente. Por otro lado, si el servidor se parara por un fallo, nuestra aplicación no se arrancaría de nuevo. Ambos problemas se pueden resolver con el módulo Forever de node.
+- Nodemon nos reinicia el servidor cuando realizamos cambios, pero no sirve para producción, esta es la ventaja de Forever.
+- Forever no es un código invasivo, no necesitamos incorporar en el código.
+- npm install forever.
+- PM2: es un gestor de procesos, es decir, un programa que controla la ejecución de otro proceso. Permite chequear si el proceso se está ejecutando, reiniciar el servidor si este se detiene por alguna razón, gestionar los logs, etc. PM2 simplifica las aplicaciones de Node para ejecutar como cluster, pero de forma no invasiva ya que se encarga el mismo módulo de PM2 de resolver.
 
 
 ## Comandos útiles
