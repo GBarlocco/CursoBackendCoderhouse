@@ -1403,6 +1403,54 @@ b.clientes.deleteMany({ name: /^J/ }) ;
 - pm2 monit --> nos da una ventana en tiempo real para monitorizar los procesos.
 
 
+## Clase Nº30 - Proxy & Nginx
+- Proxy: hace de intermediario entre las conexiones de un cliente y un servidor, filtrando todos los paquetes entre ambos. Sin el proxy la conexiòn entre el cliente y el servidor es directa. Se utiliza para navegar por internet de forma más anónima ya que oculta las IP, sea del cliente o del servidor. Ofrece funcionalidades como control de acceso, registro de tráfico, mejora de rendimiento, etc.
+- Forward proxy vs reverse proxy.
+- Proxy directo ( forward): se coloca entre el cliente y la web. Recibe la peticion del cliente para acceder a un sitio web. Lo utiliza un cliente cuando quiere anonimizar su IP. Es útil para mejorar la privacidad, y para evitar restricciones de contenido geográfico ( contenido bloqueado en ciierta región)
+- Proxy invero (reverse): el que nos interesará en esta clase, el servidor proxy se coloca entre la web y el servidor de origen. El que se mantiene en el anonimato es el servidor de origen. Garantiza que ningún cliente se conecte directo con él y por ende mejore sus eguridad. También, es útil para distribuir la carga entre varios servidores web.
+- Ambos pueden trabajar juntos, ya que no se superponen.
+- Los clientes/usuarios pueden utilizar un p roxy directo y los servidores de origen un proxy inverso.
+- Proxy inverso en backend: existen varios beneficios, como: balancear la carga, seguirdad mejorada, potente caching (acelerador de web, cache), compresió superior, cifrado optimizado, monitoreo y registro del tráfico.
+- Nginx: lo utilizaremos en un servicio que ofrece AWS - Servicio: EC2.
+- https://portal.aws.amazon.com/billing/signup  --> registro en AWS
+
+
+## Clase Nº31 - Logs, profiling & debug - Parte I:
+
+## Clase Nº32 -  Logs, profiling & debug - Parte II:
+
+## Clase Nº33 - Product Cloud: Heroku:
+
+## Clase Nº34 - Product Cloud: AWS
+
+## Clase Nº35 - Envío de mensajes y seguridad
+
+## Clase Nº36 - Twilio & OWASP
+
+## Clase Nº37 - Versiones & Paquetes
+
+## Clase Nº38 - Arquitectura de capas
+
+## Clase Nº39 - Arquitectura del servidor: Diseño
+
+## Clase Nº40 - Arquitectura del servidor: Persistencia
+
+## Clase Nº41 - Desarrollo de un servidor web basado en capas completo
+
+## Clase Nº42 - Testeo de funcionalidades
+
+## Clase Nº43 - Documentación de APIs
+
+## Clase Nº44 - GraphQL
+
+## Clase Nº45 - Introducción a frameworks de desarrollo Backend - Parte I
+
+## Clase Nº46 - Introducción a frameworks de desarrollo Backend - Parte 2
+
+## Clase Nº47 - El futuro de Nodejs: Deno
+
+## Clase Nº48 - Desarrollo de una API REST en Deno
+
 ## Comandos útiles
 ..
 ### Git & GitHub:
