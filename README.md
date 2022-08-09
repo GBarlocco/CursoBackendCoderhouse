@@ -1414,6 +1414,192 @@ b.clientes.deleteMany({ name: /^J/ }) ;
 - Nginx: lo utilizaremos en un servicio que ofrece AWS - Servicio: EC2.
 - https://portal.aws.amazon.com/billing/signup  --> registro en AWS
 
+### Instancia PC en AWS - utilización de proxy inverso nginx
+- Primero debemos abrir la consola de comandos.
+- Conexión con PC virtual (instancia) de AWS:
+```
+Nos posicionamos en la carpeta que tiene la key:
+
+Ejecutamos:
+cd download
+```
+
+```
+Ejecutamos:
+ssh -i "coderhouse-clase30.pem" ubuntu@ec2-54-175-66-113.compute-1.amazonaws.com
+```
+- actualizar de forma general del sistema
+
+```
+Ejecutamos:
+sudo apt update && sudo apt upgrade --> 
+```
+
+- Reiniciamos la instancia desde la plataforma web de AWS
+
+- Instalamos nginx:
+```
+Ejecutamos:
+sudo apt install nginx -y 
+```
+
+- Revisamos el status de ngnix
+```
+Ejecutamos:
+systemctl status nginx
+```
+
+- Detener ngnix:
+```
+Ejecutamos:
+sudo systemctl stop nginx
+```
+
+- Run ngnix:
+```
+Ejecutamos:
+sudo systemctl start nginx
+```
+
+- Restart ngnix:
+```
+Ejecutamos:
+sudo systemctl restart nginx
+```
+
+-Realizar peticion http desde comando:
+```
+Ejecutamos:
+sudo curl http://localhost
+```
+
+- Esta peticion la podremos ver desde la IP publica de la instancia (ver plataforma AWS)
+
+- Existen dos archivos importantes para la configuración de nginx:
+```
+Ejecutamos:
+cat /etc/nginx/nginx.conf
+```
+
+- Abrimos sites-available:
+```
+Ejecutamos:
+cat /etc/nginx/sites-available/default
+```
+
+- Instalamos Node en su version V18, primero descargamos el paquete:
+```
+Ejecutamos:
+curl -fsSL https://deb.nodesource.com/setup_18.x | sudo -E bash -
+```
+- Instalamos node:
+```
+Ejecutamos:
+sudo apt-get install -y nodejs
+```
+
+- Verificamos la correcta instalación:
+```
+Ejecutamos:
+node -v
+```
+
+- Creamos una carpeta, creamos proyecto, etc.:
+```
+Ejecutamos:
+
+mkdir code
+ls
+cd code/
+
+mkdir node_app
+cd node_app/
+npm init -y
+```
+
+#### Creamos una API
+- instalamos express:
+
+```
+Ejecutamos:
+npm install express
+```
+- creamos archivo y editamos, mediante el edito vim podremos realizar esto:
+
+```
+Ejecutamos:
+vim index.js
+```
+
+```
+Precionamos "y" para editar:
+y
+```
+
+- Comenzamos a escribir el programa:
+```
+const express = require('express');
+const app = express();
+
+app.get('/', (req,res) =>{
+    return res.json({
+        return res.json({
+            status: `ok`
+        });
+    });
+});
+
+const PORT = process.argv[2] || 8080;
+
+app.listen(PORT, () => console.log(`Servidor corriendo en el puerto ${PORT}`));
+```
+
+- Para guardar precionamos "esc", luego ejecutamos: 
+```
+:wq
+```
+
+- Instalamos pm2:
+```
+sudo npm install -g pm2
+```
+
+- Levantamos con pm2 
+```
+pm2 start index.js --name="node app 1"-- 8081
+```
+
+- Para verificar que el servidor esta corriendo correctamente:
+```
+Ejecutamos:
+curl http://localhost:8081
+```
+
+#### ¿Cómo vinculo dicha app con nginx?
+- Para realizar esto deberemos modificar el archivo de configuración de nginx, entonces:
+
+```
+Ejecutamos:
+ sudo vim /etc/nginx/sites-available/default
+```
+
+- Comentamos la linea, ya que utilizaremos otra
+```
+root /var/www/html;
+``` 
+
+- Al tener problemas con el editor vim, instalamos nano
+```
+sudo apt install nano
+``` 
+
+```
+Ejecutamos:
+ sudo nano /etc/nginx/sites-available/default
+```
+- Para salir del editor: ctrl + o
+
+-Siempre que realicemos una modificacion en nginx, debemos reiniciar.
 
 ## Clase Nº31 - Logs, profiling & debug - Parte I:
 

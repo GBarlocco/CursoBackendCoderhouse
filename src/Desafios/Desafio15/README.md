@@ -77,7 +77,6 @@ pm2 stop server.js
 pm2 monit
 ```
 
-
 - Logs:
 ```
 pm2 logs
@@ -104,6 +103,11 @@ pm2 start server.js -i max
 ```
 pm2 start server.js -i max --watch
 ```
+
+### Comandos ejecutados / configuraciones - consigna 2:
+- descargar stable version / windows: http://nginx.org/en/download.html
+- abrir la ruta de la carpeta en CMD: ejecutar: start nginx.exe
+- Luego de realizar cambios en el archivo config: nginx.exe -t
 
 
 ## Software utilizados:
