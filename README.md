@@ -1601,7 +1601,26 @@ Ejecutamos:
 
 -Siempre que realicemos una modificacion en nginx, debemos reiniciar.
 
+
 ## Clase Nº31 - Logs, profiling & debug - Parte I:
+- Realizar aplicaciones operativas, tener cuidado con la complejidad.
+- Optimización de código: 
+
+1. Compresión con gzip: es un middleware de compresiòn de node para la compresión en aplicaciones express. No resulta la mejor opción con tráfico elevado en producción. Si realizamos un ejemplo sin usar compresión, supongamos que enviamos 100 veces la palabra "bienvenido", podremos ver un size = 11.2 kB --> se visualiza en chrome + F12. Al agregar compression como middleware, se puede ver claramente como disminuye el tiempo y el tamaño, entonces estamos optimizando. Recordar que es bloqueante, esto puede generar latencias. 
+
+2. Tratar de no utilizar funciones síncronas, buscar estrategias para evitar el bloqueo cuando se presentan estas funciones, por ejemplo con fork, cluster, pm2, etc.
+
+3. Realizar un registro correcto en la app. No usar console.log(), console.error(). Se recomienda utilizar logs.
+
+4. Manejar las excepciones de forma correcta. Las aplicaciones node se bloquean cuando encuentran una excepción no capturada. Para manejar las epciones se utiliza try/catch, promises, async/await.
+
+- Buenas practicas: entorno/configuración: 
+1. Variable de entorno, NODE_ENV.
+2. App se reinicia automáticamente: en producción no es deseable que la app se encuentre fuera de linea, entonces debemos asegurar la continuidad, y la misma se puede lograr reiniciando la app en caso de que se caiga --> utilizar pm2, forever.
+3. Ejecutar la app en un Cluster: en un sistema multinúcreo, podemos multiplicar el rendimiento de una aplicación Node iniciando un cluster de procesos. El cluster ejecuta varias instancias de la aplicación, idealmente una instancia en cada núcleo de CPU, lo que permite distribuir la carga y las tareas entre las instancias.
+4. Utilizar almacenamiento en memoria caché como nginx, mejora significativamente la velocidad y el rendimiento de la aplicación.
+5. Utilizar balanceador de cargas.
+6. Utilizar un proxy inverso para única entrada a la app.
 
 ## Clase Nº32 -  Logs, profiling & debug - Parte II:
 
