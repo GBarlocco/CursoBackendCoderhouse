@@ -1,5 +1,4 @@
 # Desafío 16: LOGGERS, GZIP y ANÁLISIS DE PERFORMANCE
-¡
 ## Consigna:
 ### 1:
 Incorporar al proyecto de servidor de trabajo la compresión gzip.
