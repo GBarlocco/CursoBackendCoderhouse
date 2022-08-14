@@ -1632,17 +1632,42 @@ Ejecutamos:
 
 
 ## Clase Nº32 -  Logs, profiling & debug - Parte II:
+
+### Test de carga con Artillery:
 - Artillery: se utiliza para realizar test de carga a servidores. Se utiliza para el backend. --> npm install artillery.
 - Con artillery podremos hacer prueba de cargas, ejecutando el comando:
 ```
-artillery quick --count 50 -n 40 http://localhost:8081?max=100000 > result_fork.txt
+artillery quick –-count 50 -n 40 http://localhost:8080?max=100000 > result_fork.txt
+ ```
+
+ - Prueba en midi fork:
+ ```
+artillery quick –-count 50 -n 40 http://localhost:8080?max=100000 > result_fork.txt
+ ```
+  - Prueba en midi cluster:
+ ```
+artillery quick –-count 50 -n 40 http://localhost:8080?max=100000 > result_cluster.txt
  ```
 - En el ejemplo anterior estaremos enviando 50 peticiones con 40 rafagas, el resultado será guardado en "result.fork"
 - Comparando los resultados del server en modo fork y modo closter podremos analizar la prueba de carga.
 
+### Analisis de rendimiento:
 - Profiling: analisis de rendimiento. Es la investigación del comportamiento de un programa. Desde google chrome podremos realizar este análisis. Desde node : npm install crypto
 
 - Curl: es una herramienta en línea de comandos y librería para transferir datos con URL. Se usa en linea de comandos o scripts para transferir datos.
+
+- prof: podemos prender el servidor en modo profiler, ejecutamos el server en modo prof --> --prof. Ejecuta y guarda información para analizar el funcionamiento.
+
+- inspect: para realizar este análisis desde google chrome, ejecutamos en modo inspect:
+ ```
+node --inspect profiler.js
+ ```
+ - Abrimos en chrome --> chrome://inspect/#devices
+
+ - Autocannon: es una dependencia de Node (similar a Artillery) que nos ayuda a realizar los test de carga. --> npm install autocannon
+ -  0x: es una dependenica que perfila y genera un gráfico de flama (flame graph) interactivo para un proceso Node en un solo comando. --> npm install -g 0x
+
+
 
 ## Clase Nº33 - Product Cloud: Heroku:
 

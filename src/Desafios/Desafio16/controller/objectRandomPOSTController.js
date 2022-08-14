@@ -9,6 +9,7 @@ const postObjectRandom = (req, res) => {
     objectRandom.on(`message`, dataRandom => {
         return res.send(dataRandom);
     });
+
 }
 
 module.exports = {

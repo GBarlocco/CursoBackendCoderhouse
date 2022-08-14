@@ -9,6 +9,8 @@ const info = (req, res) => {
         cantProcesadores: numCPUs,
         memoria: JSON.stringify(process.memoryUsage().rss, null, 2),
     }
+    
+    console.log(data);
     return res.render('info', data);
 }
 

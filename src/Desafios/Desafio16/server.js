@@ -39,49 +39,12 @@ const loggerConsole = log4js.getLogger(`default`);
 const loggerArchiveWarn = log4js.getLogger(`warnArchive`);
 const loggerArchiveError = log4js.getLogger(`errorArchive`);
 
-//nodemon server --> ejecuta en puerto 8080
-//nodemon server -p xxxx --> ejecuta en puerto xxxx
-
-
-// ----------------------------------- Desafio 15 ----------------------------
-const cluster = require(`cluster`);
-const numCPUs = require(`os`).cpus().length;
-
-const FORK = args.FORK;
-const CLUSTER = args.CLUSTER;
-
-
-const PORT = args.p || 8080;
-const runServer = (PORT) => {
-    httpServer.listen(PORT, () => loggerConsole.debug(`Servidor escuchando el puerto ${PORT}`));
-}
-
-if (CLUSTER) {
-    if (cluster.isMaster) {
-
-        for (let i = 0; i < numCPUs; i++) {
-            cluster.fork();
-        }
-
-        cluster.on(`exit`, (worker, code, signal) => {
-            cluster.fork();
-        });
-
-    } else {
-        runServer(PORT);
-    }
-
-} else {
-    runServer(PORT);
-}
-
-// ----------------------------------- Desafio 15 ----------------------------
-
 let users = [];
 
-//CRUD db
+//CRUD DB --> socket.io
 const { selectAllProducts } = require(`./db/selectAllProducts`);
 const { insertProduct } = require(`./db/insertProduct`);
+
 
 //Middlewares
 app.use((req, res, next) => {
@@ -105,14 +68,17 @@ app.use(session({
 app.use(passport.initialize());
 app.use(passport.session());
 
+
 //Authentication
 login();
 signup();
 serializeUser();
 deserializeUser();
 
+
 //Instancia contenedores:
 const storageMessages = new MessageDAOMongoDB();
+
 
 //Routers import
 const homeRouter = require(`./routers/homeRouter`);
@@ -133,6 +99,7 @@ const errorLogRouter = require(`./routers/errorLogRouter`);
 const errorSignupRouter = require(`./routers/errorSignupRouter`);
 const logoutRouter = require(`./routers/logoutRouter`);
 
+
 //Routers
 app.use(`/`, homeRouter);
 app.use(`/form`, formRouter);
@@ -151,13 +118,11 @@ app.use(`/bienvenida`, bienvenidaRouter);
 app.use(`/errorLog`, errorLogRouter);
 app.use(`/errorSignup`, errorSignupRouter);
 app.use(`/logout`, logoutRouter);
-
 app.post('/login2', passport.authenticate('login', { //indicamos el controlador de passport, llega desde el formulario de login.
     successRedirect: '/bienvenida', //redirect es con método get, vamos a home.
     failureRedirect: `/errorLog`, // redirect es con método get, vamos a /login de get.
     failureFlash: true  // nos permite enviar mensajes.
 }));
-
 app.post('/signup2', passport.authenticate('signup', {//indicamos el controlador de passport, llega desde el formulario de signup.
     successRedirect: '/', // redirect es con método get, vamos a home.
     failureRedirect: `/errorSignup`, // redirect es con método get, vamos a /signup de signup.
@@ -283,3 +248,39 @@ app.use((req, res, next) => {
     res.status(404).json({ error: -2, descripcion: `ruta ${req.originalUrl} metodo ${req.method} no implementada` });
     next();
 });
+
+
+// Servidor: modo CLUSTER / FORK
+
+//nodemon server --> ejecuta en puerto 8080
+//nodemon server -p xxxx --> ejecuta en puerto xxxx
+
+const cluster = require(`cluster`);
+const numCPUs = require(`os`).cpus().length;
+
+const CLUSTER = args.CLUSTER;
+
+
+const PORT = args.p || 8080;
+const runServer = (PORT) => {
+    httpServer.listen(PORT, () => loggerConsole.debug(`Servidor escuchando el puerto ${PORT}`));
+}
+
+if (CLUSTER) {
+    if (cluster.isMaster) {
+
+        for (let i = 0; i < numCPUs; i++) {
+            cluster.fork();
+        }
+
+        cluster.on(`exit`, (worker, code, signal) => {
+            cluster.fork();
+        });
+
+    } else {
+        runServer(PORT);
+    }
+
+} else {
+    runServer(PORT);
+}

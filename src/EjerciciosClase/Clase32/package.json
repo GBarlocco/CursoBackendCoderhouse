@@ -10,6 +10,8 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "artillery": "^1.7.9"
+    "0x": "^5.4.0",
+    "artillery": "^1.7.9",
+    "autocannon": "^7.9.0"
   }
 }

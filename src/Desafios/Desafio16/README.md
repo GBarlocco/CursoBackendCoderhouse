@@ -32,6 +32,9 @@ Luego utilizaremos Autocannon en línea de comandos, emulando 100 conexiones con
 - Realizar un informe en formato pdf sobre las pruebas realizadas incluyendo los resultados de todos los test (texto e imágenes). Al final incluir la conclusión obtenida a partir del análisis de los datos.
 
 
+### Solución:
+- Desafio16 - Loggers - Gzip - Análisis de performance - Gastón Barlocco.pdf
+
 
 ## Software utilizados:
 - VSC

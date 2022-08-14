@@ -1,3 +1,9 @@
+// Terminal 1: Ejecutar el server: nodemon server 8080 FORK
+// Terminal 2: artillery quick –-count 50 -n 40 http://localhost:8080?max=100000 > result_fork.txt
+
+// Terminal 1: Ejecutar el server: nodemon server 8080 CLUSTER
+// Terminal 2:  artillery quick –-count 50 -n 40 http://localhost:8080?max=100000 > result_cluster.txt
+
 const express = require('express');
 const cluster = require(`cluster`);
 const { cpus } = require(`os`);
