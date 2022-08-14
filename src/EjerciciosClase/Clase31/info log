@@ -1,0 +1,16 @@
+[2022-08-10T19:30:19.357] [WARN] archivo - Log2 de warn
+[2022-08-10T19:30:19.357] [ERROR] archivo - Log2 de error
+[2022-08-10T19:30:19.357] [FATAL] archivo - Log2 de fatal
+[2022-08-10T19:30:20.402] [WARN] archivo - Log2 de warn
+[2022-08-10T19:30:20.404] [ERROR] archivo - Log2 de error
+[2022-08-10T19:30:20.404] [FATAL] archivo - Log2 de fatal
+[2022-08-10T19:32:09.270] [WARN] archivo - Log2 de warn
+[2022-08-10T19:32:09.270] [ERROR] archivo - Log2 de error
+[2022-08-10T19:32:09.271] [FATAL] archivo - Log2 de fatal
+[2022-08-10T19:32:09.271] [ERROR] todos - Log3 de error
+[2022-08-10T19:32:09.271] [FATAL] todos - Log3 de fatal
+[2022-08-13T10:54:22.152] [WARN] archivo - Log2 de warn
+[2022-08-13T10:54:22.153] [ERROR] archivo - Log2 de error
+[2022-08-13T10:54:22.153] [FATAL] archivo - Log2 de fatal
+[2022-08-13T10:54:22.153] [ERROR] todos - Log3 de error
+[2022-08-13T10:54:22.154] [FATAL] todos - Log3 de fatal

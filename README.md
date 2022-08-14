@@ -1622,7 +1622,27 @@ Ejecutamos:
 5. Utilizar balanceador de cargas.
 6. Utilizar un proxy inverso para única entrada a la app.
 
+- Logs: cuando llevamos un sistema a producción, uno de los elementos mas importantes a la hora de detectar cualquier problema o anomalía son los logs. Son librerias para facilitar la impresión de un identificador único.
+
+- Log4js: es una de las librería de loggers más utilizada. --> npm install log4js
+
+- Winston: es una librería con soporte para múltiples transportes diseñada para el registro simple y universal. Un transporte es esencialmente un dispositivo que nos permite almacenar mensajes personalizados de seguimiento (al igual que console.log) en un archivo plano o desplegado por consola. --> npm install winston.
+
+- Pino: librería moderna. --> npm install pino. Solo se puede loggear por consola, no por file.
+
+
 ## Clase Nº32 -  Logs, profiling & debug - Parte II:
+- Artillery: se utiliza para realizar test de carga a servidores. Se utiliza para el backend. --> npm install artillery.
+- Con artillery podremos hacer prueba de cargas, ejecutando el comando:
+```
+artillery quick --count 50 -n 40 http://localhost:8081?max=100000 > result_fork.txt
+ ```
+- En el ejemplo anterior estaremos enviando 50 peticiones con 40 rafagas, el resultado será guardado en "result.fork"
+- Comparando los resultados del server en modo fork y modo closter podremos analizar la prueba de carga.
+
+- Profiling: analisis de rendimiento. Es la investigación del comportamiento de un programa. Desde google chrome podremos realizar este análisis. Desde node : npm install crypto
+
+- Curl: es una herramienta en línea de comandos y librería para transferir datos con URL. Se usa en linea de comandos o scripts para transferir datos.
 
 ## Clase Nº33 - Product Cloud: Heroku:
 

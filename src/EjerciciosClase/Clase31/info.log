@@ -1,0 +1,5 @@
+[2022-08-13T12:20:29.618] [WARN] archivo - Log2 de warn
+[2022-08-13T12:20:29.618] [ERROR] archivo - Log2 de error
+[2022-08-13T12:20:29.619] [FATAL] archivo - Log2 de fatal
+[2022-08-13T12:20:29.619] [ERROR] todos - Log3 de error
+[2022-08-13T12:20:29.620] [FATAL] todos - Log3 de fatal

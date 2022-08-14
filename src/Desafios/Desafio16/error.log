@@ -1,0 +1,2 @@
+[2022-08-13T12:26:52.748] [ERROR] errorArchive - Error ReferenceError: selectAllProucts is not defined
+[2022-08-13T12:47:26.197] [ERROR] errorArchive - Error ReferenceError: insertPoduct is not defined

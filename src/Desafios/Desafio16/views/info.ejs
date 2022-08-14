@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <%- include(`./partials/head`) %>
+</head>
+
+<body>
+    <div class="container">
+        <header>
+            <%- include('./partials/header', {current: `info`}) %>
+        </header>
+        <main>
+            <div class="jumbotron">
+                <h2 class="fw-bold mb-2 text-uppercase">Info: datos de proceso</h2>
+                <p>Consigna 1 desafio 14</p>
+            </div>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">Directorio actual</th>
+                        <th scope="col">ID</th>
+                        <th scope="col">Version node</th>
+                        <th scope="col">Ruta del ejecutable</th>
+                        <th scope="col">Sistema operativo</th>
+                        <th scope="col">Uso de memoria</th>
+                        <th scope="col">Nº procesadores</th>
+                    </tr>
+                </thead>
+                <tbody id="tbodyProducts">
+
+                    <tr>
+                        <td>
+                            <%= directorioActual %>
+                        </td>
+
+                        <td>
+                            <%= idProceso %>
+                        </td>
+
+                        <td>
+                            <%= vNode %>
+                        </td>
+
+                        <td>
+                            <%= rutaEjecutable %>
+                        </td>
+
+                        <td>
+                            <%= sistemaOperativo %>
+                        </td>
+
+                        <td>
+                            <%= memoria %>
+                        </td>
+
+                        <td>
+                            <%= cantProcesadores %>
+                        </td>
+
+                    </tr>
+
+                </tbody>
+            </table>
+
+        </main>
+
+        <footer>
+            <%- include('./partials/footer') %>
+        </footer>
+
+    </div>
+
+</body>
+
+</html>

@@ -1,0 +1,38 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+    <ul class="navbar-nav mr-auto">
+
+      <li class="nav-item  <% if (current == `formProductos`) { %> active <% } %> ">
+        <a class="nav-link" href="/form">Ingresar producto</a>
+      </li>
+
+      <li class="nav-item  <% if (current == `faker`) { %> active <% } %> ">
+        <a class="nav-link" href="/api/productos-test">Faker</a>
+      </li>
+
+      <li class="nav-item  <% if (current == `login`) { %> active <% } %> ">
+        <a class="nav-link" href="/login">Chat</a>
+      </li>
+
+      <li class="nav-item  <% if (current == `info`) { %> active <% } %> ">
+        <a class="nav-link" href="/info">Info</a>
+      </li>
+
+      <li class="nav-item  <% if (current == `info`) { %> active <% } %> ">
+        <a class="nav-link" href="/infoCompression">infoCompression</a>
+      </li>
+
+      
+      <li class="nav-item  <% if (current == `objectRandom`) { %> active <% } %> ">
+        <a class="nav-link" href="/api/randoms">ObjectRandom</a>
+      </li>
+
+      <li class="nav-item  <% if (current == `logout`) { %> active <% } %> ">
+        <a class="nav-link" href="/logout">Salir</a>
+      </li>
+
+    </ul>
+
+  </div>
+</nav>
