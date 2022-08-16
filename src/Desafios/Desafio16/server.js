@@ -105,10 +105,8 @@ signup();
 serializeUser();
 deserializeUser();
 
-
 //Instancia contenedores:
 const storageMessages = new MessageDAOMongoDB();
-
 
 //Routers import
 const homeRouter = require(`./routers/homeRouter`);
@@ -128,7 +126,6 @@ const bienvenidaRouter = require(`./routers/bienvenidaRouter`);
 const errorLogRouter = require(`./routers/errorLogRouter`);
 const errorSignupRouter = require(`./routers/errorSignupRouter`);
 const logoutRouter = require(`./routers/logoutRouter`);
-
 
 //Routers
 app.use(`/`, homeRouter);
@@ -159,14 +156,11 @@ app.post('/signup2', passport.authenticate('signup', {//indicamos el controlador
     failureFlash: true // nos permite enviar mensajes.
 }));
 
-
 //Socket products:
 socketIoChat(io);
 
-
 //Socket chat:
 socketIoProducts(io);
-
 
 //Middlewares
 app.use((req, res, next) => {
