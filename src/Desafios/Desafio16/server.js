@@ -3,7 +3,7 @@ const { Server: HttpServer } = require(`http`);
 const { Server: IOServer } = require(`socket.io`);
 
 const MessageDAOMongoDB = require(`./daos/MessageDAOMongoDB`);
-const mongoose = require('mongoose');
+
 const MongoStore = require(`connect-mongo`);
 
 const passport = require('passport');
@@ -33,18 +33,48 @@ const deserializeUser = require(`./authentication/deserializeUser`);
 app.set(`views`, `./views`);
 app.set(`view engine`, `ejs`);
 
+const socketIoChat = require(`./sockets/socketChat`);
+const socketIoProducts = require(`./sockets/socketProducts`);
+
 const args = parseArgs(process.argv.slice(2));
 
 const loggerConsole = log4js.getLogger(`default`);
 const loggerArchiveWarn = log4js.getLogger(`warnArchive`);
 const loggerArchiveError = log4js.getLogger(`errorArchive`);
 
-let users = [];
 
-//CRUD DB --> socket.io
-const { selectAllProducts } = require(`./db/selectAllProducts`);
-const { insertProduct } = require(`./db/insertProduct`);
+// Servidor: modo CLUSTER / FORK
+//nodemon server --> ejecuta en puerto 8080
+//nodemon server -p xxxx --> ejecuta en puerto xxxx
 
+const cluster = require(`cluster`);
+const numCPUs = require(`os`).cpus().length;
+
+const CLUSTER = args.CLUSTER;
+
+const PORT = args.p || 8080;
+const runServer = (PORT) => {
+    httpServer.listen(PORT, () => loggerConsole.debug(`Servidor escuchando el puerto ${PORT}`));
+}
+
+if (CLUSTER) {
+    if (cluster.isMaster) {
+
+        for (let i = 0; i < numCPUs; i++) {
+            cluster.fork();
+        }
+
+        cluster.on(`exit`, (worker, code, signal) => {
+            cluster.fork();
+        });
+
+    } else {
+        runServer(PORT);
+    }
+
+} else {
+    runServer(PORT);
+}
 
 //Middlewares
 app.use((req, res, next) => {
@@ -130,113 +160,15 @@ app.post('/signup2', passport.authenticate('signup', {//indicamos el controlador
 }));
 
 
-//socket Products
-io.on(`connection`, socket => {
-    socket.on(`sendProduct`, async () => {
-        try {
-            const allProductsFromDB = await selectAllProducts();
-
-            //Servidor --> Cliente : Se envian todos los mensajes al usuario que se conectó.
-            socket.emit(`allProducts`, allProductsFromDB);
-        } catch (err) {
-            loggerConsole.error(`Error ${err}`)
-            loggerArchiveError.error(`Error ${err}`)
-        }
-    });
-
-    socket.on(`addProducts`, async data => {
-        try {
-            const newProducto = {
-                title: `${data.name}`,
-                price: Number(data.price),
-                thumbnail: `${data.img}`
-            };
-
-            const product = await insertProduct(newProducto);
-
-            //Envio el producto nuevo a todos los clientes conectados
-            io.sockets.emit(`refreshTable`, [product]);
-
-        } catch (err) {
-            loggerConsole.error(`Error ${err}`)
-            loggerArchiveError.error(`Error ${err}`)
-        }
-    });
-});
-
-//socket chat
-io.on(`connection`, socket => {
-    //Cliente --> Servidor: joinChat event
-    socket.on(`joinChat`, async ({ aliasName }) => {
-        users.push({
-            id: socket.id,
-            aliasName: aliasName,
-            avatar: "https://cdn-icons-png.flaticon.com/512/456/456141.png"
-        });
-
-        //Servidor --> Cliente : bienvenida al usuario que se conecta.
-        socket.emit(`notification`, `Bienvenido ${aliasName}`);
-
-        try {
-            //const allMessageFromDB = await selectAllMessage();
-            const allMessageFromDB = await storageMessages.getAll();
+//Socket products:
+socketIoChat(io);
 
 
-            //Servidor --> Cliente : Se envian todos los mensajes al usuario que se conectó.
-            socket.emit(`allMenssage`, allMessageFromDB);
-        } catch (err) {
-            return res.status(404).json({
-                error: `Error ${err}`
-            });
-        }
+//Socket chat:
+socketIoProducts(io);
 
-        //Servidor --> Cliente : bienvenida a todos los usuarios menos al que inicio la conexión:
-        socket.broadcast.emit(`notification`, `${aliasName} se ha unido al chat`);
 
-        //Servidor --> cliente: enviamos a todos los usuarios la lista actualizada de participantes:
-        io.sockets.emit(`users`, users);
-    });
-
-    //Cliente --> Servidor: messageInput event
-    socket.on(`messageInput`, async data => {
-        const user = users.find(user => user.id === socket.id);
-
-        const newMessage = {
-            author: {
-                id: user.aliasName,
-                nombre: `Hard-code: Nombre del usuario`,
-                apellido: `Hard-code: Apellido del usuario`,
-                edad: `Hard-code: Edad`,
-                alias: `Hard-code: alias del usuario`,
-                avatar: `Hard-code: url avatar`
-            },
-            text: {
-                id: mongoose.Types.ObjectId(),
-                mensaje: data,
-            }
-        }
-
-        await storageMessages.save(newMessage);
-
-        //Servidor --> Cliente: envio mensaje
-        socket.emit(`message`, newMessage);
-
-        socket.broadcast.emit(`message`, newMessage);
-    });
-
-    // Cliente --> Servidor: un cliente se desconecta.
-    socket.on('disconnect', reason => {
-        const user = users.find(user => user.id === socket.id);
-        users = users.filter(user => user.id !== socket.id);
-
-        if (user) {
-            socket.broadcast.emit(`notification`, `${user.aliasName} se ha ido del chat`);
-        }
-
-        io.sockets.emit(`users`, users);
-    });
-});
-
+//Middlewares
 app.use((req, res, next) => {
     loggerConsole.warn(`
     Estado: 404
@@ -248,39 +180,3 @@ app.use((req, res, next) => {
     res.status(404).json({ error: -2, descripcion: `ruta ${req.originalUrl} metodo ${req.method} no implementada` });
     next();
 });
-
-
-// Servidor: modo CLUSTER / FORK
-
-//nodemon server --> ejecuta en puerto 8080
-//nodemon server -p xxxx --> ejecuta en puerto xxxx
-
-const cluster = require(`cluster`);
-const numCPUs = require(`os`).cpus().length;
-
-const CLUSTER = args.CLUSTER;
-
-
-const PORT = args.p || 8080;
-const runServer = (PORT) => {
-    httpServer.listen(PORT, () => loggerConsole.debug(`Servidor escuchando el puerto ${PORT}`));
-}
-
-if (CLUSTER) {
-    if (cluster.isMaster) {
-
-        for (let i = 0; i < numCPUs; i++) {
-            cluster.fork();
-        }
-
-        cluster.on(`exit`, (worker, code, signal) => {
-            cluster.fork();
-        });
-
-    } else {
-        runServer(PORT);
-    }
-
-} else {
-    runServer(PORT);
-}

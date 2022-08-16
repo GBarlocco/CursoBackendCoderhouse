@@ -1668,8 +1668,9 @@ node --inspect profiler.js
  -  0x: es una dependenica que perfila y genera un gráfico de flama (flame graph) interactivo para un proceso Node en un solo comando. --> npm install -g 0x
 
 
-
 ## Clase Nº33 - Product Cloud: Heroku:
+- Control de versiones: forma de registrar los cambios realizados sobre archivos a lo largo del tiempo, permitiendo recuperar versiones más adelante.
+- Git: es una herramienta para llevar a cabo el control de versiones. Existen diferentes conceptos: remoto, local, working directory, versio, commit, tag, push, pull, conflictos, resolución de conflicto, branch, merge
 
 ## Clase Nº34 - Product Cloud: AWS
 

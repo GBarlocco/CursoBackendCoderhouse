@@ -730,3 +730,4 @@
 [2022-08-14T11:58:32.272] [WARN] warnArchive - Estado: 404, Ruta consultada: /json, Metodo GET
 [2022-08-14T11:58:32.536] [WARN] warnArchive - Estado: 404, Ruta consultada: /json/version, Metodo GET
 [2022-08-14T11:58:32.545] [WARN] warnArchive - Estado: 404, Ruta consultada: /json, Metodo GET
+[2022-08-15T21:34:27.926] [WARN] warnArchive - Estado: 404, Ruta consultada: /api/formProductos.js, Metodo GET
