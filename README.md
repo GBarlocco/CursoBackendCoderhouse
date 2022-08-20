@@ -1670,9 +1670,16 @@ node --inspect profiler.js
 
 ## Clase Nº33 - Product Cloud: Heroku:
 - Control de versiones: forma de registrar los cambios realizados sobre archivos a lo largo del tiempo, permitiendo recuperar versiones más adelante.
-- Git: es una herramienta para llevar a cabo el control de versiones. Existen diferentes conceptos: remoto, local, working directory, versio, commit, tag, push, pull, conflictos, resolución de conflicto, branch, merge
+- Git: es una herramienta para llevar a cabo el control de versiones. Existen diferentes conceptos: remoto, local, working directory, versio, commit, tag, push, pull, conflictos, resolución de conflicto, branch, merge.
+- Paas: plataforma como servicio, es un entorno de desarrollo e implementación completo en la nube. Cuenta con recursos que permiten generar "de todo": desde aplicaciones sencillas basadas en la nube, hasta aplicaciones empresariales sofisiticadas habilitadas para la nube.
+- Heroku: plataforma como servicio --> paas. Las aplicaciones se corren desde un servidor Heroku usando Heroku DNS
+- Para utilizar Heroku desde comandos, instalamos --> Install the Heroku CLI
 
 ## Clase Nº34 - Product Cloud: AWS
+- AWS: plataforma en la nuve muy adoptada y completa.
+- Ofrece más de 200 servicios.
+- Creación de cuenta --> https://aws.amazon.com/es/getting-started/hands-on/deploy-nodejs-web-app/
+- Elastic BeanStalk.
 
 ## Clase Nº35 - Envío de mensajes y seguridad
 
