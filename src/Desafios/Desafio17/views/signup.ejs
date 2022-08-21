@@ -5,23 +5,21 @@
   <meta charset="UTF-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Registro - medidores de gas</title>
+  <title>Desafío 17 - Heroku</title>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css"
     integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
 </head>
 
 <body>
-  <div class="container">
+  <header>
+    <%- include('./partials/header', {current: `formProductos`}) %>
+  </header>
 
-    <header>
-        <%- include('./partials/header', {current: `formProductos`}) %>
-    </header>
-
-    <main>
-
+  <main>
+    <div class="jumbotron">
       <div class="jumbotron">
         <form action="/signup2" method="POST">
-          <h2 class="fw-bold mb-2 text-uppercase">Signup</h2>
+          <h1 class="display-4">Signup</h1>
 
           <p>Usuario</p>
           <div class="form-group">
@@ -44,13 +42,14 @@
           <button class="btn btn-primary" type="submit">Registrarse</button>
         </form>
       </div>
+    </div>
 
-    </main>
+  </main>
 
-    <footer>
-      <%- include('./partials/footer') %>
-    </footer>
-  </div>
+  <footer>
+    <%- include('./partials/footer') %>
+  </footer>
+
 </body>
 
 </html>

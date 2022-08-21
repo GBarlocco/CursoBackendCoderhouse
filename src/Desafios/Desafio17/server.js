@@ -49,7 +49,8 @@ const numCPUs = require(`os`).cpus().length;
 
 const CLUSTER = args.CLUSTER;
 
-const PORT = args.p || 8080;
+// const PORT = args.p || 8080;
+const PORT = 8080;
 const runServer = (PORT) => {
     httpServer.listen(PORT, () => loggerConsole.debug(`Servidor escuchando el puerto ${PORT}`));
 }

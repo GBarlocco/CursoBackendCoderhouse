@@ -1,12 +1,14 @@
-//CRUD DB
-const { selectAllProducts } = require(`../db/selectAllProducts`);
-const { insertProduct } = require(`../db/insertProduct`);
+const ProductsDAOMongoDB = require(`../daos/ProductsDAOMongoDB`);
+
+//Instancia contenedores:
+const storageProducts = new ProductsDAOMongoDB();
 
 const socketIoProducts = (io) => {
     //socket Products
     io.on(`connection`, socket => {
         socket.on(`sendProduct`, async () => {
-            const allProductsFromDB = await selectAllProducts();
+            //const allProductsFromDB = await selectAllProducts();
+            const allProductsFromDB = await storageProducts.getAll();
 
             //Servidor --> Cliente : Se envian todos los mensajes al usuario que se conectó.
             socket.emit(`allProducts`, allProductsFromDB);
@@ -20,10 +22,11 @@ const socketIoProducts = (io) => {
                 thumbnail: `${data.img}`
             };
 
-            const product = await insertProduct(newProducto);
+            //const product = await insertProduct(newProducto);
+            const product = await storageProducts.save(newProducto);
 
             //Envio el producto nuevo a todos los clientes conectados
-            io.sockets.emit(`refreshTable`, [product]);
+            io.sockets.emit(`refreshTable`, product);
 
         });
     });

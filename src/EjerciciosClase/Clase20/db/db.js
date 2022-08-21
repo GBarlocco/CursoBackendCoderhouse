@@ -7,3 +7,4 @@ const connection = mongoose.connect(URL, {
 });
 
 module.exports = connection;
+

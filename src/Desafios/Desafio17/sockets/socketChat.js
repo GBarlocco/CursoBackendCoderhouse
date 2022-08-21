@@ -7,8 +7,8 @@ const storageMessages = new MessageDAOMongoDB();
 let users = [];
 
 const socketIoChat = (io) => {
-    //socket chat
     io.on(`connection`, socket => {
+        
         //Cliente --> Servidor: joinChat event
         socket.on(`joinChat`, async ({ aliasName }) => {
             users.push({
@@ -20,10 +20,7 @@ const socketIoChat = (io) => {
             //Servidor --> Cliente : bienvenida al usuario que se conecta.
             socket.emit(`notification`, `Bienvenido ${aliasName}`);
 
-
-            //const allMessageFromDB = await selectAllMessage();
             const allMessageFromDB = await storageMessages.getAll();
-
 
             //Servidor --> Cliente : Se envian todos los mensajes al usuario que se conectó.
             socket.emit(`allMenssage`, allMessageFromDB);

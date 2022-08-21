@@ -32,7 +32,21 @@ Luego utilizaremos Autocannon en línea de comandos, emulando 100 conexiones con
 
 
 ### Solución:
-- Desafio16 - Loggers - Gzip - Análisis de performance - Gastón Barlocco.pdf
+Importante:
+- Se debe contar con "start": "node server.js" en package.json
+
+#### CMD: 
+- heroku login
+- git init
+- git remote -v
+- heroku git:remote -a coderhouse-desafio17-barlocco
+- git add .
+- git commit -m "Desafio 17 - Heroku"
+- git push heroku master  --> detecta que es una aplicaciones node, genera variables de entorno utilizadas en heroku, etc.
+- Disponible en: https://coderhouse-desafio17-barlocco.herokuapp.com/ 
+
+Importante:
+- Se debe contar con "start": "node server.js" en package.json
 
 
 ## Software utilizados:

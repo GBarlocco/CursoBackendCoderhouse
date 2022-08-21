@@ -28,10 +28,12 @@ addProduct.addEventListener('click', () => {
 
 //Servidor --> Cliente: Envio los datos para agregar a la tabla.
 socket.on(`refreshTable`, data => {
+    console.log("data");
+    console.log(data);
     product = `
         <tr>
             <th scope="row">
-                ${data[0].id}
+                ${data[0]._id}
             </th>
             <td>
                 ${data[0].title}
@@ -54,7 +56,7 @@ socket.on(`allProducts`, data => {
         product = `
             <tr>
                 <th scope="row">
-                    ${product.id}
+                    ${product._id}
                 </th>
                 <td>
                     ${product.title}
