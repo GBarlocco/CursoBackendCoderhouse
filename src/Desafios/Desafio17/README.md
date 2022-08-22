@@ -10,7 +10,6 @@
 
 ### Solución:
 - https://coderhouse-desafio17.herokuapp.com
-Importante:
 
 #### CMD: 
 - heroku login
