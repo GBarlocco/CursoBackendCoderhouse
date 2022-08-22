@@ -23,6 +23,8 @@ const log4js = require('./utils/logs');
 const dotenv = require(`dotenv`);
 dotenv.config();
 
+const mongoURI =process.env.URL_MONGO
+
 const login = require(`./authentication/login`);
 const signup = require(`./authentication/signup`);
 const serializeUser = require(`./authentication/serializeUser`);
@@ -50,7 +52,7 @@ const numCPUs = require(`os`).cpus().length;
 const CLUSTER = args.CLUSTER;
 
 // const PORT = args.p || 8080;
-const PORT = 8080;
+const PORT = process.env.PORT || 5000;
 const runServer = (PORT) => {
     httpServer.listen(PORT, () => loggerConsole.debug(`Servidor escuchando el puerto ${PORT}`));
 }
@@ -84,7 +86,7 @@ app.use((req, res, next) => {
 
 app.use(session({
     store: MongoStore.create({
-        mongoUrl: "mongodb://localhost:27017/desafio13",
+        mongoUrl: `mongodb+srv://gaston:TZCAPpxu5qfvdHYA@cluster0.68nenbr.mongodb.net/test?retryWrites=true&w=majority`,
         ttl: 10,
     }),
     secret: '123456',

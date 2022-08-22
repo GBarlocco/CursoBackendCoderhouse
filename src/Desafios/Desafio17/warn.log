@@ -83,3 +83,7 @@
 [2022-08-21T11:03:11.371] [WARN] warnArchive - Estado: 404, Ruta consultada: /favicon.ico, Metodo GET
 [2022-08-21T11:03:11.483] [WARN] warnArchive - Estado: 404, Ruta consultada: /favicon.ico, Metodo GET
 [2022-08-21T11:03:11.590] [WARN] warnArchive - Estado: 404, Ruta consultada: /favicon.ico, Metodo GET
+[2022-08-22T06:30:09.550] [WARN] warnArchive - Estado: 404, Ruta consultada: /favicon.ico, Metodo GET
+[2022-08-22T06:40:20.199] [WARN] warnArchive - Estado: 404, Ruta consultada: /123, Metodo GET
+[2022-08-22T06:40:23.908] [WARN] warnArchive - Estado: 404, Ruta consultada: /123, Metodo GET
+[2022-08-22T06:40:29.517] [WARN] warnArchive - Estado: 404, Ruta consultada: /123, Metodo GET

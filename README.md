@@ -1679,7 +1679,7 @@ node --inspect profiler.js
 - AWS: plataforma en la nuve muy adoptada y completa.
 - Ofrece más de 200 servicios.
 - Creación de cuenta --> https://aws.amazon.com/es/getting-started/hands-on/deploy-nodejs-web-app/
-- Elastic BeanStalk.
+- En esta clase utilizaremos la plataforma Elastic Beanstalk de AWS para implementar aplicaciones NodeJS en la nube.
 
 ## Clase Nº35 - Envío de mensajes y seguridad
 
