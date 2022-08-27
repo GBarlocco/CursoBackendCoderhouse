@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <%- include(`./partials/head`) %>
+</head>
+
+<body>
+    <header>
+        <%- include('./partials/headerLog', {current: `formProductos`}) %>
+    </header>
+
+    <div class="jumbotron">
+        <div class="jumbotron">
+            <% if (allProducts.length <=0) { %>
+                <p>No se encontraron datos.</p>
+                <% } else { %>
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th scope="col">ID</th>
+                                <th scope="col">Nombre</th>
+                                <th scope="col">Descripcion</th>
+                                <th scope="col">Precio</th>
+                                <th scope="col">Stock</th>
+                                <th scope="col">Imagen</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <% allProducts.forEach(product=>{ %>
+                                <tr>
+                                    <td scope="row">
+                                        <%= product.id %>
+                                    </td>
+                                    <td>
+                                        <%= product.nombre %>
+                                    </td>
+                                    <td>
+                                        <%= product.descripcion %>
+                                    </td>
+                                    <td>
+                                        $<%= product.precio %>
+                                    </td>
+                                    <td>
+                                        <%= product.stock %>
+                                    </td>
+                                    <td>
+                                        <img src="<%= product.thumbnail %>" width="60" height="60">
+                                    </td>
+                                </tr>
+                                <% }) %>
+                        </tbody>
+                    </table>
+                    <% } %>
+        </div>
+    </div>
+
+    <footer>
+        <%- include('./partials/footer') %>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qs/6.10.3/qs.min.js"></script>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="./formProductos.js"></script>
+</body>
+
+</html>

@@ -1675,15 +1675,24 @@ node --inspect profiler.js
 - Heroku: plataforma como servicio --> paas. Las aplicaciones se corren desde un servidor Heroku usando Heroku DNS
 - Para utilizar Heroku desde comandos, instalamos --> Install the Heroku CLI
 
+
 ## Clase Nº34 - Product Cloud: AWS
 - AWS: plataforma en la nuve muy adoptada y completa.
 - Ofrece más de 200 servicios.
 - Creación de cuenta --> https://aws.amazon.com/es/getting-started/hands-on/deploy-nodejs-web-app/
 - En esta clase utilizaremos la plataforma Elastic Beanstalk de AWS para implementar aplicaciones NodeJS en la nube.
 
+
 ## Clase Nº35 - Envío de mensajes y seguridad
+- Nodemailer: es un módulo para aplicaciones Node que permite el envìo de correos electrónicos de forma sencilla. Posee gran foco en la seguridad. Proxies para conexiones SMTP. --> npm install nodemailer
+- doppler: correo electrónico masivo --> desde web, uso administrativo, marketing.
+- Ethereal: https://ethereal.email/ : utilizaremos un correo ficticio para enviar e-mails.
+
 
 ## Clase Nº36 - Twilio & OWASP
+- Twilio whatsapp: intermediario entre API de wsp
+- https://www.twilio.com/es-mx/docs/whatsapp/quickstart/node
+
 
 ## Clase Nº37 - Versiones & Paquetes
 

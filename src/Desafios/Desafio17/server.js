@@ -137,7 +137,7 @@ app.use(`/`, homeRouter);
 app.use(`/login2`, login2RouterGet);
 app.use(`/form`, isLogged, formRouter);
 app.use(`/login`, isLogged, loginRouterGet);
-app.use(`/login`, isLogged, loginRouterPost);
+app.use(`/login`, isLogged, loginRouterPost); //chat
 app.use(`/chat`, isLogged, chatRouter);
 app.use(`/api/productos-test`, isLogged, fakerRouter);
 app.use(`/info`, isLogged, infoRouter);
