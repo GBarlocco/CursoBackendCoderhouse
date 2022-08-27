@@ -15,14 +15,49 @@
     </header>
 
     <div class="jumbotron">
-        <main>
-            <div class="jumbotron">
-                <form action="/api/carrito" method="POST">
-                    <h2 class="display-4">Carrito</h2>
-                    <button class="btn btn-primary" type="submit">Crear carrito</button>
-                </form>
-            </div>
-        </main>
+        <div class="jumbotron">
+            <% if (userCarrito.length <=0) { %>
+                <p>El carrito se encuentra sin prouctos!.</p>
+                <% } else { %>
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th scope="col">ID</th>
+                                <th scope="col">Nombre</th>
+                                <th scope="col">Descripcion</th>
+                                <th scope="col">Precio</th>
+                                <th scope="col">Stock</th>
+                                <th scope="col">Imagen</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <% userCarrito.forEach(product=>{ %>
+                                <tr>
+                                    <td scope="row">
+                                        <%= product._id %>
+                                    </td>
+                                    <td>
+                                        <%= product.nombre %>
+                                    </td>
+                                    <td>
+                                        <%= product.descripcion %>
+                                    </td>
+                                    <td>
+                                        $<%= product.precio %>
+                                    </td>
+                                    <td>
+                                        <%= product.stock %>
+                                    </td>
+                                    <td>
+                                        <img src="<%= product.thumbnail %>" width="60" height="60">
+                                    </td>
+        
+                                </tr>
+                                <% }) %>
+                        </tbody>
+                    </table>
+                    <% } %>
+        </div>
     </div>
 
     <footer>

@@ -47,6 +47,15 @@
                                     <td>
                                         <img src="<%= product.thumbnail %>" width="60" height="60">
                                     </td>
+                                    <td>
+
+                                        <form action="/api/carrito/addProduct" method="POST">
+                                            <input type="hidden" name="idUser" value=<%=userLog._id %> />
+                                            <input type="hidden" name="idProduct" value=<%=product.id %> />
+                                            <button class="btn btn-primary" type="submit">Agregar producto</button>
+                                        </form>
+
+                                    </td>
                                 </tr>
                                 <% }) %>
                         </tbody>

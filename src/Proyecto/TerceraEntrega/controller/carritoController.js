@@ -1,4 +1,5 @@
 const storage = require(`../daos/index`);
+const UserModel = require(`../dataBase/models/user`);
 
 const productsStorage = storage().carrito;
 
@@ -22,7 +23,7 @@ const getAllProductsByIdCart = async (req, res) => {
 const createCart = async (req, res, next) => {
     try {
         userLog = req.user;
-        const id = await productsStorage.createCart(userLog._id);
+        const cart = await productsStorage.createCart();
         return res.redirect(`/api/productos`);
     } catch (err) {
         return res.status(404).json({
@@ -31,6 +32,39 @@ const createCart = async (req, res, next) => {
     }
 };
 
+const addProductToCart = async (req, res) => {
+    try {
+        const idUser = req.body.idUser;
+        const idProduct = req.body.idProduct;
+
+        await productsStorage.addProduct(idUser, idProduct);
+
+        return res.redirect(`/api/productos`)
+    } catch (err) {
+        return res.status(404).json({
+            error: `Error al agregar un producto ${err}`
+        });
+    }
+};
+/*
+const addProduct = async (req, res) => {
+    let idUser = req.body.idUser;
+    let product = req.body.product;
+
+    let hardCodeProduct = {
+        _id: 1,
+        nombre: "Producto 2",
+        descripcion: "descripción del nuevo producto",
+        codigo: 2,
+        thumbnail: "url2",
+        precio: 2,
+        stock: 2
+    }
+};
+*/
+
+// 
+/*
 const addProduct = async (req, res) => {
     try {
         let idCart = req.params.idCar;
@@ -45,6 +79,7 @@ const addProduct = async (req, res) => {
         });
     }
 };
+*/
 
 const deleteCartById = async (req, res) => {
     try {
@@ -74,10 +109,15 @@ const deleteProductById = async (req, res) => {
     }
 };
 
+const viewCart = (req, res) => {
+    userCarrito = req.user.carrito;
+    return res.render(`carrito`, { userCarrito });
+}
 module.exports = {
     getAllProductsByIdCart,
     createCart,
-    addProduct,
+    addProductToCart,
     deleteCartById,
-    deleteProductById
+    deleteProductById,
+    viewCart
 };

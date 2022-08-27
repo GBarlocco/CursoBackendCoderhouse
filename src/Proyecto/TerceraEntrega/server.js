@@ -6,7 +6,7 @@ const MongoStore = require(`connect-mongo`);
 const dotenv = require(`dotenv`);
 dotenv.config();
 
-app.use(express.static(__dirname + `./public/avatar`));
+app.use(express.static(`./public/avatar`));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 

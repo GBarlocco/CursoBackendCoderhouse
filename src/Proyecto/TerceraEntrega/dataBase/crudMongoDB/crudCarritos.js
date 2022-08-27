@@ -1,16 +1,16 @@
 class Contenedor {
-    constructor(mongoDB, cartModel, productsModel) {
+    constructor(mongoDB, cartModel, productsModel, userModel) {
         this.mongoDB = mongoDB;
         this.cartModel = cartModel;
         this.productsModel = productsModel;
+        this.userModel = userModel
     }
 
-    async createCart(userId) {
+    async createCart() {
         let date = new Date();
         let newCart = {
             timestamp: date,
             products: [],
-            owner: userId
         };
 
         // Instancia del modelo carrito
@@ -18,7 +18,7 @@ class Contenedor {
 
         this.mongoDB
             .then(_ => cart.save())
-            .then(document => document._id.toString())
+            .then(document => console.log(document))
             .catch(err => console.log(`Error: ${err.message}`));
     }
 
@@ -41,6 +41,26 @@ class Contenedor {
             .catch(err => console.log(`Error: ${err.message}`))
     }
 
+    async addProduct(idUser, idProduct) {
+        let docUser = false;
+        let docProduct = false;
+
+        const newProducto = {
+            nombre: `asd`,
+        };
+
+        docUser = await this.userModel.findOne({ _id: idUser }, { __v: 0 });
+        docProduct = await this.productsModel.findOne({ _id: idProduct }, { __v: 0 });
+
+        if (docUser && docProduct) {
+            docUser.carrito.push(docProduct);
+            return docUser.save();
+        } else {
+            throw Error(`Error al acceder al id del carrito / producto`);
+        }
+    }
+
+    /*    
     async addProduct(idCart, idProduct) {
         let docCart = false;
         let docProduct = false
@@ -56,6 +76,8 @@ class Contenedor {
             throw Error(`Error al acceder al id del carrito / producto`);
         }
     }
+
+    */
 
     async deleteProductById(idCart, idProduct) {
         let docCart = false;

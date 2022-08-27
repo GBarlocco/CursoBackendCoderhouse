@@ -41,9 +41,10 @@ const addProduct = async (req, res) => {
 
 const getAllProducts = async (req, res) => {
     try {
+        userLog = req.user;
         let allProducts = await productsStorage.getAll();
-        console.log(allProducts);
-        return res.render(`productos`, { allProducts });
+        console.log(userLog);
+        return res.render(`productos`, { allProducts, userLog });
     } catch (err) {
         return res.status(404).json({
             error: `Error al obtener todos los productos${err}`
