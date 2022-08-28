@@ -7,12 +7,17 @@ const signupController = (req, res) => {
 }
 
 const bienvenidaController = (req, res) => {
-    userLog = req.user.username;
+    userLog = req.user;
     return res.render(`bienvenida`, { userLog });
+}
+
+const viewFormAddProductController = (req, res) => {
+    return res.render(`formProductosAdmin`);
 }
 
 module.exports = {
     homeController,
     signupController,
     bienvenidaController,
+    viewFormAddProductController
 };

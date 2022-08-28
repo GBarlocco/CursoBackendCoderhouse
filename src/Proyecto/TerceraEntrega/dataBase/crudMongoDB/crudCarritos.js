@@ -12,8 +12,6 @@ class Contenedor {
             timestamp: date,
             products: [],
         };
-
-        // Instancia del modelo carrito
         const cart = new this.cartModel(newCart);
 
         this.mongoDB
@@ -45,13 +43,12 @@ class Contenedor {
         let docUser = false;
         let docProduct = false;
 
-        const newProducto = {
-            nombre: `asd`,
-        };
-
         docUser = await this.userModel.findOne({ _id: idUser }, { __v: 0 });
         docProduct = await this.productsModel.findOne({ _id: idProduct }, { __v: 0 });
-
+        /*
+        if (docUser.carrito[i]._id.toString() == docProduct._id.toString()) {
+        }
+        */
         if (docUser && docProduct) {
             docUser.carrito.push(docProduct);
             return docUser.save();
@@ -60,24 +57,6 @@ class Contenedor {
         }
     }
 
-    /*    
-    async addProduct(idCart, idProduct) {
-        let docCart = false;
-        let docProduct = false
-
-        docCart = await this.cartModel.findOne({ _id: idCart }, { __v: 0 });
-        docProduct = await this.productsModel.findOne({ _id: idProduct }, { __v: 0 });
-
-        if (docCart && docProduct) {
-
-            docCart.products.push(docProduct);
-            return docCart.save();
-        } else {
-            throw Error(`Error al acceder al id del carrito / producto`);
-        }
-    }
-
-    */
 
     async deleteProductById(idCart, idProduct) {
         let docCart = false;
@@ -100,6 +79,44 @@ class Contenedor {
         } else {
             throw Error(`Error al acceder al id del carrito / producto`);
         }
+    }    
+/*
+    async updateById(idUsuario, idProducto cantidad) {
+
+        this.mongoDB
+            .then(_ => this.userModel.findOne({ _id: idUsuario }, { __v: 0 }))
+            .then(usuario => {
+
+
+
+                product.cantidad = cantidad;
+
+                return product.save();
+            })
+            .catch(err => console.log(`Error: ${err.message}`))
     }
+*/
+
+
+    /*
+        async updateById(idProduct, name, price, url, description, date, code, stock) {
+
+        this.mongoDB
+            .then(_ => this.productsModel.findOne({ _id: idProduct }, { __v: 0 }))
+            .then(product => {
+                product.nombre = name;
+                product.precio = price;
+                product.url = url;
+                product.descripcion = description;
+                product.date = date;
+                product.codigo = code;
+                product.stock = stock;
+
+                return product.save();
+            })
+            .catch(err => console.log(`Error: ${err.message}`))
+    }
+
+    */
 }
 module.exports = Contenedor;

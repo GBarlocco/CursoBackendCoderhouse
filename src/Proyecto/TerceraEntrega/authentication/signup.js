@@ -41,6 +41,7 @@ const signup = () => {
             newUser.direccion = req.body.direccion;
             newUser.foto = req.file.path;
             newUser.carrito = [];
+            newUser.admin = false;
 
             const mailOptions = {
                 from: process.env.EMAIL,

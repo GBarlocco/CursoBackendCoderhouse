@@ -8,7 +8,8 @@ const User = mongoose.model('User', mongoose.Schema({
     edad: { type: Number, required: true },
     direccion: { type: String, required: true },
     foto: { type: String, required: true },
-    carrito: { type: Array, required: true }
+    carrito: { type: Array, required: true },
+    admin: { type: Boolean, required: true }
 }));
 
 

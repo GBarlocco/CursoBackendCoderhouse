@@ -87,3 +87,8 @@
 [2022-08-22T06:40:20.199] [WARN] warnArchive - Estado: 404, Ruta consultada: /123, Metodo GET
 [2022-08-22T06:40:23.908] [WARN] warnArchive - Estado: 404, Ruta consultada: /123, Metodo GET
 [2022-08-22T06:40:29.517] [WARN] warnArchive - Estado: 404, Ruta consultada: /123, Metodo GET
+[2022-08-28T17:19:28.650] [WARN] warnArchive - Estado: 404, Ruta consultada: /123, Metodo GET
+[2022-08-28T17:19:28.673] [WARN] warnArchive - Estado: 404, Ruta consultada: /12321, Metodo GET
+[2022-08-28T17:19:30.476] [WARN] warnArchive - Estado: 404, Ruta consultada: /api/formProductos.js, Metodo GET
+[2022-08-28T17:19:31.170] [WARN] warnArchive - Estado: 404, Ruta consultada: /123, Metodo GET
+[2022-08-28T17:19:31.174] [WARN] warnArchive - Estado: 404, Ruta consultada: /12321, Metodo GET

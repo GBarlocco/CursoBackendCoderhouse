@@ -46,6 +46,8 @@ const addProductToCart = async (req, res) => {
         });
     }
 };
+
+
 /*
 const addProduct = async (req, res) => {
     let idUser = req.body.idUser;
@@ -110,14 +112,16 @@ const deleteProductById = async (req, res) => {
 };
 
 const viewCart = (req, res) => {
-    userCarrito = req.user.carrito;
-    return res.render(`carrito`, { userCarrito });
+    //userCarrito = req.user.carrito;
+    userLog = req.user;
+    return res.render(`carrito`, { userLog });
 }
+
 module.exports = {
     getAllProductsByIdCart,
     createCart,
     addProductToCart,
     deleteCartById,
     deleteProductById,
-    viewCart
+    viewCart,
 };

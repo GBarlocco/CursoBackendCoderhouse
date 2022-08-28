@@ -42,10 +42,11 @@ app.use((req, res, next) => {
 
 //My middleware
 const isLogged = ((req, res, next) => {
+    let msgError = `Para acceder a esta URL debe iniciar sesión`
     if (req.user) {
         next();
     } else {
-        return res.render('errorAccesoDenegado')
+        return res.render('viewError', { msgError })
     }
 });
 
@@ -57,15 +58,17 @@ const { signupRouter } = require(`./routes/userRouter`);
 const { logoutRouter } = require(`./routes/userRouter`);
 const { profileRouter } = require(`./routes/userRouter`);
 const generalViewsRouter = require(`./routes/generalViewsRouter`);
+const ordenesRouter = require(`./routes/ordenesRouter`);
 
 //Routers
 app.use(`/`, generalViewsRouter);
-app.use(`/api/productos`, productosRouter);
-app.use(`/api/carrito`, carritoRouter);
+app.use(`/api/productos`, isLogged, productosRouter);
+app.use(`/api/carrito`, isLogged, carritoRouter);
+app.use(`/api/ordenes`, isLogged, ordenesRouter);
 app.use(`/login`, loginRouter);
 app.use(`/signup`, signupRouter);
-app.use('/logout', logoutRouter);
-app.use(`/profile`, profileRouter);
+app.use('/logout', isLogged, logoutRouter);
+app.use(`/profile`, isLogged, profileRouter);
 
 app.use((req, res) => {
     res.status(404).json({ error: -2, descripcion: `ruta ${req.originalUrl} metodo ${req.method} no implementada` });

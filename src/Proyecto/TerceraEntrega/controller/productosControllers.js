@@ -22,11 +22,12 @@ const addProduct = async (req, res) => {
                 codigo: code,
                 thumbnail: `${url}`,
                 precio: price,
-                stock: stock
+                stock: stock,
+                cantidad: 0
             };
             const id = await productsStorage.save(newProducto);
 
-            return res.json(`Se agregó el nuevo producto`);
+            return res.redirect(`/api/productos`);
         } catch (err) {
             return res.status(404).json({
                 error: `Error al crear un producto ${err}`
@@ -115,6 +116,7 @@ const deleteProductById = async (req, res) => {
         });
     }
 }
+
 
 module.exports = {
     getAllProducts,
