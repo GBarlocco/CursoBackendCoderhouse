@@ -42,81 +42,66 @@ class Contenedor {
     async addProduct(idUser, idProduct) {
         let docUser = false;
         let docProduct = false;
+        let esRepetido = false;
+        let newCarrito = [];
 
         docUser = await this.userModel.findOne({ _id: idUser }, { __v: 0 });
         docProduct = await this.productsModel.findOne({ _id: idProduct }, { __v: 0 });
-        /*
-        if (docUser.carrito[i]._id.toString() == docProduct._id.toString()) {
-        }
-        */
+
         if (docUser && docProduct) {
-            docUser.carrito.push(docProduct);
-            return docUser.save();
-        } else {
-            throw Error(`Error al acceder al id del carrito / producto`);
-        }
-    }
-
-
-    async deleteProductById(idCart, idProduct) {
-        let docCart = false;
-        let docProduct = false
-
-        docCart = await this.cartModel.findOne({ _id: idCart }, { __v: 0 });
-        docProduct = await this.productsModel.findOne({ _id: idProduct }, { __v: 0 });
-
-        if (docCart && docProduct) {
-            let allProductsFromCart = docCart.products;
-            let products = [];
-
-            for (let i = 0; i <= allProductsFromCart.length - 1; i++) {
-                if (allProductsFromCart[i]._id.toString() != docProduct._id.toString()) {
-                    products.push(allProductsFromCart[i]);
+            if (docUser.carrito.length == 0) {
+                docProduct.cantidad++;
+                newCarrito.push(docProduct);
+            } else {
+                newCarrito = docUser.carrito;
+                newCarrito.forEach(element => {
+                    if (element._id.toString() == docProduct._id.toString()) {
+                        element.cantidad += 1;
+                        element.precio += docProduct.precio;
+                        esRepetido = true;
+                    }
+                });
+                if (!esRepetido) {
+                    docProduct.cantidad++;
+                    newCarrito.push(docProduct)
                 }
             }
-            docCart.products = products;
-            return docCart.save();
+
+            docUser.carrito = [];
+            await docUser.save();
+            docUser.carrito = newCarrito;
+            return await docUser.save();
         } else {
             throw Error(`Error al acceder al id del carrito / producto`);
         }
-    }    
-/*
-    async updateById(idUsuario, idProducto cantidad) {
-
-        this.mongoDB
-            .then(_ => this.userModel.findOne({ _id: idUsuario }, { __v: 0 }))
-            .then(usuario => {
-
-
-
-                product.cantidad = cantidad;
-
-                return product.save();
-            })
-            .catch(err => console.log(`Error: ${err.message}`))
-    }
-*/
-
-
-    /*
-        async updateById(idProduct, name, price, url, description, date, code, stock) {
-
-        this.mongoDB
-            .then(_ => this.productsModel.findOne({ _id: idProduct }, { __v: 0 }))
-            .then(product => {
-                product.nombre = name;
-                product.precio = price;
-                product.url = url;
-                product.descripcion = description;
-                product.date = date;
-                product.codigo = code;
-                product.stock = stock;
-
-                return product.save();
-            })
-            .catch(err => console.log(`Error: ${err.message}`))
     }
 
-    */
+
+    async deleteProductById(idUser, idProduct) {
+        let docUser = false;
+        let docProduct = false;
+
+        docUser = await this.userModel.findOne({ _id: idUser }, { __v: 0 });
+        docProduct = await this.productsModel.findOne({ _id: idProduct }, { __v: 0 });
+
+        if (docUser && docProduct) {
+            let allProductsFromCart = docUser.carrito;
+            let products = [];
+
+            allProductsFromCart.forEach(element => {
+                if (element._id.toString() != docProduct._id.toString()) {
+                    products.push(element);
+                }
+            })
+
+            docUser.carrito = [];
+            await docUser.save();
+            docUser.carrito = products;
+            return await docUser.save();
+
+        } else {
+            throw Error(`Error al acceder al id del carrito / producto`);
+        }
+    }
 }
 module.exports = Contenedor;

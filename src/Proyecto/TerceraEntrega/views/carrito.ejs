@@ -64,9 +64,9 @@
                                         <img src="<%= product.thumbnail %>" width="60" height="60">
                                     </td>
                                     <td>
-                                        <form action="/api/carrito/addProduct" method="POST">
-                                            <input type="hidden" name="idUser" value=<%=userLog._id %> />
-                                            <input type="hidden" name="idProduct" value=<%=product.id %> />
+                                        <form action="/api/carrito/deleteProduct" method="POST">
+                                            <input type="hidden" name="idUser" value=<%=userLog.id %> />
+                                            <input type="hidden" name="idProduct" value=<%=product._id %> />
                                             <button class="btn btn-danger" type="submit">Eliminar</button>
                                         </form>
                                     </td>

@@ -44,7 +44,6 @@ const getAllProducts = async (req, res) => {
     try {
         userLog = req.user;
         let allProducts = await productsStorage.getAll();
-        console.log(userLog);
         return res.render(`productos`, { allProducts, userLog });
     } catch (err) {
         return res.status(404).json({

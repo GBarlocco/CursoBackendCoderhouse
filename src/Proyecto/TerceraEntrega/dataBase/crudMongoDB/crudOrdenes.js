@@ -13,7 +13,7 @@ class Contenedor {
 
         if (docUser) {
             productsOrden = docUser.carrito;
-            docUser.carrito = []; //Vuelvo a cero el carrito
+            docUser.carrito = [];
 
             let date = new Date();
             let newOrden = {

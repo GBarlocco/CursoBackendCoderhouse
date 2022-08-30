@@ -5,7 +5,6 @@ class Contenedor {
     }
 
     async save(product) {
-        // Instancia del modelo Producto
         product = new this.productsModel(product);
 
         this.mongoDB

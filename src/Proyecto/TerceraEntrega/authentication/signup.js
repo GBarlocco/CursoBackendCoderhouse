@@ -1,21 +1,15 @@
 const passport = require('passport');
 const sendEmail = require(`../utils/nodemailerGmail`);
 
-const storage = require(`../daos/index`);
-
-const productsStorage = storage().carrito;
-
 const dotenv = require(`dotenv`);
 dotenv.config();
 
 const LocalStrategy = require('passport-local').Strategy;
 const UserModel = require(`../dataBase/models/user`);
-const UserCart = require(`../dataBase/models/carrito`);
 
 const { createHash } = require('../utils/utils');
 
 const signup = () => {
-    console.log(`Estoy en signup.js`)
     passport.use('signup', new LocalStrategy({
         //Configuración para obtener todo el req.
         passReqToCallback: true
@@ -26,12 +20,6 @@ const signup = () => {
                 return done(null, false);
             }
 
-            /*
-            let date = new Date();
-            let newCart =new UserCart();
-            newCart.timestamp = date;
-            newCart.products = [];
-            */
             const newUser = new UserModel();
             newUser.username = username;
             newUser.password = createHash(password); //No se puede volver a conocer la contraseña luego de realizarle el hash

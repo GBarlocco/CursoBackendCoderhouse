@@ -6,7 +6,6 @@ const {
   addProduct,
   updateProductById,
   deleteProductById,
-  viewFormAddProduct
 } = require("../controller/productosControllers");
 
 const productosRouter = Router();

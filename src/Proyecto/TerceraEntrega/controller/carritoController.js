@@ -1,5 +1,4 @@
 const storage = require(`../daos/index`);
-const UserModel = require(`../dataBase/models/user`);
 
 const productsStorage = storage().carrito;
 
@@ -48,41 +47,6 @@ const addProductToCart = async (req, res) => {
 };
 
 
-/*
-const addProduct = async (req, res) => {
-    let idUser = req.body.idUser;
-    let product = req.body.product;
-
-    let hardCodeProduct = {
-        _id: 1,
-        nombre: "Producto 2",
-        descripcion: "descripción del nuevo producto",
-        codigo: 2,
-        thumbnail: "url2",
-        precio: 2,
-        stock: 2
-    }
-};
-*/
-
-// 
-/*
-const addProduct = async (req, res) => {
-    try {
-        let idCart = req.params.idCar;
-        let idProduct = req.params.idProd;
-
-        await productsStorage.addProduct(idCart, idProduct);
-
-        return res.json(`Se agregó el producto con id ${idProduct} al carrito con id ${idCart}`);
-    } catch (err) {
-        return res.status(404).json({
-            error: `Error al agregar un producto ${err}`
-        });
-    }
-};
-*/
-
 const deleteCartById = async (req, res) => {
     try {
         const idCart = req.params.id;
@@ -98,12 +62,12 @@ const deleteCartById = async (req, res) => {
 
 const deleteProductById = async (req, res) => {
     try {
-        const idCart = req.params.id;
-        const idProduct = req.params.id_prod;
+        const idUser = req.body.idUser;
+        const idProduct = req.body.idProduct;
 
-        await productsStorage.deleteProductById(idCart, idProduct);
+        await productsStorage.deleteProductById(idUser, idProduct);
 
-        return res.json(`Producto  con ID: ${idProduct} del carrito con ID ${idCart} fue eliminado`);
+        return res.redirect(`/api/carrito`)
     } catch (err) {
         return res.status(404).json({
             error: `Error al eliminar un producto específico de un carrito ${err}`
@@ -112,7 +76,6 @@ const deleteProductById = async (req, res) => {
 };
 
 const viewCart = (req, res) => {
-    //userCarrito = req.user.carrito;
     userLog = req.user;
     return res.render(`carrito`, { userLog });
 }
