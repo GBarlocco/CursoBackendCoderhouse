@@ -10,24 +10,25 @@
           <li class="nav-item  %> ">
             <a class="nav-link" href="/api/productos">All products</a>
           </li>
-          
+
           <% if(userLog.admin) { %>
-          <li class="nav-item   %> ">
-            <a class="nav-link" href="/formAddProduct">Add products</a>
-          </li>
-          <% } %>
+            <li class="nav-item   %> ">
+              <a class="nav-link" href="/formAddProduct">Add products</a>
+            </li>
+            <% } %>
 
-          <li class="nav-item  %> ">
-            <a class="nav-link" href="/api/carrito">Carrito</a>
-          </li>
+              <li class="nav-item  %> ">
+                <a class="nav-link" href="/api/carrito">Carrito</a>
+              </li>
 
-          <li class="nav-item   %> ">
-            <a class="nav-link" href="/profile">Perfil</a>
-          </li>
+              <li class="nav-item   %> ">
+                <a class="nav-link" href="/profile"><%= userLog.username %></a>
+              </li>
 
-          <li class="nav-item  %> ">
-            <a class="nav-link" href="/logout">Salir</a>
-          </li>
+              <li class="nav-item  %> ">
+                <a class="nav-link" href="/logout">Salir</a>
+              </li>
+
         </ul>
 
 

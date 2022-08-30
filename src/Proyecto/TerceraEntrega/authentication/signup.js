@@ -27,7 +27,7 @@ const signup = () => {
             newUser.telefono = req.body.tel;
             newUser.edad = req.body.edad;
             newUser.direccion = req.body.direccion;
-            newUser.foto = req.file.path;
+            newUser.foto = req.file.filename;
             newUser.carrito = [];
             newUser.admin = false;
 
