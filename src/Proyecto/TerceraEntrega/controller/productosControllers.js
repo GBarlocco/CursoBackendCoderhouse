@@ -1,11 +1,9 @@
-let administrator = true;
-
 const storage = require(`../daos/index`);
 
 const productsStorage = storage().productos;
 
 const addProduct = async (req, res) => {
-    if (administrator) {
+    if (userLog.admin) {
         try {
             const name = req.body.nombre;
             const price = Number(req.body.precio);
@@ -72,7 +70,7 @@ const getProductById = async (req, res) => {
 }
 
 const updateProductById = async (req, res) => {
-    if (administrator) {
+    if (userLog.admin) {
         try {
             const idProduct = req.params.id;
             const name = req.body.nombre;
@@ -99,7 +97,7 @@ const updateProductById = async (req, res) => {
 }
 
 const deleteProductById = async (req, res) => {
-    if (administrator) {
+    if (userLog.admin) {
         try {
             const id = req.params.id;
             await productsStorage.deleteById(id);

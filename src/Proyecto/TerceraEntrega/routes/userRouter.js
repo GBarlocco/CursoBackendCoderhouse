@@ -41,7 +41,7 @@ const profileRouter = Router();
 loginRouter.get(`/`, loginFormController);
 loginRouter.post('/', passport.authenticate('login', { //indicamos el controlador de passport, llega desde el formulario de login.
     successRedirect: '/bienvenida', //redirect es con método get, vamos a home.
-    failureRedirect: `/errorLog`, // redirect es con método get, vamos a /login de get.
+    failureRedirect: `/error/Error al iniciar sesión usuario contraseña incorrecta`, // redirect es con método get, vamos a /login de get.
     failureFlash: true  // nos permite enviar mensajes.
 }));
 
@@ -49,7 +49,7 @@ loginRouter.post('/', passport.authenticate('login', { //indicamos el controlado
 signupRouter.get(`/`, signupFormController);
 signupRouter.post('/', upload.single('avatar'), passport.authenticate('signup', {//indicamos el controlador de passport, llega desde el formulario de signup.
     successRedirect: '/', // redirect es con método get, vamos a home.
-    failureRedirect: `/errorSignup`, // redirect es con método get, vamos a /signup de signup.
+    failureRedirect: `/error/Error al crear la cuenta ingrese otro usuario`, // redirect es con método get, vamos a /signup de signup.
     failureFlash: true // nos permite enviar mensajes.
 }));
 

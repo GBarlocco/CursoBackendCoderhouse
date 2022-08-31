@@ -55,6 +55,7 @@ const signup = () => {
             return done(null, userSave);
         }
         catch (err) {
+            loggerArchiveError.error(err);
             done(err);
         }
     }));

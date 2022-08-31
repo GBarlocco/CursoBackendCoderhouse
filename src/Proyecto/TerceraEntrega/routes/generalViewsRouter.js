@@ -4,7 +4,8 @@ const {
     homeController,
     signupController,
     bienvenidaController,
-    viewFormAddProductController
+    viewFormAddProductController,
+    viewErrorController
 } = require(`../controller/generalViewsCotroller`);
 
 const viewsRouter = Router();
@@ -19,9 +20,9 @@ const isLogged = ((req, res, next) => {
     }
 });
 
-viewsRouter.get(`/`,isLogged, homeController);
+viewsRouter.get(`/`, homeController);
 viewsRouter.get(`/signup`, signupController);
 viewsRouter.get('/bienvenida',isLogged, bienvenidaController);
 viewsRouter.get('/formAddProduct',isLogged, viewFormAddProductController);
-
+viewsRouter.get('/error/:msg', viewErrorController);
 module.exports = viewsRouter;

@@ -13,10 +13,13 @@ const createOrdenController = async (req, res) => {
         const orden = await ordenesStorage.createOrden(userID);
 
         auxEmail(userLog, orden);
+        /*
+            NOTA:
+                -La función encargada de realizar el envío de SMS se encuentra comentada ya que genera gastos.
+                -La función encargada de realizar el envío de whatsapp se encuentra comentada ya que genera gastos.
+        */
         //sendSMS(`Su pedido ha sido recibido y se encuentra en proceso`, `+14057251618`, `+59894057052`);
         //auxWhatsApp(userLog, orden);
-
-
 
         return res.render(`compraFinalizada`);
     } catch (err) {
@@ -35,7 +38,7 @@ const auxEmail = async (userLog, orden) => {
 
     orden.products.forEach(element => {
         detallePedido += `
-    <li> Producto:${element.nombre} </li>
+        <li>UNIDADES: ${element.cantidad}. PRODUCTO: ${element.nombre}. CODIGO: ${element.codigo} </li>
     `;
     });
 
@@ -58,7 +61,8 @@ const auxEmail = async (userLog, orden) => {
             </ul>
         `
     };
-    await sendEmail(mailOptions);
+    const email = await sendEmail(mailOptions);
+    console.log(email);
 }
 
 const auxWhatsApp = async (userLog, orden) => {
@@ -67,7 +71,7 @@ const auxWhatsApp = async (userLog, orden) => {
     orden.products.forEach(element => {
         detallePedido +=
             `
-            - Producto:${element.nombre}
+            - UNIDADES: ${element.cantidad}. PRODUCTO: ${element.nombre}. CODIGO: ${element.codigo}
             `;
     });
 

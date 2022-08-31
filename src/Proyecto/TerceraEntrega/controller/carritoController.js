@@ -1,3 +1,9 @@
+/*
+    NOTA:
+        -Se deja la lógica en el programa, en este entregable se decidió generar el carrito en el usuario.
+        -Se agregaron las ordenes
+*/
+
 const storage = require(`../daos/index`);
 
 const productsStorage = storage().carrito;
