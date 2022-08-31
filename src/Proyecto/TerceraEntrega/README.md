@@ -111,6 +111,13 @@ Aspectos a incluir:
 
 ### Heroku:
 - [App](https://proyecto-gaston-barlocco.herokuapp.com)
+#### CMD: 
+- heroku login
+- git init
+- git remote -v
+- git add .
+- git commit -m "mensaje"
+- git push heroku master
 
 ## Extra
 - [Documentation](https://nodejs.org/es/) Nodejs
