@@ -86,10 +86,6 @@ Aspectos a incluir:
 - Utilizar alguno de los loggers ya vistos y así reemplazar todos los mensajes a consola por logs eficientes hacia la misma consola. En el caso de errores moderados ó graves el log tendrá además como destino un archivo elegido.
 - Realizar una prueba de performance en modo local, con y sin cluster, utilizando Artillery en el endpoint del listado de productos (con el usuario vez logueado). Verificar los resultados.
 
-## Test API - Postman
-![Postman](https://img.shields.io/badge/Postman-FF6C37?style=for-the-badge&logo=Postman&logoColor=white)
-> [Documentación API](https://documenter.getpostman.com/view/15433212/Uz5FLHXE#cfec1e21-3b0d-44e3-bc97-65aa64bf9392)
-
 ## Solución:
 
 ### Usuarios:
