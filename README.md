@@ -1697,6 +1697,9 @@ node --inspect profiler.js
 ## Clase Nº37 - Versiones & Paquetes
 
 ## Clase Nº38 - Arquitectura de capas
+- Es un patrón que se utiliza en desarrollo de software donde los roles y responsabilidades dentro de la aplicación (app) son separadas en capas.
+- Una app pequeña suele contener 3 apas. Luego, el número de capas puede ir aumentando con la complejización de la app. Las mismas son: capa de ruteo, capa de servicio, capa de persistencia.
+
 
 ## Clase Nº39 - Arquitectura del servidor: Diseño
 
