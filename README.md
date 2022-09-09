@@ -1704,6 +1704,26 @@ node --inspect profiler.js
 ## Clase Nº39 - Arquitectura del servidor: Diseño
 
 ## Clase Nº40 - Arquitectura del servidor: Persistencia
+- Aplicaremos los patrones de la capa de persistencia DAO, DTO y Repository, en conjunto con Factory.
+- Presentar ORM y ODM como técnicas para la conversión de datos.
+
+### Esquema:
+- Hasta ahora tenemos 3 capas: presentaciñon, dominio y persistencia. 
+- Presentaciòn: Router, controller.
+- Dominio: servicio.
+- Persistencia: Repositorio, Model
+- DB
+- En resumen: la capa de Router se comunica con la de controller. La capa de controller se comunica con la capa de servicio. La capa de Servicio se comunica con la de Repositorio, la de Repositorio con Model, y Model con DB. En esta clase nos centraremos en la capa de Persistencia. La idea es generar transparencia a la hora de cambiar la persistencia, que no afecte la información de interés. En el siguiente esquema, podremos ver un correcto funcionamiento desde el punto de vista teórico, pero en la practica no funcionará como pensamos.
+
+[![imagen-2022-09-09-181841279.png](https://i.postimg.cc/bvm63pGz/imagen-2022-09-09-181841279.png)](https://postimg.cc/Z9yFqkFg)
+
+- Para poder corregir este problema, debemos integrar un tratamiento de la data. Utilizaremos nuevas capas para solucionar esto.
+
+### Patrones:
+
+#### Patrón DAO:
+- DAO: Data access object - permite separar la lógica de acceso a datos de los Business Objects u objetos de negocios.
+
 
 ## Clase Nº41 - Desarrollo de un servidor web basado en capas completo
 
