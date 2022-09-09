@@ -1722,8 +1722,21 @@ node --inspect profiler.js
 ### Patrones:
 
 #### Patrón DAO:
-- DAO: Data access object - permite separar la lógica de acceso a datos de los Business Objects u objetos de negocios.
+- DAO: Data access object - permite separar la lógica de acceso a datos de los Business Objects u objetos de negocios. El DAO es la capa mas abstracta de la persistencia.
+- El DAO nos es útil cuando tenemos una sola fuente de datos, sin importar de qué tipo sea.
+- Es común contar con varias fuentes de datos. Entonces, necesitamos usar el patron Abstract Factory.
+- Mediante el patrón Abstract Factory vamos a poder definir una serie de familias de clases que permitan conectarnos a las diferentes fuentes de datos.
+- En resumen: tendremos un DAO por cada fuente de datos diferente que tengamos, de modo de poder usarlo de "traductor" en cada una de ellas y no tener que modificar la lógica de negocio si alguna cambia.
 
+[![esquema-general-del-sistema2.png](https://i.postimg.cc/zGSXcPSt/esquema-general-del-sistema2.png)](https://postimg.cc/cvCSKhzw)
+
+#### Patrón DTO:
+- Para poder utilizar la misma data al cambiar la DB debemos concurrir a DTO (data transfer object).
+- Una de las problemáticas más comunes cuando desarrollamos aplicaciones, es diseñar la forma en que la información debe viajar desde la capa de servicios a as aplicaciones o capa de presentación.
+- El patrón DTO tiene como finalidad crear un objeto plano con una serie de atributos que puedan ser enviados o recuperados del servidor en una sola invocación, de tal forma que un DTO puede contener información de múltiples fuentes o tablas y concentrarlas en una única clase simple.
+- El DTO es un objeto plano, pero debe cumplir on las siguientes reglas: 1- no posee lógica: se utiliza para trnsferir data entre el cliente y el servidor. 2- Serializable: como los objetos viajan por la red, entonces, deben ser serializables. En javascript serializar se refiere convertir a sctring y luego al objeto nativo.
+- min 56:15 --> implementar DTO
+[![imagen-2022-09-09-200601844.png](https://i.postimg.cc/W4jNMRCp/imagen-2022-09-09-200601844.png)](https://postimg.cc/k21PmH7L)
 
 ## Clase Nº41 - Desarrollo de un servidor web basado en capas completo
 
