@@ -1409,7 +1409,7 @@ b.clientes.deleteMany({ name: /^J/ }) ;
 - Proxy directo ( forward): se coloca entre el cliente y la web. Recibe la peticion del cliente para acceder a un sitio web. Lo utiliza un cliente cuando quiere anonimizar su IP. Es útil para mejorar la privacidad, y para evitar restricciones de contenido geográfico ( contenido bloqueado en ciierta región)
 - Proxy invero (reverse): el que nos interesará en esta clase, el servidor proxy se coloca entre la web y el servidor de origen. El que se mantiene en el anonimato es el servidor de origen. Garantiza que ningún cliente se conecte directo con él y por ende mejore sus eguridad. También, es útil para distribuir la carga entre varios servidores web.
 - Ambos pueden trabajar juntos, ya que no se superponen.
-- Los clientes/usuarios pueden utilizar un p roxy directo y los servidores de origen un proxy inverso.
+- Los clientes/usuarios pueden utilizar un proxy directo y los servidores de origen un proxy inverso.
 - Proxy inverso en backend: existen varios beneficios, como: balancear la carga, seguirdad mejorada, potente caching (acelerador de web, cache), compresió superior, cifrado optimizado, monitoreo y registro del tráfico.
 - Nginx: lo utilizaremos en un servicio que ofrece AWS - Servicio: EC2.
 - https://portal.aws.amazon.com/billing/signup  --> registro en AWS
@@ -1727,16 +1727,33 @@ node --inspect profiler.js
 - Es común contar con varias fuentes de datos. Entonces, necesitamos usar el patron Abstract Factory.
 - Mediante el patrón Abstract Factory vamos a poder definir una serie de familias de clases que permitan conectarnos a las diferentes fuentes de datos.
 - En resumen: tendremos un DAO por cada fuente de datos diferente que tengamos, de modo de poder usarlo de "traductor" en cada una de ellas y no tener que modificar la lógica de negocio si alguna cambia.
-
 [![esquema-general-del-sistema2.png](https://i.postimg.cc/zGSXcPSt/esquema-general-del-sistema2.png)](https://postimg.cc/cvCSKhzw)
 
 #### Patrón DTO:
+- 00:46:49
 - Para poder utilizar la misma data al cambiar la DB debemos concurrir a DTO (data transfer object).
 - Una de las problemáticas más comunes cuando desarrollamos aplicaciones, es diseñar la forma en que la información debe viajar desde la capa de servicios a as aplicaciones o capa de presentación.
 - El patrón DTO tiene como finalidad crear un objeto plano con una serie de atributos que puedan ser enviados o recuperados del servidor en una sola invocación, de tal forma que un DTO puede contener información de múltiples fuentes o tablas y concentrarlas en una única clase simple.
 - El DTO es un objeto plano, pero debe cumplir on las siguientes reglas: 1- no posee lógica: se utiliza para trnsferir data entre el cliente y el servidor. 2- Serializable: como los objetos viajan por la red, entonces, deben ser serializables. En javascript serializar se refiere convertir a sctring y luego al objeto nativo.
 - min 56:15 --> implementar DTO
 [![imagen-2022-09-09-200601844.png](https://i.postimg.cc/W4jNMRCp/imagen-2022-09-09-200601844.png)](https://postimg.cc/k21PmH7L)
+
+#### Patrón Factory Method:
+- 01:24:00
+- Patrón genérico, se aplica sin importar el lenguaje de programación.
+- Herramienta utilizada para limpiar el código.
+- Nos permite centralizar la lógica de crear objetos en un único lugar. Esto nos permite olvidarnos de esa parte y concentrarnos en simplemente solicitar el objeto que necesitamos y luego usarlo.
+
+#### Patrón Singleton:
+- 01:20:40
+- En ingeniería de software, singleton o instancia única es un patrón de diseño que permite restringir la creación de objetos pertenecientes a una clase o el valor de un tipo a un único objeto.
+- Su intención consiste en garantizar que una clase solo tenga una instancia y proporcionar un punto de acceso global a ella.
+
+#### Patrón Repository:
+
+#### ORM:
+
+#### ODM:
 
 ## Clase Nº41 - Desarrollo de un servidor web basado en capas completo
 
