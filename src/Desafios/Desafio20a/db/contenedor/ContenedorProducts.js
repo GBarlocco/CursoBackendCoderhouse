@@ -1,6 +1,7 @@
+const ProductsDTO = require("../../DTOs/ProductsDTO");
 class Contenedor {
     constructor(mongoDB, productsModel) {
-        this.mongoDB = mongoDB;
+        this.mongoDB = mongoDB();
         this.productsModel = productsModel;
     }
 
@@ -8,8 +9,6 @@ class Contenedor {
         try {
             // Instancia del modelo message
             const newProduct = new this.messageModel(product);
-
-            console.log('estoy desde MongoDB');
 
             this.mongoDB
                 .then(_ => newProduct.save())
@@ -22,10 +21,16 @@ class Contenedor {
 
     async getAll() {
         try {
-            let docs = false;
-            docs = await this.productsModel.find();
-            if (docs) {
-                return docs;
+            /*
+            Esta lógica va en Repository:
+        
+            const products = await this.productsModel.find();
+            const productDTO = products.map(product => new ProductsDTO(product));
+            */
+            const products = await this.productsModel.find();
+            const productDTO = products.map(product => new ProductsDTO(product));
+            if (productDTO) {
+                return productDTO;
             } else {
                 return false;
             }

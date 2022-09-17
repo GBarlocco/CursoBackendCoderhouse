@@ -13,26 +13,26 @@
     <div class="jumbotron">
         <main>
             <div class="jumbotron">
-                <h1 class="display-4">Desafío 17</h1>
+                <h1 class="display-4">Desafío 20</h1>
                 <p class="lead">En contrucción...</p>
                 <hr class="my-4">
                 <p>
-                    Crear un proyecto en Heroku.com para subir el servidor que venimos realizando, reformando todo lo
-                    necesario para su correcto funcionamiento en la nube.
+                    Modificar la capa de persistencia incorporando los conceptos de Factory, DAO, y DTO.
                 </p>
                 <p>
-                    Subir el código a Heroku.com, sin olvidar incluir el archivo .gitignore para evitar subir los
-                    node_modules. Comprobar que el proyecto inicie de manera correcta en la nube. Verificar que en su
-                    ruta raíz se encuentre la página pública del servidor.
+                    Los DAOs deben presentar la misma interfaz hacia la lógica de negocio de nuestro servidor.
                 </p>
                 <p>
-                    El servidor debe seguir funcionando en forma local.
-                    Realizar un cambio a elección en alguna vista, probar en forma local y subir nuevamente el proyecto
-                    a Heroku, verificando que la nueva reforma esté disponible online.
+                    El DAO seleccionado (por un parámetro en línea de comandos como lo hicimos anteriormente) será devuelto por una Factory para que la capa de negocio opere con el.
                 </p>
                 <p>
-                    Revisar a través de una consola local, los mensajes enviados por nuestro servidor en Heroku a su
-                    propia consola.
+                    Cada uno de estos casos de persistencia, deberán ser implementados usando el patrón singleton que impida crear nuevas instancias de estos mecanismos de acceso a los datos.
+                </p>
+                <p>
+                    Comprobar que si llamo a la factory dos veces, con una misma opción elegida, devuelva la misma instancia.
+                </p>
+                <p>
+                    Implementar el patrón Repository para la persistencia de productos y mensajes.
                 </p>
             </div>
         </main>

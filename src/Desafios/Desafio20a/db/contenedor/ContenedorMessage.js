@@ -1,6 +1,9 @@
+const MessageDTO = require("../../DTOs/MessageDTO");
+
+
 class Contenedor {
     constructor(mongoDB, messageModel) {
-        this.mongoDB = mongoDB;
+        this.mongoDB = mongoDB();
         this.messageModel = messageModel;
     }
 
@@ -22,10 +25,17 @@ class Contenedor {
 
     async getAll() {
         try {
-            let docs = false;
-            docs = await this.messageModel.find();
-            if (docs) {
-                return docs;
+            /*
+            Esta lógica va en Repository:
+
+            const messages = await this.messageModel.find();
+            const messageDTO = messages.map(message => new MessageDTO(message));
+            */
+            const messages = await this.messageModel.find();
+            const messageDTO = messages.map(message => new MessageDTO(message));
+
+            if (messageDTO) {
+                return messageDTO;
             } else {
                 return false;
             }

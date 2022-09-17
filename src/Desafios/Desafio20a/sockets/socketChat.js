@@ -8,7 +8,7 @@ let users = [];
 
 const socketIoChat = (io) => {
     io.on(`connection`, socket => {
-        
+
         //Cliente --> Servidor: joinChat event
         socket.on(`joinChat`, async ({ aliasName }) => {
             users.push({
@@ -21,6 +21,8 @@ const socketIoChat = (io) => {
             socket.emit(`notification`, `Bienvenido ${aliasName}`);
 
             const allMessageFromDB = await storageMessages.getAll();
+            console.log(allMessageFromDB);
+            //
 
             //Servidor --> Cliente : Se envian todos los mensajes al usuario que se conectó.
             socket.emit(`allMenssage`, allMessageFromDB);

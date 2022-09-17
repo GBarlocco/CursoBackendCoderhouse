@@ -29,9 +29,9 @@ socket.on(`allMenssage`, data => {
         message = `
             <li class="clearfix">
             <div class="message-data text-right">
-                    <span class="message-data-time">${message.author.id}:</span>
+                    <span class="message-data-time">${message.id}:</span>
                 </div>
-                <div class="message other-message float-right"> ${message.text.mensaje} </div>
+                <div class="message other-message float-right"> ${message.mensaje} </div>
             </li>
         `;
         messagesContainer.innerHTML += message;
