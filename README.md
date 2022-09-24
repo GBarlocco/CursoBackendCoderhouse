@@ -1758,6 +1758,16 @@ node --inspect profiler.js
 ## Clase Nº41 - Desarrollo de un servidor web basado en capas completo
 
 ## Clase Nº42 - Testeo de funcionalidades
+- Uitlizar el backend como cliente para realizar peticiones, algo muy utilizado en las web scraping.
+- Existen librerias propias de node, y externas como Axios.
+
+### Cliente HTTP
+- Es el encargado de abrir una sesión HTTP y de enviar la solicitud de conexión al servidor.
+- Existen dos tipos principales de clientes: interno - módulo HTTP o HTTPS estandar de node. Externos - paquete de NPM como Axios o Got
+
+### Cliente externo - Axios
+- Clientes con implementación mucho mas simple que la nativa.
+- Se utilizan con promesas.
 
 ## Clase Nº43 - Documentación de APIs
 
@@ -1768,7 +1778,7 @@ node --inspect profiler.js
 ## Clase Nº46 - Introducción a frameworks de desarrollo Backend - Parte 2
 
 ## Clase Nº47 - El futuro de Nodejs: Deno
-
+ 
 ## Clase Nº48 - Desarrollo de una API REST en Deno
 
 ## Comandos útiles

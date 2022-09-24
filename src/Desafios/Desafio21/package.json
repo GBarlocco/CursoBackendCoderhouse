@@ -1,0 +1,38 @@
+{
+  "name": "ecommerce-be",
+  "version": "1.0.0",
+  "description": "A continuación se detalla la documentación de la primer entrega del proyecto eCommerce - API RESTful",
+  "main": "main.js",
+  "scripts": {
+    "start": "node server.js",
+    "test": "mocha test/**/*.test.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "artillery": "^2.0.0-23",
+    "bcrypt": "^5.0.1",
+    "chai": "^4.3.6",
+    "cluster": "^0.7.7",
+    "connect-mongo": "^4.6.0",
+    "dotenv": "^16.0.1",
+    "ejs": "^3.1.8",
+    "express": "^4.18.1",
+    "express-session": "^1.17.3",
+    "firebase-admin": "^11.0.0",
+    "log4js": "^6.6.1",
+    "minimist": "^1.2.6",
+    "mocha": "^10.0.0",
+    "mongoose": "^6.5.4",
+    "multer": "^1.4.5-lts.1",
+    "nodemailer": "^6.7.8",
+    "nodemon": "^2.0.19",
+    "passport": "^0.6.0",
+    "passport-local": "^1.0.0",
+    "pm2": "^5.2.0",
+    "session": "^0.1.0",
+    "supertest": "^6.2.4",
+    "twilio": "^3.81.0"
+  }
+}
