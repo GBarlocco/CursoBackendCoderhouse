@@ -18,11 +18,11 @@
 #### Run server: `nodemon server.js`
 #### Run server: `nodemon server.js -p (puerto deseado)`
 #### Run test - mocha, supertest, chai: `npm test`
-[![test-TDD.png](https://i.postimg.cc/RZvqWXWx/test-TDD.png)](https://postimg.cc/8jnT3ddZ)
-[![test-BDD.png](https://i.postimg.cc/zv189GWY/test-BDD.png)](https://postimg.cc/CBJ38Ymc)
+- [![test-TDD.png](https://i.postimg.cc/RZvqWXWx/test-TDD.png)](https://postimg.cc/8jnT3ddZ)
+- [![test-BDD.png](https://i.postimg.cc/zv189GWY/test-BDD.png)](https://postimg.cc/CBJ38Ymc)
 #### Prueba obtener productos - Axios: `node axiosGetProducts.js`
 #### Agregar producto - Axios: `node axiosPostProduct.js`
-#### Modificar producto - Axios: ` XXXXXXXXXXX `
+#### Modificar producto - Axios: ` node axiosPostProduct.js `
 #### Eliminar producto - Axios: ` node axiosDeleteProduct.js `
 
 
