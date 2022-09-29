@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <%- include(`./partials/head`) %>
+        <link rel="canonical" href="https://getbootstrap.com/docs/5.0/examples/carousel/">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css"
+            integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
+</head>
+
+<body>
+
+    <header>
+        <%- include('./partials/headerLog', {current: `#`}) %>
+    </header>
+
+    <div class="jumbotron">
+        <div class="jumbotron">
+            <!--
+            <p>
+                <%= userLog.carrito %>
+            </p>
+            <p>
+                <%= userLog._id %>
+            </p>
+            <p>
+                <%= userLog %>
+            </p>
+
+            -->
+            <% if (userLog.carrito.length <=0) { %>
+                <p>El carrito se encuentra sin prouctos!.</p>
+                <% } else { %>
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th scope="col">ID</th>
+                                <th scope="col">Nombre</th>
+                                <th scope="col">Descripcion</th>
+                                <th scope="col">Precio</th>
+                                <th scope="col">Cantidad</th>
+                                <th scope="col">Imagen</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <% userLog.carrito.forEach(product=>{ %>
+                                <tr>
+                                    <td scope="row">
+                                        <%= product._id %>
+                                    </td>
+                                    <td>
+                                        <%= product.nombre %>
+                                    </td>
+                                    <td>
+                                        <%= product.descripcion %>
+                                    </td>
+                                    <td>
+                                        $<%= product.precio %>
+                                    </td>
+                                    <td>
+                                        <%= product.cantidad %>
+                                    </td>
+                                    <td>
+                                        <img src="<%= product.thumbnail %>" width="60" height="60">
+                                    </td>
+                                    <td>
+                                        <form action="/api/carrito/deleteProduct" method="POST">
+                                            <input type="hidden" name="idUser" value=<%=userLog.id %> />
+                                            <input type="hidden" name="idProduct" value=<%=product._id %> />
+                                            <button class="btn btn-danger" type="submit">Eliminar</button>
+                                        </form>
+                                    </td>
+
+                                </tr>
+                                <% }) %>
+                        </tbody>
+                    </table>
+                    <a class="btn btn-primary" href="/api/productos">Seguir comprando!</a>
+                    <br>
+                    <br>
+                    <br>
+                    <form action="/api/ordenes" method="POST">
+                        <input type="hidden" name="idUser" value=<%=userLog.id %> />
+                        <button class="btn btn-primary" type="submit">Finalizar compra</button>
+                    </form>
+                    <% } %>
+        </div>
+    </div>
+
+    <footer>
+        <%- include('./partials/footer') %>
+    </footer>
+
+</body>
+
+</html>
