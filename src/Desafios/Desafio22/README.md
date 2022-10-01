@@ -10,6 +10,7 @@ Refactoricemos el código del proyecto que venimos trabajando para cambiar de AP
 - Utilizar GraphiQL para realizar la prueba funcional de los querys y las mutaciones.
 
 ## Solución:
+- Run server: nodemon server.
 - Realizar consultas localmente: http://localhost:8080/graphql
 
 - Consultas a productos: GraphQL:
