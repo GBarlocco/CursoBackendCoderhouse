@@ -51,6 +51,20 @@ mutation deleteProduct{
 
 ```
 
+- Ejemplo getProducts:
+[![get-Products.png](https://i.postimg.cc/3RYJ5vwb/get-Products.png)](https://postimg.cc/jW3ryCPz)
+
+- Ejemplo getProductsByID:
+[![get-Products-By-ID.png](https://i.postimg.cc/N07B4jx8/get-Products-By-ID.png)](https://postimg.cc/xkCwjYhq)
+
+
+- Ejemplo updateProduct:
+[![update-Product.png](https://i.postimg.cc/Hsqm1yZ4/update-Product.png)](https://postimg.cc/vctkWcdc)
+
+
+- Ejemplo deleteProductByID:
+[![delete-Prodcut.png](https://i.postimg.cc/9Mg38Rw9/delete-Prodcut.png)](https://postimg.cc/BLFwtvgZ)
+
 ## Extra
 - [Documentation](https://nodejs.org/es/) Nodejs
 - [Documentation](https://es.wikipedia.org/wiki/Protocolo_de_transferencia_de_hipertexto) HTTP

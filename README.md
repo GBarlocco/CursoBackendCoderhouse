@@ -1517,6 +1517,8 @@ cd node_app/
 npm init -y
 ```
 
+- Ejecución de getProducts:
+
 #### Creamos una API
 - instalamos express:
 
