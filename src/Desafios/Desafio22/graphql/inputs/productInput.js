@@ -1,3 +1,5 @@
+//Input: lo que necesitamos para la creación.
+
 const productInput = `
 input ProductInput {
     nombre: String!,

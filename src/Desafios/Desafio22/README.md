@@ -10,6 +10,46 @@ Refactoricemos el código del proyecto que venimos trabajando para cambiar de AP
 - Utilizar GraphiQL para realizar la prueba funcional de los querys y las mutaciones.
 
 ## Solución:
+- Realizar consultas localmente: http://localhost:8080/graphql
+
+- Consultas a productos: GraphQL:
+```
+query getProducts{
+
+  getAllProducts{
+    id
+    nombre
+    stock
+  }
+}
+
+query getProductByID{
+  getProductById (id:"630bf1d635d9b41cf1b901a0"){
+    nombre
+    stock
+  }
+}
+
+mutation updateProduct{
+  updateProductById(id:"630bf1d635d9b41cf1b901a0", data:{
+    nombre: "tuna desde graphql",
+    descripcion: "modificada desde graphql",
+    codigo: 2,
+    thumbnail: "URL desde graphql",
+    precio: 333,
+    stock: 999
+    
+  }){
+    nombre
+    id
+  }
+}
+
+mutation deleteProduct{
+  deleteProductById(id:"633849d19a829f834df23855")
+}
+
+```
 
 ## Extra
 - [Documentation](https://nodejs.org/es/) Nodejs

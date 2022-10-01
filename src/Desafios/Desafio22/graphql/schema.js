@@ -1,6 +1,8 @@
 const { buildSchema } = require(`graphql`);
 const { productType } = require(`../graphql/types/productType`);
+
 const { productInput } = require(`../graphql/inputs/productInput`);
+
 const { productsQueries } = require(`../graphql/querys/productsQueries`);
 const { productsMutation } = require(`../graphql/mutations/productsMutation`);
 
