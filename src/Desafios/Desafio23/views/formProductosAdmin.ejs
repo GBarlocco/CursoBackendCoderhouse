@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <%- include(`./partials/head`) %>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css"
+      integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
+</head>
+
+<body>
+  <header>
+    <%- include('./partials/headerLog') %>
+  </header>
+
+  <div class="jumbotron">
+    <div class="jumbotron">
+      <form action="/api/productos" method="POST">
+        <h2 class="display-4">Agregar producto</h2>
+        <br>
+        
+        <p>Nombre:</p>
+        <div class="form-group">
+          <input type="text" id="typeEmailX" name="nombre" class="form-control form-control-lg" required
+            minlength="3" />
+        </div>
+
+        <p>Precio:</p>
+        <div class="form-group">
+          <input type="number" id="typeEmailX" name="precio" class="form-control form-control-lg" required
+            minlength="3" />
+        </div>
+
+        <p>Descripción:</p>
+        <div class="form-group">
+          <input type="text" id="typeEmailX" name="descripcion" class="form-control form-control-lg" required
+            minlength="3" />
+        </div>
+
+        <p>Código:</p>
+        <div class="form-group">
+          <input type="text" id="typeEmailX" name="codigo" class="form-control form-control-lg" required
+            minlength="3" />
+        </div>
+
+        <p>Stock:</p>
+        <div class="form-group">
+          <input type="number" id="typeEmailX" name="stock" class="form-control form-control-lg" required
+            minlength="3" />
+        </div>
+
+        <p>Imagen (url):</p>
+        <div class="form-group">
+          <input type="text" id="typeEmailX" name="thumbnail" class="form-control form-control-lg" required
+            minlength="3" />
+        </div>
+
+        <button class="btn btn-primary" type="submit">Agregar</button>
+      </form>
+    </div>
+
+  </div>
+
+
+</body>
+<footer>
+  <%- include('./partials/footer') %>
+</footer>
+</div>
+
+</html>
